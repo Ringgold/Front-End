@@ -1,0 +1,12 @@
+Setting up system environment for template:
+
+
+Install nodeJS
+add nodeJS root folder inth PATH variable (for Windows)
+Type in project root directory the following commands to install gulp and dependencies:
+npm install --save-dev gulp-install
+npm install gulp-template-compile --save-dev
+npm install gulp-concat --save-dev
+
+
+gulp default //regenerate the template.js file

@@ -1,0 +1,7 @@
+applying a change:
+git add -A
+git commit -m "YOUR_COMMIT_COMMENTS"
+git fetch
+git rebase
+git push
+///

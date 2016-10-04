@@ -1,0 +1,38 @@
+.login_username {
+    border:none;
+    height:40px;
+    background: rgba(0, 0, 0, 0.4) url(../resource/login/user.png) no-repeat 10px center;
+    background-size:20px;
+}
+
+.login_username input {
+    float:left;
+    border:none;
+    background:none;
+    height:40px;
+    inline-height:30px;
+    text-indent:25px;
+    color:white;
+}
+
+.login_password {
+    border:none;
+    height:40px;
+    background: rgba(0, 0, 0, 0.4) url(../resource/login/password.png) no-repeat 10px center;
+    background-size:16px;
+}
+
+.login_password input {
+    float:left;
+    border:none;
+    background:none;
+    height:40px;
+    inline-height:30px;
+    text-indent:25px;
+    color:white;
+}
+
+.register {
+	/*border:none !important;*/
+
+}

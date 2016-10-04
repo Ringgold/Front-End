@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    
+    
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery.js"></script> 
+    <script src="logic/index.js"></script>
+    
+    
+    <link href="css/mui.css" rel="stylesheet"/>
+    <link href="css/w3.css" rel="stylesheet"/>
+    <link href="css/david.css" rel="stylesheet"/>   
+    
+    <script type="text/javascript" charset="utf-8">
+      	mui.init({
+  			preloadPages:[
+    				{
+      				url:"register.html",
+      				id:"register"
+    				}
+  			]
+  		});
+		mui.plusReady(function() {
+		});
+    </script>
+</head>
+<body style="background-image:url(resource/login/background.png);background-size:100%">
+	<div class="w3-container w3-center" style="padding-top: 25%; padding-bottom: 10%;">
+        <a id="take_picture">
+            <image src="resource/login/camera.png" style="width:30%"></image>
+        </a>
+    </div>
+    <br>
+    <div class="w3-container" style="margin-right: 5%;margin-left: 5%;">
+        <div class="login_username">
+            <input name="USER_NAME" id="user_name" class="w3-small mui-input-clear" type="email" placeholder="Email"/>
+        </div>
+        <br>
+        <div class="login_password">
+            <input name="USER_PASSWORD" id="user_password" class="w3-small mui-input-clear" type="password" placeholder="Password"/>
+        </div>
+        <button id="log_in" class="mui-btn mui-btn-yellow" style="">Login</button>
+        <br><br>
+        <div class="w3-row">
+            <div class="w3-col s6 w3-small w3-center" style="color:white"><a id="register">Register</a></div>
+            <div class="w3-col s6 w3-small w3-center" style="color:white">Forgot Password?</div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="w3-center" style="padding-top: 10%;">
+        <p class="w3-small w3-text-white">Other Options</p>
+        <tr>
+            <td><img src="resource/login/qq.png" width=25px style="margin:20px"></td>
+            <td><img src="resource/login/weixin.png" width=30px style="margin:20px"></td>
+            <td><img src="resource/login/weibo.png" width=30px style="margin:20px"></td>
+        </tr>
+        <br>
+        <br>
+    </div>
+ <script>
+ 	main();
+ </script>
+</body>
+</html>

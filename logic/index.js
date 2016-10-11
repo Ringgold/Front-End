@@ -25,9 +25,9 @@ function login() {
     $.post("http://159.203.4.199:8080/user_account/log_in", JSON.stringify(user_account), function (data) {
         if (data === 'FAIL') {
             mui.alert("Login Fail");
-        } else if (data === 'NO_SUCH_USER') {
+        } else if (data === 'NO SUCH USER') {
             mui.alert("User Not Existing");
-        } else if (data === 'WRONG_PASSWORD') {
+        } else if (data === 'WRONG PASSWORD') {
             mui.alert("Wrong Password");
         } else {
             mui.alert("Login Success!");

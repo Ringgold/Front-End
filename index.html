@@ -6,20 +6,20 @@
     <title></title>
     
     
-    <script src="js/mui.min.js"></script>
-    <script src="js/jquery.js"></script> 
+    <script src="library/js/mui.js"></script>
+    <script src="library/js/jquery.js"></script> 
     <script src="logic/index.js"></script>
     
     
-    <link href="css/mui.css" rel="stylesheet"/>
-    <link href="css/w3.css" rel="stylesheet"/>
-    <link href="css/david.css" rel="stylesheet"/>   
+    <link href="library/css/mui.css" rel="stylesheet"/>
+    <link href="library/css/w3.css" rel="stylesheet"/>
+    <link href="library/css/common.css" rel="stylesheet"/>   
     
     <script type="text/javascript" charset="utf-8">
       	mui.init({
   			preloadPages:[
     				{
-      				url:"register.html",
+      				url:"pages/register.html",
       				id:"register"
     				}
   			]
@@ -29,13 +29,12 @@
     </script>
 </head>
 <body style="background-image:url(resource/login/background.png);background-size:100%">
-	<div class="w3-container w3-center" style="padding-top: 25%; padding-bottom: 10%;">
+	<div class="w3-container w3-center" style="padding-top: 36%; padding-bottom: 10%;">
         <a id="take_picture">
-            <image src="resource/login/camera.png" style="width:30%"></image>
+            <image src="resource/login/camera.png" style="width:26.27%"></image>
         </a>
-    </div>
-    <br>
-    <div class="w3-container" style="margin-right: 5%;margin-left: 5%;">
+   </div>
+    <div class="w3-container" style="padding-right: 14.4%;padding-left: 14.4%;">
         <div class="login_username">
             <input name="USER_NAME" id="user_name" class="w3-small mui-input-clear" type="email" placeholder="Email"/>
         </div>
@@ -45,15 +44,15 @@
         </div>
         <button id="log_in" class="mui-btn mui-btn-yellow" style="">Login</button>
         <br><br>
-        <div class="w3-row">
+        <div class="w3-row" style="padding-top:1%">
             <div class="w3-col s6 w3-small w3-center" style="color:white"><a id="register">Register</a></div>
             <div class="w3-col s6 w3-small w3-center" style="color:white">Forgot Password?</div>
         </div>
     </div>
     <br>
     <br>
-    <div class="w3-center" style="padding-top: 10%;">
-        <p class="w3-small w3-text-white">Other Options</p>
+    <div class="w3-center" style="padding-top: 0%;">
+        <p class="w3-small" style="color:white">Other Options</p>
         <tr>
             <td><img src="resource/login/qq.png" width=25px style="margin:20px"></td>
             <td><img src="resource/login/weixin.png" width=30px style="margin:20px"></td>

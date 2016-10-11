@@ -1,0 +1,37 @@
+@loginPath: "../../resource/login";
+
+.login_basic(){
+    border:none;
+    height:40px;
+}
+
+.login_input(){
+    float:left;
+    border:none;
+    background:none;
+    height:40px;
+    inline-height:30px;
+    text-indent:25px;
+    color:white;
+}
+
+/*Here Includes the login Features css*/
+.login_username {
+    .login_basic();
+    background: rgba(0, 0, 0, 0.4) url("@{loginPath}/user.png") no-repeat 10px center;
+    background-size:20px;
+}
+
+.login_password {
+    .login_basic();
+    background: rgba(0, 0, 0, 0.4) url("@{loginPath}/password.png") no-repeat 10px center;
+    background-size:16px;
+}
+
+.login_username input{
+    .login_input();
+}
+
+.login_password input{
+    .login_input();
+}

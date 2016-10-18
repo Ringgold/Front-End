@@ -1,6 +1,6 @@
 function main() {
-	$('#register').on("touchend", goRegister);
-	$('#log_in').on('touchend', login);
+	$('#register').on("touchstart", goRegister);
+	$('#log_in').on('touchstart', login);
 }
 
 function goRegister() {
@@ -30,7 +30,8 @@ function login() {
         } else if (data === 'WRONG PASSWORD') {
             mui.alert("Wrong Password");
         } else {
-            mui.alert("Login Success!");
+            //mui.alert("Login Success!");
+            plus.webview.show("fieldList", "pop-in");
         }
         plus.nativeUI.closeWaiting();
     }).error(function () {

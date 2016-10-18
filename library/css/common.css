@@ -34,3 +34,137 @@
 	/*border:none !important;*/
 
 }
+
+body,
+.mui-content,
+.color-back {
+  background-color: #212121;
+}
+/**/
+@font-face {
+  font-family: "simple";
+  src: url("../../library/fonts/simple.ttf") format("truetype");
+}
+@font-face {
+  font-family: "lanting";
+  src: url("../../library/fonts/lanting.ttf") format("truetype");
+}
+.mui-btn {
+  padding: 8px 12px;
+}
+.mui-btn-block {
+  padding: 10px 0;
+}
+.mui-table-view:after {
+  background-color: transparent;
+}
+.mui-table-view:before {
+  background-color: transparent;
+}
+.mui-radio input[type='radio']:checked:before,
+.mui-checkbox input[type='checkbox']:checked:before {
+  color: #fafafa;
+}
+.mui-segmented-control .mui-segmented-control-inverted .mui-control-item.mui-active {
+  color: white;
+  border-bottom: 2px solid #EFBD1B;
+  background: none;
+}
+/**/
+.my-simple {
+  color: white;
+  font-family: "simple", sans-serif !important;
+  /*letter-spacing: 3px;*/
+}
+.my-lanting {
+  color: white;
+  font-family: "lanting", sans-serif !important;
+  /*letter-spacing: 3px;*/
+}
+.my-transparent-simple {
+  background-color: transparent !important;
+  color: white;
+  font-family: "simple", sans-serif !important;
+  /*letter-spacing: 3px;*/
+}
+.my-transparent-lanting {
+  background-color: transparent !important;
+  color: white;
+  font-family: "lanting", sans-serif !important;
+  /*letter-spacing: 3px;*/
+}
+.mui-title {
+  font-family: "simple", sans-serif !important;
+  /*letter-spacing: 8px;*/
+}
+/**/
+.my-border-top {
+  border-top: 1px solid #c8c7cc;
+}
+.my-border-bottom {
+  border-bottom: 1px solid #c8c7cc;
+}
+.my-no-border {
+  border: none !important;
+}
+/**/
+.mui-btn-yellow {
+  border: 1px solid #EFBD1B;
+  background-color: #EFBD1B;
+}
+.mui-bar,
+.mui-bar-nav {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+span {
+  margin-right: 10px;
+}
+table {
+  table-layout: fixed;
+}
+input {
+  background: none !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom: solid 1px white;
+  border-radius: 0 !important;
+}
+.td-border {
+  border: 2px solid #111111;
+  padding: 14px 0;
+}
+.comment-remove-list-background:after {
+  background-color: black!important;
+}
+/**/
+.my-card {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  border-radius: 0px;
+  background-color: #343434;
+  background-clip: padding-box;
+}
+.my-card2 {
+  margin-bottom: -20px;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  border-radius: 0px;
+  background-color: transparent;
+  background-clip: padding-box;
+}
+/**/
+.my-card-content {
+  margin-left: -10px;
+}
+.head-img {
+  width: 40px;
+  height: 40px;
+}
+

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title></title>
+
+
+    <script src="../library/js/mui.js"></script>
+    <script src="../library/js/mui.picker.min.js"></script>
+    <script src="../library/js/mui.poppicker.js"></script>
+    <script src="../library/js/jquery.js"></script>
+    <script src="../library/js/underscore-min.js"></script>
+    <script src="../library/js/echarts.min.js"></script>
+    <script src="../dist/templates.js"></script>
+    <!--<script src="../logic/fieldDetail.js"></script>-->
+    <script src="../logic/fieldList.js"></script>
+
+    <link href="../library/css/mui.css" rel="stylesheet"/>
+    <link href="../library/css/w3.css" rel="stylesheet"/>
+    <link href="../library/css/mui.picker.min.css" rel="stylesheet"/>
+    <link href="../library/css/mui.poppicker.css" rel="stylesheet"/>
+    <link href="../library/css/common.css" rel="stylesheet"/>
+
+</head>
+
+<body>
+<div class="mui-off-canvas-wrap mui-draggable mui-active">
+    <!-- 菜单容器 -->
+    <aside class="mui-off-canvas-left my-simple w3-black mui-active">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <div class="mui-content-padded">
+                    <label class="w3-large w3-text-white">Navigation</label>
+                </div>
+                <br>
+                <ul id="menu_content"
+                    class="mui-table-view mui-table-view-chevron mui-table-view-inverted my-transparent-simple">
+                    <li class="mui-table-view-cell">
+                        <a id="person" class="mui-navigate-right" open-type="common">
+                           	Personal Page
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a id="list" class="mui-navigate-right" open-type="common">
+							Field Booking
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <!-- 主页面容器 -->
+    <div class="mui-inner-wrap">
+        <div>
+            <header class="mui-bar mui-bar-nav w3-black">
+                <a class="mui-icon mui-icon-bars mui-pull-left sidebar_menu"></a>
+                <h1 class="mui-title w3-text-white">Field Booking</h1>
+            </header>
+            <div class="mui-content">
+                <div style="background-color:rgba(100,100,100,0.8);">
+                    <div class="mui-segmented-control mui-segmented-control-inverted my-simple">
+                        <a id='dayTime' class="mui-control-item">
+                            <img id='sun' class='sun on' src="../resource/fieldDetail/sunOn.png"
+                                 style="height:20px; width:20px;">
+                            <img id='moon' class='moon off' src="../resource/fieldDetail/moonOff.png"
+                                 style="height:20px; width:20px;">
+                        </a>
+                        <a id="region" class="mui-control-item">Region</a>
+                        <a id="type" class="mui-control-item">Type</a>
+                        <a id="sort" class="mui-control-item">Order</a>
+                        <a id="searchIcon" class="mui-control-item"><span
+                                class="mui-icon mui-icon-search"></span></a>
+                        <div id="searchInput" class="mui-input-row" style="display: none;">
+                            <label>Search</label>
+                            <input type="text" class="mui-input-clear"/>
+                        </div>
+                    </div>
+                </div>
+                <div id="pullrefresh" class="mui-content mui-scroll-wrapper" style="margin-top: 84px">
+                    <div class="mui-scroll">
+                        <div class="mui-backdrop" style="display: none"></div>
+                        <div id="fieldList">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="personalMain" style="display: none">
+
+        </div>
+    </div>
+</div>
+<script>
+    mui.init({  
+		pullRefresh: {  
+			container: '#pullrefresh',  
+			down: {
+				callback: pulldownRefresh  
+			},  
+		}  
+	});
+    fieldListInit();
+    mui.ready(function () {
+        buildTopBar();
+    });
+</script>
+</body>
+</html>

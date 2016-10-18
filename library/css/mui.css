@@ -4643,7 +4643,8 @@ body > .mui-progressbar
 
 .mui-bar-nav ~ .mui-content .mui-pull-top-pocket
 {
-    top: 44px;
+    top: 4px;
+    /*44px*/
 }
 
 .mui-bar-nav ~ .mui-bar-header-secondary ~ .mui-content .mui-pull-top-pocket

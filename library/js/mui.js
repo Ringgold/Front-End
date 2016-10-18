@@ -3247,10 +3247,10 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				deceleration: 0.003,
 				down: {
 					height: 50,
-					contentinit: '下拉可以刷新',
-					contentdown: '下拉可以刷新',
-					contentover: '释放立即刷新',
-					contentrefresh: '正在刷新...'
+					contentinit: 'Pull Down To Refresh',
+					contentdown: 'Pull Down TO Refresh',
+					contentover: 'Release To Refresh',
+					contentrefresh: 'Refreshing...'
 				},
 				up: {
 					height: 50,

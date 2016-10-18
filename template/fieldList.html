@@ -1,0 +1,14 @@
+<div class="mui-content-padded my-transparent-simple">
+    <%_.each(fields, function (field) {%>
+    <div class="current-field">
+        <p>
+            <img src=<%-field.image%> width="100%">
+        </p>
+        <div class="mui-content-padded">
+            <span class="rating" style="float: right">Rating: <%=field.rating%>/5</span>
+            <span class="name" id="<%=field.id%>" style="font-weight: bold; font-size: 16px;"><%=field.name%><br></span>
+            <span class="w3-small"><%=field.address%></span>
+        </div>
+    </div>
+    <%});%>
+</div>

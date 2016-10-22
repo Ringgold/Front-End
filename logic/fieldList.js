@@ -1,6 +1,29 @@
 var fieldInfo = [];
 var currentRegionPicker, currentTypePicker, currentSortPicker, fieldInfoTmp, currentTimePicker,changeTimeList;
 
+function goDetail(e) {
+    plus.nativeUI.showWaiting();//加载loading界面
+    var currentField = e.target.id;//得到点到的球场的id
+    var index = fieldInfo.map(function (e) {
+        return e.id;
+    }).indexOf(currentField);//得到该球场id的在fieldInfo中的index
+    var tempval = fieldInfo[index].name;
+    localStorage.setItem('fieldDetail_name', tempval); //storing information into the appropriate key for access by fieldDetail page
+    tempval = fieldInfo[index].id + "";
+    localStorage.setItem('fieldDetail_id', tempval);
+    tempval = fieldInfo[index].image + "";
+    localStorage.setItem('fieldDetail_image', tempval);
+    tempval = fieldInfo[index].address + "";
+    localStorage.setItem('fieldDetail_address', tempval);
+    tempval = fieldInfo[index].phone + "";
+    localStorage.setItem('fieldDetail_phone', tempval);
+
+    var wv = plus.webview.getWebviewById('fieldDetail');
+    wv.evalJS("oscar();");
+    plus.webview.show("fieldDetail", "pop-in");//转换至fieldDetail页面
+    plus.nativeUI.closeWaiting();//结束loading界面
+}
+
 function reloadFieldList(fieldInfo) {  //加载场地信息的图片,名称和评分
     var list = window.JST.fieldList({
         fields: fieldInfo

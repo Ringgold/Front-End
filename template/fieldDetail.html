@@ -1,0 +1,96 @@
+<%_.each(fields, function (field) {%>
+
+<div id="slider" class="mui-slider my-transparent-simple">
+	<div class="mui-slider-group">
+		<%_.each(field.images, function(image){%>
+		<div class="mui-slider-item">
+			<a href="#">
+				<img src=<%=image%> width="100%">
+			</a>
+		</div>
+		<%});%>
+	</div>
+	<div class="mui-slider-indicator">
+		<%_.each(field.images, function(image){%>
+		<div class="mui-indicator"></div>
+		<%});%>
+	</div>
+</div>
+<div class="os-main-content w3-text-white" style="font-family: 'simple';">
+	<h4 style="margin-top:20px">
+        <div class="mui-inline" style="font-family: 'lanting'; letter-spacing: 5px;">
+            <%=field.fieldName%>
+        </div>
+        <div class="mui-icon mui-icon-compose mui-inline">
+
+        </div>
+        <div class="mui-icon mui-icon-upload mui-inline" style="float: right;">
+
+        </div>
+    </h4>
+
+	<p>
+		<div class="mui-icon mui-icon-location mui-inline">
+
+		</div>
+		<label class="mui-inline" style="letter-spacing: 4px;">
+        <%=field.address%>
+    </label>
+	</p>
+
+	<p>
+		<div class="mui-icon mui-icon-phone mui-inline">
+
+		</div>
+		<div class="os-detail-text mui-inline" style="letter-spacing: 4px;">
+			<%=field.phone%>
+		</div>
+	</p>
+
+	<hr>
+	<div style="letter-spacing: 2px;">
+		Field Booking
+	</div>
+
+	<div id="goSchedule" class="os-time-slider-container">
+		<%for(var i=0;i<field.days.length;i++){%>
+			<div class="os-time-box" id="os-timebox">
+				<%=field.daysofweek[i]%>
+				<br>
+				<%=field.months[i]%>&nbsp;
+				<%=field.days[i]%><br>
+			</div>
+		<%}%>	
+	</div>
+
+	<hr>
+	<div class="" style="letter-spacing: 2px;">
+		Comments
+		<div id="goComment" style="display: inline;float: right;">
+			All Comments>
+		</div>
+	</div>
+	<div class="">
+		<div class="w3-col w3-center" style="width:60px;padding-top:10px;">
+			<img class="w3-circle" src=<%-field.userProfile%> style="width:100%" />
+			<br>
+			<div class="mui-text-center">
+				<%=field.userName%>
+			</div>
+
+		</div>
+		<div class="w3-rest" style="padding-left:15px">
+			<%for (var i=0;i < field.userStar; i++) {%>
+			<img src="../resource/comment-template/star.png" style="width:15px">
+			<%}%>
+			<br>
+			<p class="w3-small" style="color: white; margin-top:5px">
+				<%=field.userDescription%>
+			</p>
+			<%_.each(field.userImages, function(image) {%>
+			<img class="w3-round w3-padding-top" src=<%-image%> style="width:60px;height:45px" />
+			<%});%>
+		</div>
+	</div>
+</div>
+<%});%>

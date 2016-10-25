@@ -110,8 +110,8 @@ function oscar() {
         d.setDate(d.getDate() + 1);
     }
     getFieldID();
-    //.replace(""",""),
-	comments = JSON.parse(getComments(field_id));	// getComments() is in comment.js
+//    .replace(""",""),
+//	comments = JSON.parse(getComments(field_id));	// getComments() is in comment.js
 	
     var fields = [
         {
@@ -121,11 +121,14 @@ function oscar() {
             images: [
                 field_image
             ],
-            userProfile: comments[0].profile,
-            userName: comments[0].name,
-            userDescription: comments[0].description, 
-            userStar: comments[0].star,
-            userImages: comments[0].images,
+            userProfile: "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1564533037,3918553373&fm=116&gp=0.jpg",
+            userName: "test",
+            userDescription: "...", 
+            userStar: "1",
+            userImages: [
+		    		"http://img5.imgtn.bdimg.com/it/u=3053211771,1825496490&fm=21&gp=0.jpg",
+				"http://img1.imgtn.bdimg.com/it/u=3906485024,2655122367&fm=21&gp=0.jpg"
+			],
             months: months,
             days: days,
             daysofweek: daysOfWeek

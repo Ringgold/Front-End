@@ -1,0 +1,26 @@
+<ul class="mui-table-view my-transparent-simple">
+	<%_.each(users, function (user) {%>
+	<li class="comment-remove-list-background mui-table-view-cell">
+		<div class="w3-row">
+			<div class="w3-col w3-center" style="width:60px;padding-top:10px">
+				<img class="w3-circle" src=<%-user.profile%> style="width:80%" />
+				<br>
+				<label class="w3-small"><%=user.name%></label>
+			</div>
+			<div class="w3-rest" style="padding-left:15px">
+				<br>
+				<%for (var i=0;i < user.star; i++) {%>
+					<img src="../resource/comment-template/star.png" style="width:15px">
+				<%}%>
+				<br>
+				<br>
+				<p class="w3-small w3-text-white"><%=user.description%></p>
+				<%_.each(user.images, function(image) {%>
+					<img class="w3-round w3-padding-top" src=<%-image%> style="width:60px;height:45px" />
+				<%});%>
+			</div>
+		</div>
+		<hr style="margin-bottom: 0px">
+	</li>
+	<%});%>
+</ul>

@@ -1,6 +1,39 @@
 (function() {
 window["JST"] = window["JST"] || {};
 
+window["JST"]["comment"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += '<ul class="mui-table-view my-transparent-simple">\n	';
+_.each(users, function (user) {;
+__p += '\n	<li class="comment-remove-list-background mui-table-view-cell">\n		<div class="w3-row">\n			<div class="w3-col w3-center" style="width:60px;padding-top:10px">\n				<img class="w3-circle" src=' +
+__e(user.profile) +
+' style="width:80%" />\n				<br>\n				<label class="w3-small">' +
+((__t = (user.name)) == null ? '' : __t) +
+'</label>\n			</div>\n			<div class="w3-rest" style="padding-left:15px">\n				<br>\n				';
+for (var i=0;i < user.star; i++) {;
+__p += '\n					<img src="../resource/comment-template/star.png" style="width:15px">\n				';
+};
+__p += '\n				<br>\n				<br>\n				<p class="w3-small w3-text-white">' +
+((__t = (user.description)) == null ? '' : __t) +
+'</p>\n				';
+_.each(user.images, function(image) {;
+__p += '\n					<img class="w3-round w3-padding-top" src=' +
+__e(image) +
+' style="width:60px;height:45px" />\n				';
+});;
+__p += '\n			</div>\n		</div>\n		<hr style="margin-bottom: 0px">\n	</li>\n	';
+});;
+__p += '\n</ul>';
+
+}
+return __p
+}})();
+(function() {
+window["JST"] = window["JST"] || {};
+
 window["JST"]["fieldDetail"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;

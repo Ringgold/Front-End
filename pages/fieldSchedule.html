@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title></title>
+    <script src="../library/js/mui.js"></script>
+    <script src="../library/js/mui.min.js"></script>
+    <script src="../library/js/mui.picker.min.js"></script>
+    <script src="../library/js/mui.poppicker.js"></script>
+    <script src="../library/js/jquery.js"></script>
+    <script src="../logic/fieldSchedule.js"></script>
+
+
+    <link href="../library/css/mui.css" rel="stylesheet"/>
+    <link href="../library/css/w3.css" rel="stylesheet"/>
+    <link href="../library/css/mui.picker.min.css" rel="stylesheet"/>
+    <link href="../library/css/mui.poppicker.css" rel="stylesheet"/>
+    <link href="../library/css/david.css" rel="stylesheet"/>
+    <link href="../library/css/oscar.css" rel="stylesheet"/>
+    <link href="../library/css/common.css" rel="stylesheet"/>
+
+    <script type="text/javascript" charset="utf-8">
+    		mui.init();
+    </script>
+</head>
+<body style="background-color:rgb(50,50,50)">
+<header class="mui-bar mui-bar-nav w3-black">
+    <a id="goBack" class="mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title w3-text-white">场次选择</h1>
+</header>
+
+<div class="mui-content w3-text-white">
+	<div class="mui-content-padded">
+		<div class="os-time-slider-container2" style="padding-top:10px; padding-bottom: 10px; border-bottom:solid 1px">
+	        <div class="os-time-box">周<br>月日</div>
+	        <div class="os-time-box">周<br>月日</div>
+	        <div class="os-time-box">周<br>月日</div>
+	        <div class="os-time-box">周<br>月日</div>
+	        <div class="os-time-box">周<br>月日</div>
+	        <div class="os-time-box">周<br>月日</div>
+	        <div class="os-time-box">周<br>月日</div>
+	    </div>
+	</div>
+	<div id="pullrefresh" class="mui-content  mui-scroll-wrapper" style="margin-top: 139px">
+		<div class="mui-scroll">
+		    <div class="mui-content-padded simple" style="margin-bottom:120px">
+		        <table style="table-layout:fixed;" class="w3-center">
+		            <tr class="w3-small">
+		            	 	<td></td>
+		                <td id="type3" class="mui-control-item">三人场</td>
+		                <td id="type7" class="mui-control-item">七人场</td>
+		                <td id="type11" class="mui-control-item">十一人场</td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">08:30</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">09:00</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">09:30</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">10:00</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">10:30</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">11:00</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">11:30</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">12:00</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">12:30</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">13:00</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">13:30</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">14:00</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">14:30</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">15:00</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">15:30</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">16:00</span></p>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		                <td>
+		                    <div class="fieldSchedule_timebox"></div>
+		                </td>
+		            </tr>
+		            <tr>
+		                <td>
+		                    <p style="margin-top:-13px"><span class="w3-text-white w3-small">16:30</span></p>
+		                </td>
+		            </tr>
+		        </table>
+		    </div>
+		</div>
+    </div>
+</div>
+
+<footer class="mui-bar mui-bar-tab w3-black">
+    <div class="mui-content-padded">
+        <div class="w3-row landing">
+            <div class="w3-col s4 w3-center">
+            		<img src="../resource/fieldSchedule/orange-box.png" style="width:30%;">
+                <img src="../resource/fieldSchedule/green-box.png" style="width:30%; margin-left:4%;"><br>
+                <label class="w3-text-white w3-tiny">已售</label>
+                <label class="w3-text-white w3-tiny" style="margin-left:16%;">已选</label>
+                
+            </div>
+            <div class="w3-col s5 w3-center">
+                <label class="w3-text-white w3-small">周一 2016-06-17<br>08:00-10:30 三人场</label>
+            </div>
+            <div class="w3-col s3 w3-center" id="price">
+                ￥0.00
+            </div>
+        </div>
+        <div class="mui-content-padded">
+            <button id="goConfirm" class="mui-btn mui-btn-block mui-btn-yellow w3-large">预订场所</button>
+            <br>
+        </div>
+</footer>
+<script>
+    init();
+    mui.init({  
+		pullRefresh: {  
+			container: '#pullrefresh',  
+			down: {
+				callback: pulldownRefresh  
+			},  
+		}  
+	});
+	mui.ready(function () {buildTypeBar();});
+</script>
+</body>

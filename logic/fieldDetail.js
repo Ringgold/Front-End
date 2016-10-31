@@ -14,7 +14,9 @@ function goComment() {
 }
 
 function goSchedule() {
-	
+	plus.webview.getWebviewById('fieldSchedule').evalJS("initTable('"+ localStorage.getItem("fieldDetail_id") +"');");
+	plus.webview.getWebviewById('fieldSchedule').evalJS("setdate('"+ localStorage.getItem("timebox_index") +"');");
+    plus.webview.show("fieldSchedule", "pop-in");
 }
 
 function goBack() {

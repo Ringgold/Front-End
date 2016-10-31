@@ -10,9 +10,9 @@ __p += '<ul class="mui-table-view my-transparent-simple">\n	';
 _.each(users, function (user) {;
 __p += '\n	<li class="comment-remove-list-background mui-table-view-cell">\n		<div class="w3-row">\n			<div class="w3-col w3-center" style="width:60px;padding-top:10px">\n				<img class="w3-circle" src=' +
 __e(user.profile) +
-' style="width:80%" />\n				<br>\n				<label class="w3-small">' +
+' style="width:80%" />\n				<br>\n				<div class="mui-text-center w3-small">\n					' +
 ((__t = (user.name)) == null ? '' : __t) +
-'</label>\n			</div>\n			<div class="w3-rest" style="padding-left:15px">\n				<br>\n				';
+'\n				</div>\n			</div>\n			<div class="w3-rest" style="padding-left:15px">\n				<br>\n				';
 for (var i=0;i < user.star; i++) {;
 __p += '\n					<img src="../resource/comment-template/star.png" style="width:15px">\n				';
 };

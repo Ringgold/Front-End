@@ -3248,7 +3248,7 @@ Function.prototype.bind = Function.prototype.bind || function(to) {
 				down: {
 					height: 50,
 					contentinit: 'Pull Down To Refresh',
-					contentdown: 'Pull Down TO Refresh',
+					contentdown: 'Pull Down To Refresh',
 					contentover: 'Release To Refresh',
 					contentrefresh: 'Refreshing...'
 				},

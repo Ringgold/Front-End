@@ -77,29 +77,35 @@ body,
 /**/
 .my-simple {
   color: white;
-  font-family: "simple", sans-serif !important;
+  font-family: arial;
+  /*font-family: "simple", sans-serif !important;*/
   /*letter-spacing: 3px;*/
 }
 .my-lanting {
   color: white;
-  font-family: "lanting", sans-serif !important;
+  font-family: arial;
+ /* font-family: "lanting", sans-serif !important;*/
   /*letter-spacing: 3px;*/
 }
 .my-transparent-simple {
   background-color: transparent !important;
   color: white;
-  font-family: "simple", sans-serif !important;
-  /*letter-spacing: 3px;*/
+  font-family: arial;
+  /*font-family: "simple", sans-serif !important;
+  letter-spacing: 3px;*/
 }
 .my-transparent-lanting {
   background-color: transparent !important;
   color: white;
-  font-family: "lanting", sans-serif !important;
+  font-family: arial;
+  /*font-family: "lanting", sans-serif !important;*/
   /*letter-spacing: 3px;*/
 }
 .mui-title {
-  font-family: "simple", sans-serif !important;
-  /*letter-spacing: 8px;*/
+	font-family: arial;
+	font-weight: bold;
+  /*font-family: "simple", sans-serif !important;
+  letter-spacing: 8px;*/
 }
 /**/
 .my-border-top {

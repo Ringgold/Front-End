@@ -8,7 +8,7 @@ var comments = [];
 
 
 function goComment() {
-	var newcomments = refreshComments(JSON.stringify(comments), field_id);	// refreshComments() is in comment.js
+	var newcomments = refreshComments(field_id);	// refreshComments() is in comment.js
 	plus.webview.getWebviewById('comment').evalJS("load('"+ newcomments +"');");
     plus.webview.show("comment", "pop-in");
 }

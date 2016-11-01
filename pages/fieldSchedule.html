@@ -6,7 +6,6 @@
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
     <title></title>
     <script src="../library/js/mui.js"></script>
-    <script src="../library/js/mui.min.js"></script>
     <script src="../library/js/mui.picker.min.js"></script>
     <script src="../library/js/mui.poppicker.js"></script>
     <script src="../library/js/jquery.js"></script>
@@ -28,30 +27,30 @@
 <body style="background-color:rgb(50,50,50)">
 <header class="mui-bar mui-bar-nav w3-black">
     <a id="goBack" class="mui-icon mui-icon-left-nav mui-pull-left"></a>
-    <h1 class="mui-title w3-text-white">Field Booking</h1>
+    <h1 class="mui-title" style="color: white;">Field Booking</h1>
 </header>
 
-<div class="mui-content w3-text-white">
+<div class="mui-content w3-text-white my-simple">
 	<div class="mui-content-padded">
 		<div class="os-time-slider-container2" style="padding-top:10px; padding-bottom: 10px; border-bottom:solid 1px">
-	        <div class="os-time-box">周<br>月日</div>
-	        <div class="os-time-box">周<br>月日</div>
-	        <div class="os-time-box">周<br>月日</div>
-	        <div class="os-time-box">周<br>月日</div>
-	        <div class="os-time-box">周<br>月日</div>
-	        <div class="os-time-box">周<br>月日</div>
-	        <div class="os-time-box">周<br>月日</div>
+	        <div class="os-time-box"><br></div>
+	        <div class="os-time-box"><br></div>
+	        <div class="os-time-box"><br></div>
+	        <div class="os-time-box"><br></div>
+	        <div class="os-time-box"><br></div>
+	        <div class="os-time-box"><br></div>
+	        <div class="os-time-box"><br></div>
 	    </div>
 	</div>
 	<div id="pullrefresh" class="mui-content  mui-scroll-wrapper" style="margin-top: 139px">
 		<div class="mui-scroll">
-		    <div class="mui-content-padded simple" style="margin-bottom:120px">
+		    <div class="mui-content-padded" style="margin-bottom:120px">
 		        <table style="table-layout:fixed;" class="w3-center">
 		            <tr class="w3-small">
 		            	 	<td></td>
-		                <td id="type3" class="mui-control-item">Three</td>
-		                <td id="type7" class="mui-control-item">Seven</td>
-		                <td id="type11" class="mui-control-item">Eleven</td>
+		                <td id="type3" class="mui-control-item">3-Men</td>
+		                <td id="type7" class="mui-control-item">7-Men</td>
+		                <td id="type11" class="mui-control-item">8-Men</td>
 		            </tr>
 		            <tr>
 		                <td>
@@ -288,20 +287,20 @@
     </div>
 </div>
 
-<footer class="mui-bar mui-bar-tab w3-black">
+<footer class="mui-bar mui-bar-tab w3-black my-simple">
     <div class="mui-content-padded">
-        <div class="w3-row landing">
+        <div class="w3-row">
             <div class="w3-col s4 w3-center">
-            		<img src="../resource/fieldSchedule/orange-box.png" style="width:30%;">
+            	<img src="../resource/fieldSchedule/orange-box.png" style="width:30%;">
                 <img src="../resource/fieldSchedule/green-box.png" style="width:30%; margin-left:4%;"><br>
-                <label class="w3-text-white w3-tiny" style="margin-left:5%;">sold</label>
-                <label class="w3-text-white w3-tiny" style="margin-left:10%;">chosen</label>
+                <label style="margin-left:8%; font-size: 14px; font-weight: 600;">Sold</label>
+                <label style="margin-left:5%; font-size: 14px; font-weight: 600;">Picked</label>
                 
             </div>
-            <div class="w3-col s5 w3-center">
-                <label class="w3-text-white w3-small">Mon 2016-06-17<br>08:00-10:30 Three</label>
+            <div class="w3-col s5 w3-center" style="font-weight: 700;">
+                <label>Mon 2016-06-17<br>08:00-10:30 Three</label>
             </div>
-            <div class="w3-col s3 w3-center" id="price">
+            <div class="w3-col s3 w3-center" id="price" style="font-weight: bolder;">
                 $0.00
             </div>
         </div>

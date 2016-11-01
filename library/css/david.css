@@ -1,55 +1,20 @@
-.login_username {
-    border: none;
-    height: 40px;
-    background: rgba(0, 0, 0, 0.4) url(../../resource/login/user.png) no-repeat 10px center;
-    background-size: 20px;
-    text-align: center;
-}
-
-.login_username input {
-    border: none;
-    background: none;
-    inline-height: 30px;
-    text-indent: 0px;
-    padding-left: 40px;
-    color: white;
-    font-family: "simple";
-    letter-spacing: 6px;
-}
-
-.login_password {
-    border: none;
-    height: 40px;
-    background: rgba(0, 0, 0, 0.4) url(../../resource/login/password.png) no-repeat 10px center;
-    background-size: 16px;
-}
-
-.login_password input {
-    float: left;
-    border: none;
-    background: none;
-    height: 40px;
-    inline-height: 30px;
-    text-indent: 0px;
-    padding-left: 40px;
-    color: white;
-    font-family: "simple";
-    letter-spacing: 6px;
-}
-
 .mui-btn {
-    font-family: "simple";
-    letter-spacing: 6px;
+    /*font-family: "simple";
+    letter-spacing: 6px;*/
+   	font-family: arial;
+   	font-weight: bold;
 }
 
 .lanting {
-    font-family: "lanting";
-    letter-spacing: 2px;
+    /*font-family: "lanting";
+    letter-spacing: 2px;*/
+   font-family: arial;
 }
 
 .simple {
-    font-family: "simple";
-    letter-spacing: 2px;
+    /*font-family: "simple";
+    letter-spacing: 2px;*/
+   	font-family: arial;
 }
 
 .fieldSchedule_timebox{

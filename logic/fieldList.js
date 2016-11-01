@@ -64,78 +64,242 @@ function fieldListInit() { //创建整个页面, 只需要调用一次, 更新�
     buildSearchBar();
 }
 
+//function buildTopBar() {
+//  var regionPicker = new mui.PopPicker();//地区过滤
+//  regionPicker.setData([
+//      {
+//          value: 'all',
+//          text: 'All'
+//      },
+//      {
+//          value: 'White Water',
+//          text: 'White Water'
+//      }, {
+//          value: 'Stad Mont',
+//          text: 'Stad Mont'
+//      }, {
+//          value: 'Cali Bridge',
+//          text: 'Cali Bridge'
+//      }
+//  ]);
+//
+//  var typePicker = new mui.PopPicker();
+//  typePicker.setData([
+//      {
+//          value: 'all',
+//          text: 'All'
+//      },
+//      {
+//          value: '3',
+//          text: '3-Palyer Field'
+//      },
+//      {
+//          value: '5',
+//          text: '5-Palyer Field'
+//      },
+//      {
+//          value: '7',
+//          text: '7-Palyer Field'
+//      },
+//      {
+//          value: '11',
+//          text: '11-Palyer Field'
+//      }
+//  ]);
+//  
+//
+//  var sortPicker = new mui.PopPicker();
+//  sortPicker.setData([
+//      {
+//          value: 'default',
+//          text: 'All'
+//      },
+//      {
+//          value: 'rating',
+//          text: 'Rating'
+//      },
+//      {
+//          value: 'nearest',
+//          text: 'Nearest'
+//      },
+//      {
+//          value: 'usage',
+//          text: 'Usage'
+//      },
+//      {
+//          value: 'high',
+//          text: 'Price From High to Low'
+//      },
+//      {
+//          value: 'low',
+//          text: 'Price From Low to High'
+//      }
+//  ]);
+// 
+//}
+
 function buildTopBar() {
     var regionPicker = new mui.PopPicker();//地区过滤
     regionPicker.setData([
         {
             value: 'all',
-            text: 'All'
+            text: '所有区'
         },
         {
-            value: 'White Water',
-            text: 'White Water'
+            value: '白水',
+            text: '白水'
         }, {
-            value: 'Stad Mont',
-            text: 'Stad Mont'
+            value: '衡山',
+            text: '衡山'
         }, {
-            value: 'Cali Bridge',
-            text: 'Cali Bridge'
+            value: '虹桥',
+            text: '虹桥'
         }
     ]);
+
+    $('#region').on('touchend', function () {
+        regionPicker.show(function (items) {
+            var previousRegionPicker = currentRegionPicker;
+            currentRegionPicker = items[0].value;
+            if(currentRegionPicker !== previousRegionPicker){//如果地区选择改变
+
+                if(previousRegionPicker !== undefined){//如果之前的过滤选择并非默认选择,过滤结果也许会变多所以重新过滤所有选择
+                    fieldInfoTmp = fieldInfo;
+                    if(currentTypePicker!== undefined && currentTypePicker!== 'all'){
+                        fieldInfoTmp = typeFilter(currentTypePicker, fieldInfoTmp);
+                    }
+                    if(currentSortPicker !== undefined && currentSortPicker !== 'default'){
+                        fieldInfoTmp = sortFilter(currentSortPicker, fieldInfoTmp);
+                    }
+
+                    fieldInfoTmp = regionFilter(currentRegionPicker,fieldInfoTmp);
+                    if(currentTimePicker !== undefined && currentTimePicker !== 'day'){
+                        changeTimeList = fieldInfoTmp;//save fieldInfo before filter day time,
+                        // will be used when change night time back to day time
+                        fieldInfoTmp = dayTimeFilter(currentTimePicker, fieldInfoTmp);
+                    }
+                    reloadFieldList(fieldInfoTmp);
+                }else{//根据之前的过滤结果再叠加过滤
+                    changeTimeList = regionFilter(currentRegionPicker,changeTimeList);
+                    fieldInfoTmp = regionFilter(currentRegionPicker,fieldInfoTmp);
+                    reloadFieldList(fieldInfoTmp);
+                }
+            }
+        });
+    });
 
     var typePicker = new mui.PopPicker();
     typePicker.setData([
         {
             value: 'all',
-            text: 'All'
+            text: '所有场'
         },
         {
             value: '3',
-            text: '3-Palyer Field'
+            text: '三人场'
         },
         {
             value: '5',
-            text: '5-Palyer Field'
+            text: '五人场'
         },
         {
             value: '7',
-            text: '7-Palyer Field'
+            text: '七人场'
         },
         {
             value: '11',
-            text: '11-Palyer Field'
+            text: '十一人场'
         }
     ]);
-    
+    $('#type').on('touchend', function () {
+        typePicker.show(function (items) {
+            var previousTypePicker = currentTypePicker;
+            currentTypePicker = items[0].value;
+            if(currentTypePicker !== previousTypePicker){
+
+                if(previousTypePicker !== undefined){
+
+                    fieldInfoTmp = fieldInfo;
+                    if(currentRegionPicker!== undefined && currentRegionPicker!== 'all'){
+                        fieldInfoTmp = regionFilter(currentRegionPicker, fieldInfoTmp);
+                    }
+                    if(currentSortPicker !== undefined && currentSortPicker !== 'default'){
+                        fieldInfoTmp = sortFilter(currentSortPicker, fieldInfoTmp);
+                    }
+
+                    fieldInfoTmp = typeFilter(currentTypePicker,fieldInfoTmp);
+                    if(currentTimePicker !== undefined && currentTimePicker !== 'day'){
+                        changeTimeList = fieldInfoTmp;
+                        fieldInfoTmp = dayTimeFilter(currentTimePicker, fieldInfoTmp);
+                    }
+
+                    reloadFieldList(fieldInfoTmp);
+                }else{
+                    changeTimeList = typeFilter(currentTypePicker,changeTimeList);
+                    fieldInfoTmp = typeFilter(currentTypePicker,fieldInfoTmp);
+                    reloadFieldList(fieldInfoTmp);
+                }
+            }
+        })
+    });
 
     var sortPicker = new mui.PopPicker();
     sortPicker.setData([
         {
             value: 'default',
-            text: 'All'
+            text: 'a-z'
         },
         {
             value: 'rating',
-            text: 'Rating'
+            text: '评分'
         },
         {
             value: 'nearest',
-            text: 'Nearest'
+            text: '距离最近'
         },
         {
             value: 'usage',
-            text: 'Usage'
+            text: '使用率'
         },
         {
             value: 'high',
-            text: 'Price From High to Low'
+            text: '价格从高到低'
         },
         {
             value: 'low',
-            text: 'Price From Low to High'
+            text: '价格从低到高'
         }
     ]);
- 
+    $('#sort').on('touchend', function () {
+        sortPicker.show(function (items) {//默认排序为名字顺序
+            var previousSortPicker = currentSortPicker;
+            currentSortPicker = items[0].value;
+            if(currentSortPicker !== previousSortPicker){
+                if(previousSortPicker !== undefined){
+                    fieldInfoTmp = fieldInfo;
+                    if(currentRegionPicker!== undefined && currentRegionPicker!== 'all'){
+                        fieldInfoTmp = regionFilter(currentRegionPicker, fieldInfoTmp);
+                    }
+                    if(currentTypePicker !== undefined && currentTypePicker !== 'all'){
+                        fieldInfoTmp = typeFilter(currentTypePicker, fieldInfoTmp);
+                    }
+
+                    fieldInfoTmp = sortFilter(currentSortPicker,fieldInfoTmp);
+
+                    if(currentTimePicker !== undefined && currentTimePicker !== 'day'){
+                        changeTimeList = fieldInfoTmp;
+                        fieldInfoTmp = dayTimeFilter(currentTimePicker, fieldInfoTmp);
+                    }
+
+                    reloadFieldList(fieldInfoTmp);
+                }else{
+                    changeTimeList = sortFilter(currentSortPicker,changeTimeList);
+                    fieldInfoTmp = sortFilter(currentSortPicker,fieldInfoTmp);
+                    reloadFieldList(fieldInfoTmp);
+                }
+            }
+        })
+    });
 }
 
 function dayTimeChange() {//日场夜场切换

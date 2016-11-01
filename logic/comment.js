@@ -1,4 +1,4 @@
-var CommentList = [];
+//var CommentList = [];
 
 function goFieldDetail() {
     var webview = plus.webview.currentWebview();
@@ -7,8 +7,9 @@ function goFieldDetail() {
 
 function pulldownRefresh() {
 	setTimeout(function(){
-		var newcomments = refreshComments(JSON.stringify(CommentList), localStorage.getItem('fieldDetail_id'));
+		var newcomments = refreshComments(localStorage.getItem('fieldDetail_id'));
 		load(newcomments);
+		
 		mui("#pullrefresh").pullRefresh().endPulldownToRefresh();
 	},1000);
 }
@@ -56,29 +57,19 @@ function getComments(site_id) {
 }
 
 // update comments in database
-function refreshComments(comments, site_id) {
-	var newcomments = JSON.parse(comments);
+function refreshComments(site_id) {
+	var newcomments = [];
 	var Url = "http://159.203.4.199:8080/field/field_comment/get_comments/" + site_id.toString();
 	mui.ajax(Url, {
 		type: "get",
 		timeout: 10000,
-		async: true,
+		async: false,
 		dataType: 'json',
         success: function (data) {
-	        	var comment_id_list = newcomments.map(function(x){return x.id;});
-			var data_id_list = data.map(function(x){return x.ID;});
-        		for(var i = 0;i < data.length;i++){			// add new comments
-				var existnew = $.inArray(data[i].ID, comment_id_list);
-				if(existnew == -1){
-					newcomments.push(get_com_obj(data[i]));
-				}
+			for(var i = 0;i < data.length;i++){
+				newcomments.push(get_com_obj(data[i]));
 			}
-			for(var i = 0;i < newcomments.length;i++){		// delete comments not in database
-				var existdelete = $.inArray(newcomments[i].id, data_id_list);
-				if(existdelete == -1){
-					newcomments.splice(i, 1);
-				}
-			}
+			// store comments for one field site, key is fieldsite id
 			localStorage.setItem(site_id, JSON.stringify(newcomments));
         },
         	error: function (xhr, type) {
@@ -112,9 +103,9 @@ function initload() {
 }
 
 function load(allcomments) {	
-	CommentList = JSON.parse(allcomments);
+	var shawn = JSON.parse(allcomments);
     var comments = window.JST.comment({
-        users: CommentList
+        users: shawn
     });
     $('#allcomments').empty();
     $('#allcomments').append($(comments));

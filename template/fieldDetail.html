@@ -16,9 +16,9 @@
 		<%});%>
 	</div>
 </div>
-<div class="os-main-content w3-text-white" style="font-family: 'simple';">
+<div class="os-main-content w3-text-white">
 	<h4 style="margin-top:20px">
-        <div class="mui-inline" style="font-family: 'lanting'; letter-spacing: 5px;">
+        <div class="mui-inline">
             <%=field.fieldName%>
         </div>
         <div class="mui-icon mui-icon-compose mui-inline">
@@ -33,7 +33,7 @@
 		<div class="mui-icon mui-icon-location mui-inline">
 
 		</div>
-		<label class="mui-inline" style="letter-spacing: 4px;">
+		<label class="mui-inline">
         <%=field.address%>
     </label>
 	</p>
@@ -42,13 +42,13 @@
 		<div class="mui-icon mui-icon-phone mui-inline">
 
 		</div>
-		<div class="os-detail-text mui-inline" style="letter-spacing: 4px;">
+		<div class="os-detail-text mui-inline">
 			<%=field.phone%>
 		</div>
 	</p>
 
 	<hr>
-	<div style="letter-spacing: 2px;">
+	<div>
 		Field Booking
 	</div>
 
@@ -64,7 +64,7 @@
 	</div>
 
 	<hr>
-	<div class="" style="letter-spacing: 2px;">
+	<div class="">
 		Comments
 		<div id="goComment" style="display: inline;float: right;">
 			All Comments>
@@ -79,12 +79,12 @@
 			</div>
 
 		</div>
-		<div class="w3-rest" style="padding-left:15px">
+		<div class="w3-rest" style="padding-left:5px">
 			<%for (var i=0;i < field.userStar; i++) {%>
 			<img src="../resource/comment-template/star.png" style="width:15px">
 			<%}%>
 			<br>
-			<p class="w3-small" style="color: white; margin-top:5px">
+			<p class="w3-small" style="color: white;">
 				<%=field.userDescription%>
 			</p>
 			<%_.each(field.userImages, function(image) {%>

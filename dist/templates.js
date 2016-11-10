@@ -51,13 +51,13 @@ __p += '\r\n	</div>\r\n	<div class="mui-slider-indicator">\r\n		';
 _.each(field.images, function(image){;
 __p += '\r\n		<div class="mui-indicator"></div>\r\n		';
 });;
-__p += '\r\n	</div>\r\n</div>\r\n<div class="os-main-content w3-text-white" style="font-family: arial;">\r\n	<h4 style="margin-top:20px">\r\n        <div class="mui-inline" style="font-family: \'lanting\'; letter-spacing: 5px;">\r\n            ' +
+__p += '\r\n	</div>\r\n</div>\r\n<div class="os-main-content w3-text-white">\r\n	<h4 style="margin-top:20px">\r\n        <div class="mui-inline">\r\n            ' +
 ((__t = (field.fieldName)) == null ? '' : __t) +
-'\r\n        </div>\r\n        <div class="mui-icon mui-icon-compose mui-inline">\r\n\r\n        </div>\r\n        <div class="mui-icon mui-icon-upload mui-inline" style="float: right;">\r\n\r\n        </div>\r\n    </h4>\r\n\r\n	<p>\r\n		<div class="mui-icon mui-icon-location mui-inline">\r\n\r\n		</div>\r\n		<label class="mui-inline" style="letter-spacing: 4px;">\r\n        ' +
+'\r\n        </div>\r\n        <div class="mui-icon mui-icon-compose mui-inline">\r\n\r\n        </div>\r\n        <div class="mui-icon mui-icon-upload mui-inline" style="float: right;">\r\n\r\n        </div>\r\n    </h4>\r\n\r\n	<p>\r\n		<div class="mui-icon mui-icon-location mui-inline">\r\n\r\n		</div>\r\n		<label class="mui-inline">\r\n        ' +
 ((__t = (field.address)) == null ? '' : __t) +
-'\r\n    </label>\r\n	</p>\r\n\r\n	<p>\r\n		<div class="mui-icon mui-icon-phone mui-inline">\r\n\r\n		</div>\r\n		<div class="os-detail-text mui-inline" style="letter-spacing: 4px;">\r\n			' +
+'\r\n    </label>\r\n	</p>\r\n\r\n	<p>\r\n		<div class="mui-icon mui-icon-phone mui-inline">\r\n\r\n		</div>\r\n		<div class="os-detail-text mui-inline">\r\n			' +
 ((__t = (field.phone)) == null ? '' : __t) +
-'\r\n		</div>\r\n	</p>\r\n\r\n	<hr>\r\n	<div style="letter-spacing: 2px;">\r\n		Field Booking\r\n	</div>\r\n\r\n	<div id="goSchedule" class="os-time-slider-container">\r\n		';
+'\r\n		</div>\r\n	</p>\r\n\r\n	<hr>\r\n	<div>\r\n		Field Booking\r\n	</div>\r\n\r\n	<div id="goSchedule" class="os-time-slider-container">\r\n		';
 for(var i=0;i<field.days.length;i++){;
 __p += '\r\n			<div class="os-time-box" id="os-timebox">\r\n				' +
 ((__t = (field.daysofweek[i])) == null ? '' : __t) +
@@ -67,15 +67,15 @@ __p += '\r\n			<div class="os-time-box" id="os-timebox">\r\n				' +
 ((__t = (field.days[i])) == null ? '' : __t) +
 '<br>\r\n			</div>\r\n		';
 };
-__p += '	\r\n	</div>\r\n\r\n	<hr>\r\n	<div class="" style="letter-spacing: 2px;">\r\n		Comments\r\n		<div id="goComment" style="display: inline;float: right;">\r\n			All Comments>\r\n		</div>\r\n	</div>\r\n	<div class="">\r\n		<div class="w3-col w3-center" style="width:60px;padding-top:10px;">\r\n			<img class="w3-circle" src=' +
+__p += '	\r\n	</div>\r\n\r\n	<hr>\r\n	<div class="">\r\n		Comments\r\n		<div id="goComment" style="display: inline;float: right;">\r\n			All Comments>\r\n		</div>\r\n	</div>\r\n	<div class="">\r\n		<div class="w3-col w3-center" style="width:60px;padding-top:10px;">\r\n			<img class="w3-circle" src=' +
 __e(field.userProfile) +
 ' style="width:100%" />\r\n			<br>\r\n			<div class="mui-text-center">\r\n				' +
 ((__t = (field.userName)) == null ? '' : __t) +
-'\r\n			</div>\r\n\r\n		</div>\r\n		<div class="w3-rest" style="padding-left:15px">\r\n			';
+'\r\n			</div>\r\n\r\n		</div>\r\n		<div class="w3-rest" style="padding-left:5px">\r\n			';
 for (var i=0;i < field.userStar; i++) {;
 __p += '\r\n			<img src="../resource/comment-template/star.png" style="width:15px">\r\n			';
 };
-__p += '\r\n			<br>\r\n			<p class="w3-small" style="color: white; margin-top:5px">\r\n				' +
+__p += '\r\n			<br>\r\n			<p class="w3-small" style="color: white;">\r\n				' +
 ((__t = (field.userDescription)) == null ? '' : __t) +
 '\r\n			</p>\r\n			';
 _.each(field.userImages, function(image) {;

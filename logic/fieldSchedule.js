@@ -176,7 +176,7 @@ function randomString(len) {
 }
 
 function initTable(site_id) {
-	var Url = "http://159.203.4.199:8080/field/field/getFields/" + site_id.toString();
+	var Url = "http://159.203.4.199:8080/field/field/get_fields_by_site_id/" + site_id.toString();
 	for(i=0; i<checkBox.length; i++) {checkBox[i].style.backgroundColor = "gray";}
 	field_info = [[],[],[]];
 	field_type = [0,0,0];
@@ -224,21 +224,26 @@ function getTime() {
 	plus.nativeUI.showWaiting();
 	for(var h=0; h<field_info.length; h++) {			// loop #field_type
 		for(var l=0; l<field_info[h].length; l++) {
-			var Url = "http://159.203.4.199:8080/field/field/getFieldTime/" + field_info[h][l].ID.toString();
+			var Url = "http://159.203.4.199:8080/field/field/get_bookings_by_field_id/" + field_info[h][l].ID.toString();
 			var hasparent = field_info[h][l].hasOwnProperty("PARENT_ID");
 			mui.ajax(Url, {
 				type: "get",
 				timeout: 10000,
 				async: false,
-				dataType: 'json',
+//				dataType: 'json',
 		        success: function (data) {
+//		        	console.log(data);
+//		        		data=JSON.parse(data);
+		        		data=jQuery.parseJSON(data);
+		        		console.log(data[0]);
 			        	for (var k=0 ;k<7; k++) {
 //			        		var Date = d.getFullYear() + "-" + months[k] + "-" + days[k];
 						var Date = d.getFullYear() + "-09-12";
 						for(var i=0; i<data.length; i++) {
-							if(data[i].start.indexOf(Date) > -1) {
-								var timeStart = data[i].start.split("-");	// 0:year 1:month 2:day 3:hour 4:minute
-								var timeEnd = data[i].end.split("-");
+							console.log(data[i].START_TIME);
+							if(data[i].START_TIME.indexOf(Date) > -1) {
+								var timeStart = data[i].START_TIME.split("-");	// 0:year 1:month 2:day 3:hour 4:minute
+								var timeEnd = data[i].END_TIME.split("-");
 								var start_index = (timeStart[3]-timefirst[0])*2 + parseInt((timeStart[4]-timefirst[1])/30);
 								var end_index = (timeEnd[3]-timefirst[0])*2 + parseInt((timeEnd[4]-timefirst[1])/30);
 								if((start_index>=0) && (end_index>0) && (start_index<timelen) && (end_index<=timelen)) {

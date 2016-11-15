@@ -11,3 +11,7 @@ function init() {
     $('#goBack').on("touchend", goBack);
     $('#confirm').on("touchend", goPay);
 }
+
+function showOrders() {
+	
+}

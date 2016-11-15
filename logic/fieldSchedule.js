@@ -184,8 +184,8 @@ function initTable(site_id) {
 		type: "get",
 		timeout: 10000,
 		async: false,
-		dataType: 'json',
         success: function (data) {
+        		data = JSON.parse(data);
         		for(i=0; i<data.length; i++) {
 				var index = parseInt(Math.sqrt(data[i].TYPE))-1;
 				field_info[index].push(data[i]);
@@ -196,6 +196,20 @@ function initTable(site_id) {
             alert(type);
         }
 	});
+	
+//	var priceUrl = "http://159.203.4.199:8080/field/field_price/get_prices_by_field_id/" + field_info[h][l].ID.toString();
+//	mui.ajax(priceUrl, {
+//		type: "get",
+//		timeout: 10000,
+//		async: false,
+//      success: function (data) {
+//      		data = JSON.parse(data);
+//      },
+//      	error: function (xhr, type) {
+//          alert(type);
+//      }	
+//	});
+
 	//  initialize table with available field type
 	for(i=0; i<field_type.length; i++) {
 		if(field_type[i] > 0) {
@@ -232,15 +246,12 @@ function getTime() {
 				async: false,
 //				dataType: 'json',
 		        success: function (data) {
-//		        	console.log(data);
-//		        		data=JSON.parse(data);
-		        		data=jQuery.parseJSON(data);
-		        		console.log(data[0]);
+		        	if(data != "EMPTY"){
+		        		data = JSON.parse(data);
 			        	for (var k=0 ;k<7; k++) {
 //			        		var Date = d.getFullYear() + "-" + months[k] + "-" + days[k];
 						var Date = d.getFullYear() + "-09-12";
 						for(var i=0; i<data.length; i++) {
-							console.log(data[i].START_TIME);
 							if(data[i].START_TIME.indexOf(Date) > -1) {
 								var timeStart = data[i].START_TIME.split("-");	// 0:year 1:month 2:day 3:hour 4:minute
 								var timeEnd = data[i].END_TIME.split("-");
@@ -259,18 +270,19 @@ function getTime() {
 											}
 										} else if(h==2) {
 											table_11[l][k][j] += 1;
-											var leftid = field_info[h][l].LEFT_ID;
-											var rightid = field_info[h][l].RIGHT_ID;
-											var lindex = field_info[1].map(function(x){return x.ID;}).indexOf(leftid);
-											var rindex = field_info[1].map(function(x){return x.ID;}).indexOf(rightid);
-											table_7[lindex][k][j] += 1;
-											table_7[rindex][k][j] += 1;
+//											var leftid = field_info[h][l].LEFT_ID;
+//											var rightid = field_info[h][l].RIGHT_ID;
+//											var lindex = field_info[1].map(function(x){return x.ID;}).indexOf(leftid);
+//											var rindex = field_info[1].map(function(x){return x.ID;}).indexOf(rightid);
+//											table_7[lindex][k][j] += 1;
+//											table_7[rindex][k][j] += 1;
 										}
 									}
 								}
 							}
 						}
 			        }
+				}
 		        	},
 		        	error: function (xhr, type) {
 		            alert(type);
@@ -351,7 +363,7 @@ function getOrder() {
 		}
 	}
 	console.log(JSON.stringify(Orders));
-//	localStorage.setItem("order_detail", JSON.stringify(Orders));
+	localStorage.setItem("order_detail", JSON.stringify(Orders));
 	return JSON.stringify(Orders);
 }
 

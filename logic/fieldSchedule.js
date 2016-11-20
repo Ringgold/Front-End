@@ -178,6 +178,7 @@ function randomString(len) {
 function initTable(site_id) {
 	var Url = "http://159.203.4.199:8080/field/field/get_fields_by_site_id/" + site_id.toString();
 	for(i=0; i<checkBox.length; i++) {checkBox[i].style.backgroundColor = "gray";}
+	//3 or 5 or 7
 	field_info = [[],[],[]];
 	field_type = [0,0,0];
 	mui.ajax(Url, {
@@ -187,6 +188,7 @@ function initTable(site_id) {
         success: function (data) {
         		data = JSON.parse(data);
         		for(i=0; i<data.length; i++) {
+        		//357--012
 				var index = parseInt(Math.sqrt(data[i].TYPE))-1;
 				field_info[index].push(data[i]);
 				field_type[index] += 1;
@@ -196,19 +198,30 @@ function initTable(site_id) {
             alert(type);
         }
 	});
-	
-//	var priceUrl = "http://159.203.4.199:8080/field/field_price/get_prices_by_field_id/" + field_info[h][l].ID.toString();
-//	mui.ajax(priceUrl, {
-//		type: "get",
-//		timeout: 10000,
-//		async: false,
-//      success: function (data) {
-//      		data = JSON.parse(data);
-//      },
-//      	error: function (xhr, type) {
-//          alert(type);
-//      }	
-//	});
+	for (var h=0;h<3;h++) {
+		for (var l=0;l<field_info[h].length;l++) {
+			var priceUrl = "http://159.203.4.199:8080/field/price/get_prices_by_field_id/" + field_info[h][l].ID.toString();
+			mui.ajax(priceUrl, {
+				type: "get",
+				timeout: 10000,
+				async: false,
+		        success: function (data) {
+		        	if (data === 'EMPTY') {
+		        		return;
+		        	}
+		        		data = JSON.parse(data);
+		    
+		        		//temperate price
+		        		data = data[0];
+		        		field_info[h][l].PRICE = data.PRICE;
+		        		
+		        },
+		        	error: function (xhr, type) {
+		            alert(type);
+		        }	
+			});
+		}
+	}
 
 	//  initialize table with available field type
 	for(i=0; i<field_type.length; i++) {
@@ -249,8 +262,8 @@ function getTime() {
 		        	if(data != "EMPTY"){
 		        		data = JSON.parse(data);
 			        	for (var k=0 ;k<7; k++) {
-//			        		var Date = d.getFullYear() + "-" + months[k] + "-" + days[k];
-						var Date = d.getFullYear() + "-09-12";
+			        		var Date = d.getFullYear() + "-" + months[k] + "-" + days[k];
+							//var Date = d.getFullYear() + "-09-12";
 						for(var i=0; i<data.length; i++) {
 							if(data[i].START_TIME.indexOf(Date) > -1) {
 								var timeStart = data[i].START_TIME.split("-");	// 0:year 1:month 2:day 3:hour 4:minute
@@ -302,8 +315,9 @@ function getOrder() {
 	var d = new Date();
 	var time_index = localStorage.getItem("timebox_index");
 	var FIELD_SITE_ID = localStorage.getItem("fieldDetail_id");
-	var USER_ID = "5ecb0e4b074044459895fd48057df046";
-	var BOOKING_STATUS = 1;
+	var USER_ID = localStorage.getItem("User_ID");
+//	var USER_ID = randomString(32);
+	var BOOKING_STATUS = 0;
 	for(var i=0; i<field_type.length; i++) {
 		if(field_type[i] > 0) {
 			var blocks = [];
@@ -346,10 +360,12 @@ function getOrder() {
 					END_TIME = d.getFullYear()+"-"+months[time_index]+"-"+days[time_index]+"-" + end_time[0] + "-" + end_time[1];
 					TOTAL_COST = parseFloat(field_info[i][index].PRICE) * halfhours;
 					order.ID = randomString(32);
-					order.FIELD_SITE_ID = FIELD_SITE_ID;
+//					order.FIELD_SITE_ID = FIELD_SITE_ID;
 					order.FIELD_ID = FIELD_ID;
 					order.START_TIME = START_TIME;
 					order.END_TIME = END_TIME;
+					order.USER_ID = USER_ID; 
+					order.BOOKING_STATUS = BOOKING_STATUS;
 					order.TOTAL_COST = TOTAL_COST;
 					Orders.push(order);
 					if (hasparent) {
@@ -362,9 +378,19 @@ function getOrder() {
 			}
 		}
 	}
-	console.log(JSON.stringify(Orders));
-	localStorage.setItem("order_detail", JSON.stringify(Orders));
+	//Array Oject
+	//ID: orderID, randomed
+	//FieldSiteID
+	//Field id
+	//start time
+	//End time
+	
+	
+	//console.log(JSON.stringify(Orders));
+	localStorage.setItem("booking_detail", JSON.stringify(Orders));
+//	orderlist = Orders;
 	return JSON.stringify(Orders);
+
 }
 
 function init() {
@@ -400,15 +426,15 @@ function setTable(type,typeindex,timeindex) {
 	}
 }
 
-
-
 function setdate(index) {
 	var d = new Date();
     var dd;
+    var mon_display = [];
     var dow = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     var mon = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
     for (i = 0; i < 7; i++) { //10 will be the number of date boxes in the page
-        months[i] = mon[d.getMonth()]; //stores the month into an array
+        months[i] = d.getMonth() + 1;
+        mon_display[i] = mon[d.getMonth()];
         dd = d.getDate();
         if (dd < 10) {
             dd = '0' + dd;
@@ -422,7 +448,7 @@ function setdate(index) {
     for(var i=0; i<7; i++) {
     		timebox[i].style.borderWidth = "0px";
         timebox[i].style.color = "gray";
-		timebox[i].innerHTML = daysOfWeek[i] + "<br>" + months[i] + " " + days[i];
+		timebox[i].innerHTML = daysOfWeek[i] + "<br>" + mon_display[i] + " " + days[i];
     }
     timebox[index].style.borderWidth = "thin";
     timebox[index].style.color = "white";

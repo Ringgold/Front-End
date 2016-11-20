@@ -34,6 +34,31 @@ return __p
 (function() {
 window["JST"] = window["JST"] || {};
 
+window["JST"]["fieldConfirm"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += ' ';
+_.each(orders, function (order) {;
+__p += '\r\n <div class="mui-content-padded" style="background: rgba(0, 0, 0, 0.3)">\r\n    <br>\r\n    <div class="mui-content-padded my-transparent-simple w3-center">\r\n        <div class="w3-text-white my-border-bottom">\r\n            <span class="w3-large">' +
+((__t = (order.date)) == null ? '' : __t) +
+'</span>\r\n            <span class="w3-large"><br><br></span>\r\n            <span>' +
+((__t = (order.startTime)) == null ? '' : __t) +
+' -- ' +
+((__t = (order.endTime)) == null ? '' : __t) +
+'<br><br></span>\r\n            <!--<span>Field Number 1 (3-Man Field)<br><br></span>-->\r\n        </div>\r\n        <br>\r\n        <div align=\'right\' class="w3-text-yellow w3-large"><br>' +
+((__t = (order.cost)) == null ? '' : __t) +
+'</div>\r\n    </div>\r\n</div>\r\n';
+});;
+
+
+}
+return __p
+}})();
+(function() {
+window["JST"] = window["JST"] || {};
+
 window["JST"]["fieldDetail"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;

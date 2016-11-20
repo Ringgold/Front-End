@@ -9,7 +9,10 @@
 
     <script src="../library/js/mui.min.js"></script>
     <script src="../library/js/jquery.js"></script>
+    <script src="../library/js/underscore-min.js"></script>
+    <script src="../dist/templates.js"></script>
     <script src="../logic/fieldConfirm.js"></script>
+    
 
     <link href="../library/css/mui.css" rel="stylesheet"/>
     <link href="../library/css/w3.css" rel="stylesheet"/>
@@ -24,22 +27,11 @@
     <a id="goBack" class="mui-icon mui-icon-left-nav mui-pull-left"></a>
     <h1 class="mui-title w3-text-white">Confirm Your Booking</h1>
 </header>
+
 <div class="mui-content my-simple">
     <br>
-    <br>
-    <div class="mui-content-padded" style="background: rgba(0, 0, 0, 0.3)">
-        <br>
-        <div class="mui-content-padded my-transparent-simple w3-center">
-            <div class="w3-text-white my-border-bottom">
-                <span class="w3-large">2016 June 3rd</span>
-                <span class="w3-large">Monday<br><br></span>
-                <span>08:00 - 10:30<br><br></span>
-                <span>Field Number 1 (3-Man Field)<br><br></span>
-            </div>
-            <br>
-            <div align='right' class="w3-text-yellow w3-large"><br>$250</div>
-        </div>
-    </div>
+    <div id="AllOrderList" class="mui-scroll"></div>
+   
 </div>
 <footer class="mui-bar mui-bar-tab my-transparent-simple">
     <div class="mui-content-padded">

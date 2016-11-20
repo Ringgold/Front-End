@@ -1,3 +1,5 @@
+var UserID = "";
+
 function main() {
 	$('#register').on("touchstart", goRegister);
 	$('#log_in').on('touchstart', login);
@@ -25,11 +27,14 @@ function login() {
     $.post("http://159.203.4.199:8080/user_account/log_in", JSON.stringify(user_account), function (data) {
         if (data === 'FAIL') {
             mui.alert("Login Fail");
-        } else if (data === 'NO SUCH USER') {
+        } else if (data === 'NO_SUCH_USER') {
             mui.alert("User Not Existing");
-        } else if (data === 'WRONG PASSWORD') {
+        } else if (data === 'WRONG_PASSWORD') {
             mui.alert("Wrong Password");
         } else {
+        	UserID = data;
+      		console.log(UserID);
+        	localStorage.setItem("User_ID", UserID)
             //mui.alert("Login Success!");
             plus.webview.show("fieldList", "pop-in");
         }

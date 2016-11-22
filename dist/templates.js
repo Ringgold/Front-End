@@ -127,7 +127,7 @@ function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += '<div class="mui-content-padded my-transparent-simple">\r\n    ';
 _.each(fields, function (field) {;
-__p += '\r\n    <div class="current-field">\r\n        <p>\r\n            <img src=' +
+__p += '\r\n    <div class="current-field">\r\n        <p>\r\n            <img class="image" src=' +
 __e(field.image) +
 ' width="100%">\r\n        </p>\r\n        <div class="mui-content-padded">\r\n            <span class="rating" style="float: right">Rating: ' +
 ((__t = (field.rating)) == null ? '' : __t) +

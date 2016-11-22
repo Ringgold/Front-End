@@ -11,13 +11,13 @@ function goPay() {
 function init() {
 	
     $('#goBack').on("touchend", goBack);
-    //$('#confirm').on("touchend", submit);
+    $('#confirm').on("touchend", submit);
 }
 
 function showOrders(orders) {
-	var orderlist = JSON.parse(orders);
+	orderlist = JSON.parse(orders);
 	var orderTemp = reformat(orderlist);
-//	console.log(JSON.stringify(orderlist));
+	//console.log("value saved "+JSON.stringify(orderlist));
     var OrderList = window.JST.fieldConfirm({
         orders: orderTemp
     });
@@ -47,7 +47,7 @@ function reformat(orderList){
 		order.date = dateVisual;
 		order.cost = costVisual;
 		
-		d.setDate(timeStart[2]+0);//get order's data
+		d.setDate(parseInt(timeStart[2]));//get order's data
 		order.weekday = weekday[d.getDay()];
 		Orders.push(order);
 	}
@@ -60,21 +60,21 @@ function reformat(orderList){
 function submit() {
 	var Url = "http://159.203.4.199:8080/field/field_booking/create_booking"; // Server Address
 	//var Url = "http://142.157.164.145:8080/field/field_booking/create_booking"; //David Liu's Address
-	//for (var i; i<orderlist.length; i++){
-		var order = JSON.stringify(orderlist[0]);
+	for (var i=0; i<orderlist.length; i++){
+		var order = JSON.stringify(orderlist[i]);
 		console.log(order);
 		mui.ajax(Url, {
 		type: "post",
 		timeout: 10000,
+
 		async: false,
 		data: order,
         success: function (data) {
 	        console.log(data);
-	        
         },
         error: function (xhr, type) {
             alert(type);
         }
 		});
-	//}
+	}
 }

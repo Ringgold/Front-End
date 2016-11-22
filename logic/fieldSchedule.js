@@ -361,13 +361,12 @@ function getOrder() {
 					END_TIME = d.getFullYear()+"-"+months[time_index]+"-"+days[time_index]+"-" + end_time[0] + "-" + end_time[1];
 					TOTAL_COST = parseFloat(field_info[i][index].PRICE) * blocks[k].length;
 					order.ID = randomString(32);
-//					order.FIELD_SITE_ID = FIELD_SITE_ID;
 					order.FIELD_ID = FIELD_ID;
 					order.START_TIME = START_TIME;
 					order.END_TIME = END_TIME;
 					order.USER_ID = USER_ID; 
-					order.BOOKING_STATUS = BOOKING_STATUS;
 					order.TOTAL_COST = TOTAL_COST;
+					order.BOOKING_STATUS = BOOKING_STATUS;			
 					Orders.push(order);
 					if (hasparent) {
 						var secondorder = $.extend({}, order);

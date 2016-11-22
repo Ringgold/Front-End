@@ -18,6 +18,7 @@ function goBack() {
 
 function goConfirm() {
 	var orders = getOrder();
+	plus.webview.getWebviewById('fieldConfirm').evalJS("showOrders('"+ orders +"');");
     plus.webview.show("fieldConfirm", "pop-in");
 }
 
@@ -386,8 +387,8 @@ function getOrder() {
 	//End time
 	
 	
-	//console.log(JSON.stringify(Orders));
-	localStorage.setItem("booking_detail", JSON.stringify(Orders));
+	console.log(JSON.stringify(Orders));
+//	localStorage.setItem("booking_detail", JSON.stringify(Orders));
 //	orderlist = Orders;
 	return JSON.stringify(Orders);
 

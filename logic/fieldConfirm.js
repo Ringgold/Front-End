@@ -9,16 +9,15 @@ function goPay() {
 }
 
 function init() {
-	showOrders();
-	console.log("inside");
+	
     $('#goBack').on("touchend", goBack);
     $('#confirm').on("touchend", submit);
 }
 
-function showOrders() {
-	orderlist = JSON.parse(localStorage.getItem("booking_detail"));
+function showOrders(orders) {
+	var orderlist = JSON.parse(orders);
 //	var orderTemp = reformat(orderlist);
-	
+	console.log(orderlist);
 //  var OrderList = window.JST.fieldConfirm({
 //      orders: orderTemp
 //  });

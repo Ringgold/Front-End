@@ -11,18 +11,18 @@ function goPay() {
 function init() {
 	
     $('#goBack').on("touchend", goBack);
-    $('#confirm').on("touchend", submit);
+    //$('#confirm').on("touchend", submit);
 }
 
 function showOrders(orders) {
 	var orderlist = JSON.parse(orders);
-//	var orderTemp = reformat(orderlist);
-	console.log(orderlist);
-//  var OrderList = window.JST.fieldConfirm({
-//      orders: orderTemp
-//  });
-//  $('#AllOrderList').empty();
-//  $('#AllOrderList').append($(OrderList));
+	var orderTemp = reformat(orderlist);
+//	console.log(JSON.stringify(orderlist));
+    var OrderList = window.JST.fieldConfirm({
+        orders: orderTemp
+    });
+    $('#AllOrderList').empty();
+    $('#AllOrderList').append($(OrderList));
 }
 
 //format infos of the order into visual content
@@ -32,15 +32,14 @@ function reformat(orderList){
 	var d = new Date();
 	//buffer initialization
 	var Orders = [];//array
-	var order = {};//object
 	
 	for (var i=0; i<orderList.length; i++){
+		var order = {};//object
 		var timeStart = orderList[i].START_TIME.split("-");	// 0:year 1:month 2:day 3:hour 4:minute
 		var timeEnd = orderList[i].END_TIME.split("-");
-		
-		var timeStartVisual = timeStart[3]+":"+timestart[4];
+		var timeStartVisual = timeStart[3]+":"+timeStart[4];
 		var timeEndVisual = timeEnd[3]+":"+timeEnd[4];
-		var dateVisual = mon[timeStart[1]+1]+" "+timeStart[1]+", "+timeStart[0]//date
+		var dateVisual = mon[timeStart[1]-1]+" "+timeStart[2]+", "+timeStart[0]//date
 		var costVisual = orderList[i].TOTAL_COST;
 		
 		order.startTime = timeStartVisual;
@@ -48,8 +47,8 @@ function reformat(orderList){
 		order.date = dateVisual;
 		order.cost = costVisual;
 		
-		//d.setDate(timeStart[2]+0);//get order's data
-		//order.weekday = weekday[d.getDay()];
+		d.setDate(timeStart[2]+0);//get order's data
+		order.weekday = weekday[d.getDay()];
 		Orders.push(order);
 	}
 	

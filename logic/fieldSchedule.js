@@ -359,7 +359,7 @@ function getOrder() {
 					var end_time = timeline[end+1].innerHTML.split(":");
 					START_TIME = d.getFullYear()+"-"+months[time_index]+"-"+days[time_index]+"-" + start_time[0] + "-" + start_time[1];
 					END_TIME = d.getFullYear()+"-"+months[time_index]+"-"+days[time_index]+"-" + end_time[0] + "-" + end_time[1];
-					TOTAL_COST = parseFloat(field_info[i][index].PRICE) * halfhours;
+					TOTAL_COST = parseFloat(field_info[i][index].PRICE) * blocks[k].length;
 					order.ID = randomString(32);
 //					order.FIELD_SITE_ID = FIELD_SITE_ID;
 					order.FIELD_ID = FIELD_ID;

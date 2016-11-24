@@ -143,17 +143,17 @@ function buildTopBar() {
     regionPicker.setData([
         {
             value: 'all',
-            text: '所有区'
+            text: 'All'
         },
         {
-            value: '白水',
-            text: '白水'
+            value: 'White Water',
+            text: 'White Water'
         }, {
-            value: '衡山',
-            text: '衡山'
+            value: 'Stad Mont',
+            text: 'Stad Mont'
         }, {
-            value: '虹桥',
-            text: '虹桥'
+            value: 'Cali Bridge',
+            text: 'Cali Bridge'
         }
     ]);
 
@@ -192,23 +192,23 @@ function buildTopBar() {
     typePicker.setData([
         {
             value: 'all',
-            text: '所有场'
+            text: 'All'
         },
         {
             value: '3',
-            text: '三人场'
+            text: '3-Palyer Field'
         },
         {
             value: '5',
-            text: '五人场'
+            text: '5-Palyer Field'
         },
         {
             value: '7',
-            text: '七人场'
+            text: '7-Palyer Field'
         },
         {
             value: '11',
-            text: '十一人场'
+            text: '11-Palyer Field'
         }
     ]);
     $('#type').on('touchend', function () {
@@ -247,27 +247,27 @@ function buildTopBar() {
     sortPicker.setData([
         {
             value: 'default',
-            text: 'a-z'
+            text: 'A-Z'
         },
         {
             value: 'rating',
-            text: '评分'
+            text: 'Rating'
         },
         {
             value: 'nearest',
-            text: '距离最近'
+            text: 'Nearest'
         },
         {
             value: 'usage',
-            text: '使用率'
+            text: 'Usage'
         },
         {
             value: 'high',
-            text: '价格从高到低'
+            text: 'Price from High to Low'
         },
         {
             value: 'low',
-            text: '价格从低到高'
+            text: 'Price from Low to High'
         }
     ]);
     $('#sort').on('touchend', function () {
@@ -305,6 +305,41 @@ function buildTopBar() {
 function dayTimeChange() {//日场夜场切换
     var sun = $('.sun');
     var moon = $('.moon');
+    sun.on("touchend", function () {
+        if (sun.hasClass('off')) {
+            currentTimePicker = 'day';
+            if(changeTimeList === undefined) {// should not get in here
+                fieldInfoTmp = dayTimeFilter('sun', fieldInfoTmp);
+                reloadFieldList(fieldInfoTmp);
+            }else{
+                fieldInfoTmp = changeTimeList;//changeTimeList is the field info in day time
+                reloadFieldList(fieldInfoTmp);
+            }
+
+            sun.removeClass("off").addClass('on');
+            sun.attr('src', "../resource/fieldDetail/sunOn.png");
+            if (moon.hasClass('on')) {
+                moon.removeClass("on").addClass('off');
+                moon.attr('src', "../resource/fieldDetail/moonOff.png");
+            }
+        }
+    });
+
+    moon.on("touchend", function () {
+        if (moon.hasClass('off')) {
+            currentTimePicker = 'night';
+            changeTimeList = fieldInfoTmp;
+            fieldInfoTmp = dayTimeFilter('night',fieldInfoTmp);
+
+            reloadFieldList(fieldInfoTmp);
+            moon.removeClass("off").addClass('on');
+            moon.attr('src', "../resource/fieldDetail/moonOn.png");
+            if (sun.hasClass('on')) {
+                sun.removeClass("on").addClass('off');
+                sun.attr('src', "../resource/fieldDetail/sunOff.png");
+            }
+        }
+    });
 
 }
 

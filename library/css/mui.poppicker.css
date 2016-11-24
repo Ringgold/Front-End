@@ -1,5 +1,6 @@
 .mui-poppicker {
 	position: fixed;
+	font-family: arial;
 	left: 0px;
 	width: 100%;
 	z-index: 999;
@@ -12,37 +13,44 @@
 }
 .mui-poppicker.mui-active {
 	-webkit-transform: translateY(0px);
+	font-family: arial;
 }
 .mui-android-5-1 .mui-poppicker {
 	bottom: -300px;
 	-webkit-transition-property: bottom;
 	-webkit-transform: none;
+	font-family: arial;
 }
 .mui-android-5-1 .mui-poppicker.mui-active {
 	bottom: 0px;
 	-webkit-transition-property: bottom;
 	-webkit-transform: none;
+	font-family: arial;
 }
 .mui-poppicker-header {
 	padding: 6px;
 	font-size: 14px;
 	color: #888;
+	font-family: arial;
 }
 .mui-poppicker-header .mui-btn {
 	font-size: 12px;
 	padding: 5px 10px;
+	font-family: arial;
 }
 .mui-poppicker-btn-cancel {
 	float: left;
 	background-color:transparent !important;
 	color: white;
 	border: none;
+	font-family: arial;
 }
 .mui-poppicker-btn-ok {
 	float: right;
 	background-color:transparent !important;
 	color: white;
 	border: none;
+	font-family: arial;
 }
 .mui-poppicker-clear {
 	clear: both;
@@ -50,12 +58,14 @@
 	line-height: 0px;
 	font-size: 0px;
 	overflow: hidden;
+	font-family: arial;
 }
 .mui-poppicker-body {
 	position: relative;
 	width: 100%;
 	height: 200px;
 	border-top: solid 1px #ddd;
+	font-family: arial;
 	/*-webkit-perspective: 1200px;
 	perspective: 1200px;
 	-webkit-transform-style: preserve-3d;
@@ -67,4 +77,5 @@
 	margin: 0px;
 	border: none;
 	float: left;
+	font-family: arial;
 }

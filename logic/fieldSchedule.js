@@ -50,15 +50,29 @@ function goCheckBox(e){
 	var left11 = checkBox[2].getBoundingClientRect().left;
 	var right11 = checkBox[2].getBoundingClientRect().right;
 	if(click>left3 && click<right3) {
-//		if (sender.style.backgroundColor == 'rgb(143, 195, 31)') {
-//			$("#price").innerHTML = "$" + 10;
-//		} else if(sender.style.backgroundColor == 'rgb(255, 255, 255)') {
-//			$("#price").innerHTML = "$" + 3;
-//		}
+		var price = field_info[0][currentType3].PRICE;
+		var currentPrice = parseInt($("#price").text());
+		if (sender.style.backgroundColor == 'rgb(143, 195, 31)') {
+			$("#price").text((currentPrice+price).toString());
+		} else if(sender.style.backgroundColor == 'rgb(255, 255, 255)') {
+			$("#price").text((currentPrice-price).toString());
+		}
 	} else if(click>left7 && click<right7) {
-		
+		var price = field_info[1][currentType7].PRICE;
+		var currentPrice = parseInt($("#price").text());
+		if (sender.style.backgroundColor == 'rgb(143, 195, 31)') {
+			$("#price").text((currentPrice+price).toString());
+		} else if(sender.style.backgroundColor == 'rgb(255, 255, 255)') {
+			$("#price").text((currentPrice-price).toString());
+		}
 	} else if(click>left11 && click<right11) {
-		
+		var price = field_info[2][currentType11].PRICE;
+		var currentPrice = parseInt($("#price").text());
+		if (sender.style.backgroundColor == 'rgb(143, 195, 31)') {
+			$("#price").text((currentPrice+price).toString());
+		} else if(sender.style.backgroundColor == 'rgb(255, 255, 255)') {
+			$("#price").text((currentPrice-price).toString());
+		}
 	}
 //	console.log(click);
 //	console.log(left3);
@@ -412,6 +426,11 @@ function init() {
 }
 
 function setTable(type,typeindex,timeindex) {
+	$("#price").text(0);
+	for(i=0; i<checkBox.length; i++) {
+		if(checkBox[i].style.backgroundColor == 'rgb(143, 195, 31)') {
+			checkBox[i].style.backgroundColor = 'rgb(255, 255, 255)';}
+	}
 	var t = parseInt(Math.sqrt(type))-1;
 	if(Tables[t].length > 0) {
 		// change checkbox back to white

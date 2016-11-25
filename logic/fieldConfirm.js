@@ -70,7 +70,10 @@ function submit() {
 		async: false,
 		data: order,
         success: function (data) {
-	        console.log(data);
+	        alert(data);
+	        if(data == "SUCCESS"){
+	        		plus.webview.show("fieldList", "pop-in");
+	        }
         },
         error: function (xhr, type) {
             alert(type);

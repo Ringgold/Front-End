@@ -298,12 +298,6 @@ function getTime() {
 											}
 										} else if(h==2) {
 											table_11[l][k][j] += 1;
-//											var leftid = field_info[h][l].LEFT_ID;
-//											var rightid = field_info[h][l].RIGHT_ID;
-//											var lindex = field_info[1].map(function(x){return x.ID;}).indexOf(leftid);
-//											var rindex = field_info[1].map(function(x){return x.ID;}).indexOf(rightid);
-//											table_7[lindex][k][j] += 1;
-//											table_7[rindex][k][j] += 1;
 										}
 									}
 								}

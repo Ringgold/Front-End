@@ -196,19 +196,19 @@ function buildTopBar() {
         },
         {
             value: '3',
-            text: '3-Palyer Field'
+            text: '3-Player Field'
         },
         {
             value: '5',
-            text: '5-Palyer Field'
+            text: '5-Player Field'
         },
         {
             value: '7',
-            text: '7-Palyer Field'
+            text: '7-Player Field'
         },
         {
             value: '11',
-            text: '11-Palyer Field'
+            text: '11-Player Field'
         }
     ]);
     $('#type').on('touchend', function () {

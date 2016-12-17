@@ -47,6 +47,7 @@ function reformat(orderList){
 		order.date = dateVisual;
 		order.cost = costVisual;
 		
+		//wait to fix
 		d.setDate(parseInt(timeStart[2]));//get order's data
 		order.weekday = weekday[d.getDay()];
 		Orders.push(order);

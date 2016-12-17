@@ -64,79 +64,18 @@ function fieldListInit() { //创建整个页面, 只需要调用一次, 更新�
     buildSearchBar();
 }
 
-//function buildTopBar() {
-//  var regionPicker = new mui.PopPicker();//地区过滤
-//  regionPicker.setData([
-//      {
-//          value: 'all',
-//          text: 'All'
-//      },
-//      {
-//          value: 'White Water',
-//          text: 'White Water'
-//      }, {
-//          value: 'Stad Mont',
-//          text: 'Stad Mont'
-//      }, {
-//          value: 'Cali Bridge',
-//          text: 'Cali Bridge'
-//      }
-//  ]);
-//
-//  var typePicker = new mui.PopPicker();
-//  typePicker.setData([
-//      {
-//          value: 'all',
-//          text: 'All'
-//      },
-//      {
-//          value: '3',
-//          text: '3-Palyer Field'
-//      },
-//      {
-//          value: '5',
-//          text: '5-Palyer Field'
-//      },
-//      {
-//          value: '7',
-//          text: '7-Palyer Field'
-//      },
-//      {
-//          value: '11',
-//          text: '11-Palyer Field'
-//      }
-//  ]);
-//  
-//
-//  var sortPicker = new mui.PopPicker();
-//  sortPicker.setData([
-//      {
-//          value: 'default',
-//          text: 'All'
-//      },
-//      {
-//          value: 'rating',
-//          text: 'Rating'
-//      },
-//      {
-//          value: 'nearest',
-//          text: 'Nearest'
-//      },
-//      {
-//          value: 'usage',
-//          text: 'Usage'
-//      },
-//      {
-//          value: 'high',
-//          text: 'Price From High to Low'
-//      },
-//      {
-//          value: 'low',
-//          text: 'Price From Low to High'
-//      }
-//  ]);
-// 
-//}
+function search() {
+	var inputs = $("#searchInput").val().toLowerCase();
+	var target = $(".name");
+	for(var i=0; i<target.length;i++) {
+		var block = $(target[i]).parent().parent();
+		if($(target[i]).text().toLowerCase().indexOf(inputs) > -1){
+			block.removeAttr("style");
+		} else {
+			block.attr("style", "display: none;");
+		}
+	}
+}
 
 function buildTopBar() {
     var regionPicker = new mui.PopPicker();//地区过滤
@@ -402,7 +341,7 @@ function sortFilter(picker, fieldList){
 
 function buildSearchBar() {//建立搜索框
     $("#searchIcon").on('touchend', function () {
-        $('#searchInput').show();
+        $('#search').show();
         $('.mui-control-item').hide();
         $('.mui-backdrop').show();
         //mask.show();
@@ -410,7 +349,7 @@ function buildSearchBar() {//建立搜索框
 
     $('.mui-backdrop').on('touchend', function () {
         $('.mui-backdrop').hide();
-        $('#searchInput').hide();
+        $('#search').hide();
         $('.mui-control-item').show();
         $('input').blur();
     });

@@ -65,6 +65,10 @@ body,
 .mui-checkbox input[type='checkbox']:checked:before {
   color: #fafafa;
 }
+.mui-card-content {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
 .mui-segmented-control .mui-segmented-control-inverted .mui-control-item.mui-active {
   color: white;
   border-bottom: 2px solid #EFBD1B;
@@ -77,13 +81,13 @@ body,
 /**/
 .my-simple {
   color: white;
-  font-family: arial;
+  font-family: arial, sans-serif !important;
   /*font-family: "simple", sans-serif !important;*/
   /*letter-spacing: 3px;*/
 }
 .my-lanting {
   color: white;
-  font-family: arial;
+  font-family: arial, sans-serif !important;
  /* font-family: "lanting", sans-serif !important;*/
   /*letter-spacing: 3px;*/
 }

@@ -1,5 +1,5 @@
 var field_info = [[],[],[]];
-var field_type = [0,0,0];
+var field_type = [0,0,0];	//
 var Tables = [];
 var checkBox;
 var timeline, timefirst, timelast, timelen;
@@ -176,9 +176,6 @@ function initTable(site_id) {
 	timefirst = timeline[0].innerHTML.split(":");
 	timelast = timeline[timeline.length-1].innerHTML.split(":");
 	timelen = (timelast[0]-timefirst[0])*2 + parseInt((timelast[1]-timefirst[1])/30);
-	typebar3 = new mui.PopPicker();
-	typebar7 = new mui.PopPicker();
-	typebar11 = new mui.PopPicker();
     currentType3 = 0, currentType7 = 0, currentType11 = 0;
     timeboxHandlers();
 	// initialize field info
@@ -303,77 +300,67 @@ function getTime() {
 
 function getOrder() {
 	var Orders = [];
-	var d = new Date();
-	var time_index = localStorage.getItem("timebox_index");
 	var FIELD_SITE_ID = localStorage.getItem("fieldDetail_id");
 	var USER_ID = localStorage.getItem("User_ID");
 	var BOOKING_STATUS = 0;
-	//
-	d.setDate(d.getDate()+time_index);
-	var weekday = d.getDay();
-	if(weekday == 0) {weekday = 7;}
-	//
-	for(var i=0; i<field_type.length; i++) {
-		if(field_type[i] > 0) {
-			var blocks = [];
-			var selected = [];
-			var START_TIME, END_TIME, TOTAL_COST, FIELD_ID;
-			var hasparent, PARENT_ID;
-			var index = 0;
-			// allocate FIELD ID
-			if (i==0) {
-				index = currentType3;
-			}else if (i==1) {
-				index = currentType7;
-			}else if (i==2) {
-				index = currentType11;
-			}
-			FIELD_ID = field_info[i][index].ID;
-			// collect choosen boxes (green) per column
-			for(var j=0; j<timelen; j++) {
-				if(checkBox[(field_type.length)*j+i].style.backgroundColor == 'rgb(143, 195, 31)') {selected.push(j);}
-			}
-			var halfhours = selected.length;
-			if(halfhours > 0) {
-				var block = [];
-				// divide time periods
-				while(selected.length > 0) {
-					block.push(selected[0]);
-					if((selected[1]-selected[0]) > 1 || selected.length == 1) {
-						blocks.push(block);
-						block = [];
-					}
-					selected.shift();
+	
+	for(var i=0; i<field_info.length; i++) {
+		for(var j=0; j<field_info[i].length; j++) {
+			for(var k=0; k<7; k++) {
+				var blocks = [];
+				var selected = [];
+				var START_TIME, END_TIME, TOTAL_COST;
+				var hasparent, PARENT_ID;
+				var FIELD_ID = field_info[i][j].ID;
+				// set weekdays
+				var d = new Date();
+				d.setDate(d.getDate()+k);
+				var weekday = d.getDay();
+				if(weekday == 0) {weekday = 7;}
+				// collect choosen boxes per column
+				for(l=0; l<timelen; l++) {
+					if(Tables[i][j][k][l] == -1) {selected.push(l);}
 				}
-				for (k=0; k<blocks.length; k++) {
-					var order = {};
-					var start = blocks[k][0];
-					var end = blocks[k][blocks[k].length-1];
-					var start_time = timeline[start].innerHTML.split(":");
-					var end_time = timeline[end+1].innerHTML.split(":");
-					START_TIME = d.getFullYear()+"-"+months[time_index]+"-"+days[time_index]+"-" + start_time[0] + "-" + start_time[1];
-					END_TIME = d.getFullYear()+"-"+months[time_index]+"-"+days[time_index]+"-" + end_time[0] + "-" + end_time[1];
-					TOTAL_COST = parseFloat(getPrice(i,index,weekday)) * blocks[k].length;
-					order.ID = randomString(32);
-					order.FIELD_ID = FIELD_ID;
-					order.START_TIME = START_TIME;
-					order.END_TIME = END_TIME;
-					order.USER_ID = USER_ID; 
-					order.TOTAL_COST = TOTAL_COST;
-					order.BOOKING_STATUS = BOOKING_STATUS;			
-					Orders.push(order);
-					if (hasparent) {
-						var secondorder = $.extend({}, order);
-						secondorder.FIELD_ID = PARENT_ID;
-						Orders.push(secondorder);	
+				
+				if(selected.length > 0) {
+					// divide time periods
+					var block = [];
+					while(selected.length > 0) {
+						block.push(selected[0]);
+						if((selected[1]-selected[0]) > 1 || selected.length == 1) {
+							blocks.push(block);
+							block = [];
+						}
+						selected.shift();
+					}
+					for(var s=0; s<blocks.length; s++) {
+						var order = {};
+						var start = blocks[s][0];
+						var end = blocks[s][blocks[s].length-1];
+						var start_time = timeline[start].innerHTML.split(":");
+						var end_time = timeline[end+1].innerHTML.split(":");
+						START_TIME = d.getFullYear()+"-"+months[k]+"-"+days[k]+"-" + start_time[0] + "-" + start_time[1];
+						END_TIME = d.getFullYear()+"-"+months[k]+"-"+days[k]+"-" + end_time[0] + "-" + end_time[1];
+						TOTAL_COST = parseFloat(getPrice(i,j,weekday)) * blocks[s].length;
+						order.ID = randomString(32);
+						order.FIELD_ID = FIELD_ID;
+						order.START_TIME = START_TIME;
+						order.END_TIME = END_TIME;
+						order.USER_ID = USER_ID; 
+						order.TOTAL_COST = TOTAL_COST;
+						order.BOOKING_STATUS = BOOKING_STATUS;			
+						Orders.push(order);
+						if (hasparent) {
+							var secondorder = $.extend({}, order);
+							secondorder.FIELD_ID = PARENT_ID;
+							Orders.push(secondorder);	
+						}
 					}
 				}
 			}
 		}
 	}	
 	console.log(JSON.stringify(Orders));
-//	localStorage.setItem("booking_detail", JSON.stringify(Orders));
-//	orderlist = Orders;
 	return JSON.stringify(Orders);
 
 }
@@ -381,6 +368,9 @@ function getOrder() {
 function init() {
     $('#goBack').on("touchend", goBack);
     $('#goConfirm').on("touchend", goConfirm);
+    typebar3 = new mui.PopPicker();
+	typebar7 = new mui.PopPicker();
+	typebar11 = new mui.PopPicker();
 }
 
 function setTable(type,typeindex,timeindex) {
@@ -415,7 +405,7 @@ function setPrice() {
 	var price = 0;
 	var timeindex = localStorage.getItem("timebox_index");
 	var D = new Date();
-	D.setDate(D.getDate()+timeindex);
+	D.setDate(D.getDate()+parseInt(timeindex));
 	var weekday = D.getDay();
 	if(weekday == 0) {weekday = 7;}
 	

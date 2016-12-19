@@ -45,9 +45,9 @@ function reformat(orderList){
 		order.date = dateVisual;
 		order.cost = costVisual;
 		
-		var d = new Date(timeStart[0]+"/"+timeStart[1]+"/"+timeStart[2]);
-		console.log(d.getDate()+","+d.getDay());
-		order.weekday = weekday[d.getDay()-1];
+		var d = new Date(Date.UTC(timeStart[0],timeStart[1]-1,timeStart[2]));
+//		console.log(d.getFullYear());
+		order.weekday = weekday[(d.getDay()+1)%7];
 		Orders.push(order);
 	}
 	
@@ -60,7 +60,7 @@ function submit() {
 	var Url = "http://159.203.4.199:8080/field/field_booking/create_booking";
 	for (var i=0; i<orderlist.length; i++){
 		var order = JSON.stringify(orderlist[i]);
-		console.log(order);
+//		console.log(order);
 		mui.ajax(Url, {
 			type: "post",
 			timeout: 10000,

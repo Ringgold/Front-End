@@ -404,7 +404,7 @@ function drawChart(win, lose, tie) {
     var option = {
         title: {
             show: true,
-            subtext: totalNumber + "场",
+            subtext: totalNumber + "",
             subtextStyle: {
                 color: '#ffffff',
                 fontFamily: 'lanting',
@@ -413,7 +413,7 @@ function drawChart(win, lose, tie) {
 
             },
 
-            text: "总场数",
+            text: "Total Matches",
             textStyle: {
                 color: '#ffffff',
                 fontFamily: 'lanting',
@@ -501,7 +501,7 @@ function drawChart2(jan, feb, mar, apr, may, jun, jul){
     var option = {
         title : {
             show: true,
-            text: '每月赛事',
+            text: 'Monthly Games',
             x: 'left',
             y: '13%',
             textStyle:{
@@ -527,7 +527,7 @@ function drawChart2(jan, feb, mar, apr, may, jun, jul){
             {
                 position: 'bottom',
                 type : 'category',
-                data : ['1月', '2月', '3月', '4月', '5月', '6月', '7月'],
+                data : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
                 axisLine: {
                     show: true,
                     lineStyle: {

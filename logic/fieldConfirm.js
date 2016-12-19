@@ -1,4 +1,5 @@
 var orderlist = [];
+
 function goBack() {
     var webview = plus.webview.currentWebview();
     webview.hide("pop-out");
@@ -9,7 +10,6 @@ function goPay() {
 }
 
 function init() {
-	
     $('#goBack').on("touchend", goBack);
     $('#confirm').on("touchend", submit);
 }
@@ -29,12 +29,10 @@ function showOrders(orders) {
 function reformat(orderList){
 	var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 	var mon = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-	var d = new Date();
-	//buffer initialization
-	var Orders = [];//array
+	var Orders = [];
 	
 	for (var i=0; i<orderList.length; i++){
-		var order = {};//object
+		var order = {};
 		var timeStart = orderList[i].START_TIME.split("-");	// 0:year 1:month 2:day 3:hour 4:minute
 		var timeEnd = orderList[i].END_TIME.split("-");
 		var timeStartVisual = timeStart[3]+":"+timeStart[4];
@@ -47,9 +45,9 @@ function reformat(orderList){
 		order.date = dateVisual;
 		order.cost = costVisual;
 		
-		//wait to fix
-		d.setDate(parseInt(timeStart[2]));//get order's data
-		order.weekday = weekday[d.getDay()];
+		var d = new Date(timeStart[0]+"/"+timeStart[1]+"/"+timeStart[2]);
+		console.log(d.getDate()+","+d.getDay());
+		order.weekday = weekday[d.getDay()-1];
 		Orders.push(order);
 	}
 	
@@ -59,26 +57,24 @@ function reformat(orderList){
 
 
 function submit() {
-	var Url = "http://159.203.4.199:8080/field/field_booking/create_booking"; // Server Address
-	//var Url = "http://142.157.164.145:8080/field/field_booking/create_booking"; //David Liu's Address
+	var Url = "http://159.203.4.199:8080/field/field_booking/create_booking";
 	for (var i=0; i<orderlist.length; i++){
 		var order = JSON.stringify(orderlist[i]);
 		console.log(order);
 		mui.ajax(Url, {
-		type: "post",
-		timeout: 10000,
-
-		async: false,
-		data: order,
-        success: function (data) {
-	        alert(data);
-	        if(data == "SUCCESS"){
-	        		plus.webview.show("fieldList", "pop-in");
+			type: "post",
+			timeout: 10000,
+			async: false,
+			data: order,
+	        success: function (data) {
+		        alert(data);
+		        if(data == "SUCCESS"){
+		        		plus.webview.show("fieldList", "pop-in");
+		        }
+	        },
+	        error: function (xhr, type) {
+	            alert(type);
 	        }
-        },
-        error: function (xhr, type) {
-            alert(type);
-        }
 		});
 	}
 }

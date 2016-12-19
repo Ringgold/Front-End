@@ -35,51 +35,37 @@ function goCheckBox(e){
 		return;
 	}
 	var sender = (window.event && window.event.srcElement) || e.target;
-	if (sender.style.backgroundColor == 'rgb(143, 195, 31)'){ //green
-		sender.style.backgroundColor = 'rgb(255, 255, 255)'; //white
+	var row = $(sender).parent().parent().index()-1;
+	var column = $(sender).parent().index()-1;
+	var timeindex = localStorage.getItem("timebox_index");
+	if(column == 0) {
+		var typeindex = currentType3;
+	} else if(column == 1) {
+		var typeindex = currentType7;
+	} else if(column == 2) {
+		var typeindex = currentType11;}
+	// color change and Tables update
+	if (sender.style.backgroundColor == 'rgb(143, 195, 31)'){	//green
+		sender.style.backgroundColor = 'rgb(255, 255, 255)';		//white
+		Tables[column][typeindex][timeindex][row] = 0;
 	}
-	else if(sender.style.backgroundColor == 'rgb(255, 255, 255)'){
-		sender.style.backgroundColor = 'rgb(143, 195, 31)'; //green
+	else if(sender.style.backgroundColor == 'rgb(255, 255, 255)'){	//white
+		sender.style.backgroundColor = 'rgb(143, 195, 31)';			//green
+		Tables[column][typeindex][timeindex][row] = -1;
 	}
-	//
-	var click = e.originalEvent.changedTouches[0].clientX;
-	var left3 = checkBox[0].getBoundingClientRect().left;
-	var right3 = checkBox[0].getBoundingClientRect().right;
-	var left7 = checkBox[1].getBoundingClientRect().left;
-	var right7 = checkBox[1].getBoundingClientRect().right;
-	var left11 = checkBox[2].getBoundingClientRect().left;
-	var right11 = checkBox[2].getBoundingClientRect().right;
-	if(click>left3 && click<right3) {
-		var price = field_info[0][currentType3].PRICE;
-		var currentPrice = parseInt($("#price").text());
-		if (sender.style.backgroundColor == 'rgb(143, 195, 31)') {
-			$("#price").text((currentPrice+price).toString());
-		} else if(sender.style.backgroundColor == 'rgb(255, 255, 255)') {
-			$("#price").text((currentPrice-price).toString());
-		}
-	} else if(click>left7 && click<right7) {
-		var price = field_info[1][currentType7].PRICE;
-		var currentPrice = parseInt($("#price").text());
-		if (sender.style.backgroundColor == 'rgb(143, 195, 31)') {
-			$("#price").text((currentPrice+price).toString());
-		} else if(sender.style.backgroundColor == 'rgb(255, 255, 255)') {
-			$("#price").text((currentPrice-price).toString());
-		}
-	} else if(click>left11 && click<right11) {
-		var price = field_info[2][currentType11].PRICE;
-		var currentPrice = parseInt($("#price").text());
-		if (sender.style.backgroundColor == 'rgb(143, 195, 31)') {
-			$("#price").text((currentPrice+price).toString());
-		} else if(sender.style.backgroundColor == 'rgb(255, 255, 255)') {
-			$("#price").text((currentPrice-price).toString());
-		}
-	}
-//	console.log(click);
-//	console.log(left3);
+	// price update
+	setPrice();
+//	var price = field_info[column][typeindex].PriceInfo[0].PRICE;
+//	var currentPrice = parseInt($("#price").text());
+//	if (sender.style.backgroundColor == 'rgb(143, 195, 31)') {
+//		$("#price").text((currentPrice+price).toString());
+//	} else if(sender.style.backgroundColor == 'rgb(255, 255, 255)') {
+//		$("#price").text((currentPrice-price).toString());
+//	}
 }
-function Handlers() {
+function timeboxHandlers() {
 	var items = $(".os-time-box");
-    for (i = 0; i < items.length; i++) {
+    for (i=0; i<items.length; i++) {
     		items[i].addEventListener("touchend", touchEnd, false);
         items[i].addEventListener("touchmove", setMove, false);
     }
@@ -104,68 +90,56 @@ function touchEnd(e) {
     }
     // refresh tables
 	var timeindex = localStorage.getItem("timebox_index");
-	setTable(3,0,timeindex);
-   	setTable(7,0,timeindex);
-   	setTable(11,0,timeindex);
+	setTable(3,currentType3,timeindex);
+   	setTable(7,currentType7,timeindex);
+   	setTable(11,currentType11,timeindex);
+   	setPrice();
 }
 function setMove() {
 	timebox_moved = true;
 }
 
+function setData_TypeBar(type) {
+	var index = parseInt(Math.sqrt(type))-1;
+	var temp = [];
+	if(field_info[index].length == 0) {
+		var obj = {value: '0', text: 'Null'};
+		temp.push(obj);
+	} else {
+		for(var i=0; i<field_info[index].length; i++) {
+			var obj = {value: i.toString(), text: 'Three '+(i+1)};
+			temp.push(obj);
+		}
+	}
+	return temp;
+}
 function buildTypeBar(column3, column7, column11) {
 	var timeindex = localStorage.getItem("timebox_index");
-	//
-	var temp3 = [];
-	if(field_info[0].length == 0) {
-		var obj3 = {value: '0', text: 'Null'};
-		temp3.push(obj3);
-	} else {
-		for(var i=0; i<field_info[0].length; i++) {
-			var obj3 = {value: i.toString(), text: 'Three '+(i+1)};
-			temp3.push(obj3);
-		}
-	}	
-	column3.setData(temp3);
+	// 3v3
+	column3.setData(setData_TypeBar(3));
 	$('#type3').on('touchend', function(){
 		column3.show(function(items){
 			currentType3 = parseInt(items[0].value);
 			setTable(3,currentType3,timeindex);
+			setPrice();
 		});
 	});
-	//
-	var temp7 = [];
-	if(field_info[1].length == 0) {
-		var obj7 = {value: '0', text: 'Null'};
-		temp7.push(obj7);
-	} else {
-		for(var i=0; i<field_info[1].length; i++) {
-			var obj7 = {value: i.toString(), text: 'Seven '+(i+1)};
-			temp7.push(obj7);
-		}
-	}
-	column7.setData(temp7);
+	// 7v7
+	column7.setData(setData_TypeBar(7));
 	$('#type7').on('touchend', function(){
 		column7.show(function(items){
 			currentType7 = parseInt(items[0].value);
 			setTable(7,currentType7,timeindex);
+			setPrice();
 		});
 	});
-	//
-	var temp11 = [];
-	if(field_info[2].length == 0) {
-		var obj11 = {value: '0', text: 'Null'};
-		temp11.push(obj11);
-	} else {
-		for(var i=0; i<field_info[2].length; i++) {
-			var obj11 = {value: i.toString(), text: 'Eleven '+(i+1)};
-			temp11.push(obj11);
-		}
-	}
-	column11.setData(temp11);
+	// 11v11
+	column11.setData(setData_TypeBar(11));
 	$('#type11').on('touchend', function(){
 		column11.show(function(items){
 			currentType11 = parseInt(items[0].value);
 			setTable(11,currentType11,timeindex);
+			setPrice();
 		});
 	});
 }
@@ -191,11 +165,26 @@ function randomString(len) {
 }
 
 function initTable(site_id) {
-	var Url = "http://159.203.4.199:8080/field/field/get_fields_by_site_id/" + site_id.toString();
-	for(i=0; i<checkBox.length; i++) {checkBox[i].style.backgroundColor = "gray";}
-	//3 or 5 or 7
+	// setup variables
+	checkBox = $(".fieldSchedule_timebox");
+	for (i=0; i<checkBox.length; i++) {
+    		checkBox[i].addEventListener("touchend", goCheckBox, false);
+        checkBox[i].addEventListener("touchmove", function(){table_moved = true;}, false);
+        checkBox[i].style.backgroundColor = "gray";
+	}
+	timeline = $("span");
+	timefirst = timeline[0].innerHTML.split(":");
+	timelast = timeline[timeline.length-1].innerHTML.split(":");
+	timelen = (timelast[0]-timefirst[0])*2 + parseInt((timelast[1]-timefirst[1])/30);
+	typebar3 = new mui.PopPicker();
+	typebar7 = new mui.PopPicker();
+	typebar11 = new mui.PopPicker();
+    currentType3 = 0, currentType7 = 0, currentType11 = 0;
+    timeboxHandlers();
+	// initialize field info
 	field_info = [[],[],[]];
 	field_type = [0,0,0];
+	var Url = "http://159.203.4.199:8080/field/field/get_fields_by_site_id/" + site_id.toString();
 	mui.ajax(Url, {
 		type: "get",
 		timeout: 10000,
@@ -203,7 +192,7 @@ function initTable(site_id) {
         success: function (data) {
         		data = JSON.parse(data);
         		for(i=0; i<data.length; i++) {
-        		//357--012
+        			// convert 3,7,11 to 0,1,2
 				var index = parseInt(Math.sqrt(data[i].TYPE))-1;
 				field_info[index].push(data[i]);
 				field_type[index] += 1;
@@ -213,23 +202,17 @@ function initTable(site_id) {
             alert(type);
         }
 	});
-	for (var h=0;h<3;h++) {
-		for (var l=0;l<field_info[h].length;l++) {
-			var priceUrl = "http://159.203.4.199:8080/field/price/get_prices_by_field_id/" + field_info[h][l].ID.toString();
+	for (var j=0;j<3;j++) {
+		for (var k=0;k<field_info[j].length;k++) {
+			var priceUrl = "http://159.203.4.199:8080/field/price/get_prices_by_field_id/" + field_info[j][k].ID.toString();
 			mui.ajax(priceUrl, {
 				type: "get",
 				timeout: 10000,
 				async: false,
 		        success: function (data) {
-		        	if (data === 'EMPTY') {
-		        		return;
-		        	}
-		        		data = JSON.parse(data);
-		    
-		        		//temperate price
-		        		data = data[0];
-		        		field_info[h][l].PRICE = data.PRICE;
-		        		
+			        	if (data != 'EMPTY') {
+			        		field_info[j][k].PriceInfo = JSON.parse(data);
+			        	}
 		        },
 		        	error: function (xhr, type) {
 		            alert(type);
@@ -244,9 +227,11 @@ function initTable(site_id) {
 			for(j=0; j<timelen; j++) {checkBox[(field_type.length)*j+i].style.backgroundColor = 'rgb(255, 255, 255)';}
 		}
 	}
+	
 	buildTypeBar(typebar3, typebar7, typebar11);
 }
 
+// Tables: [type][typebar][week][time]
 function getTime() {
 	var d = new Date();
 	var table_3 = [], table_7 = [], table_11 = [];
@@ -262,9 +247,8 @@ function getTime() {
 				table_11.push(init_week_table());}
 		}
 	}
-	
 	plus.nativeUI.showWaiting();
-	for(var h=0; h<field_info.length; h++) {			// loop #field_type
+	for(var h=0; h<field_info.length; h++) {
 		for(var l=0; l<field_info[h].length; l++) {
 			var Url = "http://159.203.4.199:8080/field/field/get_bookings_by_field_id/" + field_info[h][l].ID.toString();
 			var hasparent = field_info[h][l].hasOwnProperty("PARENT_ID");
@@ -272,13 +256,11 @@ function getTime() {
 				type: "get",
 				timeout: 10000,
 				async: false,
-//				dataType: 'json',
 		        success: function (data) {
 		        	if(data != "EMPTY"){
 		        		data = JSON.parse(data);
 			        	for (var k=0 ;k<7; k++) {
 			        		var Date = d.getFullYear() + "-" + months[k] + "-" + days[k];
-							//var Date = d.getFullYear() + "-09-12";
 						for(var i=0; i<data.length; i++) {
 							if(data[i].START_TIME.indexOf(Date) > -1) {
 								var timeStart = data[i].START_TIME.split("-");	// 0:year 1:month 2:day 3:hour 4:minute
@@ -325,8 +307,12 @@ function getOrder() {
 	var time_index = localStorage.getItem("timebox_index");
 	var FIELD_SITE_ID = localStorage.getItem("fieldDetail_id");
 	var USER_ID = localStorage.getItem("User_ID");
-//	var USER_ID = randomString(32);
 	var BOOKING_STATUS = 0;
+	//
+	d.setDate(d.getDate()+time_index);
+	var weekday = d.getDay();
+	if(weekday == 0) {weekday = 7;}
+	//
 	for(var i=0; i<field_type.length; i++) {
 		if(field_type[i] > 0) {
 			var blocks = [];
@@ -343,7 +329,7 @@ function getOrder() {
 				index = currentType11;
 			}
 			FIELD_ID = field_info[i][index].ID;
-			// collect choosen boxes (green)
+			// collect choosen boxes (green) per column
 			for(var j=0; j<timelen; j++) {
 				if(checkBox[(field_type.length)*j+i].style.backgroundColor == 'rgb(143, 195, 31)') {selected.push(j);}
 			}
@@ -367,7 +353,7 @@ function getOrder() {
 					var end_time = timeline[end+1].innerHTML.split(":");
 					START_TIME = d.getFullYear()+"-"+months[time_index]+"-"+days[time_index]+"-" + start_time[0] + "-" + start_time[1];
 					END_TIME = d.getFullYear()+"-"+months[time_index]+"-"+days[time_index]+"-" + end_time[0] + "-" + end_time[1];
-					TOTAL_COST = parseFloat(field_info[i][index].PRICE) * blocks[k].length;
+					TOTAL_COST = parseFloat(getPrice(i,index,weekday)) * blocks[k].length;
 					order.ID = randomString(32);
 					order.FIELD_ID = FIELD_ID;
 					order.START_TIME = START_TIME;
@@ -382,18 +368,9 @@ function getOrder() {
 						Orders.push(secondorder);	
 					}
 				}
-				
 			}
 		}
-	}
-	//Array Oject
-	//ID: orderID, randomed
-	//FieldSiteID
-	//Field id
-	//start time
-	//End time
-	
-	
+	}	
 	console.log(JSON.stringify(Orders));
 //	localStorage.setItem("booking_detail", JSON.stringify(Orders));
 //	orderlist = Orders;
@@ -404,27 +381,9 @@ function getOrder() {
 function init() {
     $('#goBack').on("touchend", goBack);
     $('#goConfirm').on("touchend", goConfirm);
-    $('.fieldSchedule_timebox').on("touchmove", function(){table_moved = true;});
-    $('.fieldSchedule_timebox').on("touchend", goCheckBox);
-    
-    checkBox = $(".fieldSchedule_timebox");
-	timeline = $("span");
-	timefirst = timeline[0].innerHTML.split(":");
-	timelast = timeline[timeline.length-1].innerHTML.split(":");
-	timelen = (timelast[0]-timefirst[0])*2 + parseInt((timelast[1]-timefirst[1])/30);
-	typebar3 = new mui.PopPicker();
-	typebar7 = new mui.PopPicker();
-	typebar11 = new mui.PopPicker();
-    currentType3 = 0, currentType7 = 0, currentType11 = 0;
-    Handlers();
 }
 
 function setTable(type,typeindex,timeindex) {
-	$("#price").text(0);
-	for(i=0; i<checkBox.length; i++) {
-		if(checkBox[i].style.backgroundColor == 'rgb(143, 195, 31)') {
-			checkBox[i].style.backgroundColor = 'rgb(255, 255, 255)';}
-	}
 	var t = parseInt(Math.sqrt(type))-1;
 	if(Tables[t].length > 0) {
 		// change checkbox back to white
@@ -434,9 +393,44 @@ function setTable(type,typeindex,timeindex) {
 		for(j=0; j<timelen; j++) {
 			if(Tables[t][typeindex][timeindex][j] > 0) {
 				checkBox[(field_type.length)*j+t].style.backgroundColor = 'rgb(255, 204, 0)'; //orange
+			} else if(Tables[t][typeindex][timeindex][j] == -1) {
+				checkBox[(field_type.length)*j+t].style.backgroundColor = 'rgb(143, 195, 31)'; //green
 			}
 		}
 	}
+}
+
+function getPrice(j,k,weekday) {
+	if(field_info[j][k].hasOwnProperty("PriceInfo")) {
+		var priceinfo = field_info[j][k].PriceInfo;
+		for(var l=0; l<priceinfo.length; l++) {
+			if(priceinfo[l].DAYS_OF_WEEK.indexOf(weekday) > -1) {
+				return priceinfo[l].PRICE;
+			}
+		}
+	}
+	return 0;
+}
+function setPrice() {
+	var price = 0;
+	var timeindex = localStorage.getItem("timebox_index");
+	var D = new Date();
+	D.setDate(D.getDate()+timeindex);
+	var weekday = D.getDay();
+	if(weekday == 0) {weekday = 7;}
+	
+	for(i=0; i<checkBox.length; i++) {
+		if(checkBox[i].style.backgroundColor == 'rgb(143, 195, 31)') {
+			if(i%3 == 0) {
+				price += getPrice(0,currentType3,weekday);
+			} else if(i%3 == 1) {
+				price += getPrice(1,currentType7,weekday);
+			} else if(i%3 == 2) {
+				price += getPrice(2,currentType11,weekday);
+			}
+		}
+	}
+	$("#price").text(price);
 }
 
 function setdate(index) {
@@ -471,4 +465,5 @@ function setdate(index) {
    	setTable(3,0,index);
    	setTable(7,0,index);
    	setTable(11,0,index);
+   	$("#price").text(0);
 }

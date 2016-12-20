@@ -8,8 +8,9 @@ var comments = [];
 
 
 function goComment() {
-	var newcomments = refreshComments(field_id);	// refreshComments() is in comment.js
-	plus.webview.getWebviewById('comment').evalJS("load('"+ newcomments +"');");
+	var comm = plus.webview.getWebviewById('comment');
+	var newcomments = refreshComments(field_id).replace(/'/g, "\\'");
+	comm.evalJS("load('"+ newcomments +"');");
     plus.webview.show("comment", "pop-in");
 }
 
@@ -115,7 +116,7 @@ function oscar() {
         d.setDate(d.getDate() + 1);
     }
     getFieldID();
-//    .replace(""",""),
+    
 	comments = JSON.parse(getComments(field_id));	// getComments() is in comment.js
 	
     var fields = [

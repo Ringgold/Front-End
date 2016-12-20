@@ -9,7 +9,6 @@ function pulldownRefresh() {
 	setTimeout(function(){
 		var newcomments = refreshComments(localStorage.getItem('fieldDetail_id'));
 		load(newcomments);
-		
 		mui("#pullrefresh").pullRefresh().endPulldownToRefresh();
 	},1000);
 }
@@ -37,13 +36,15 @@ function getComments(site_id) {
 			type: "get",
 			timeout: 10000,
 			async: false,
-			dataType: 'json',
 	        success: function (data) {
-				for(var i = 0;i < data.length;i++){
-					comments.push(get_com_obj(data[i]));
-				}
-				// store comments for one field site, key is fieldsite id
-				localStorage.setItem(site_id, JSON.stringify(comments));
+		        	if(data != "EMPTY"){
+		        		data = JSON.parse(data);
+					for(var i = 0;i < data.length;i++){
+						comments.push(get_com_obj(data[i]));
+					}
+					// store comments for one field site, key is fieldsite id
+					localStorage.setItem(site_id, JSON.stringify(comments));	
+		        	}
 	        },
 	        	error: function (xhr, type) {
 	            alert(type);
@@ -56,7 +57,7 @@ function getComments(site_id) {
 	return JSON.stringify(comments);
 }
 
-// update comments in database
+// update comments
 function refreshComments(site_id) {
 	var newcomments = [];
 	var Url = "http://159.203.4.199:8080/field/field_comment/get_comments/" + site_id.toString();
@@ -64,13 +65,15 @@ function refreshComments(site_id) {
 		type: "get",
 		timeout: 10000,
 		async: false,
-		dataType: 'json',
         success: function (data) {
-			for(var i = 0;i < data.length;i++){
-				newcomments.push(get_com_obj(data[i]));
-			}
-			// store comments for one field site, key is fieldsite id
-			localStorage.setItem(site_id, JSON.stringify(newcomments));
+        		if(data != "EMPTY"){
+        			data = JSON.parse(data);
+        			for(var i = 0;i < data.length;i++){
+					newcomments.push(get_com_obj(data[i]));
+				}
+				// store comments for one field site, key is fieldsite id
+				localStorage.setItem(site_id, JSON.stringify(newcomments));	
+        		}
         },
         	error: function (xhr, type) {
             alert(type);
@@ -87,7 +90,6 @@ function postComments(site_id) {
 		type: "post",
 		timeout: 10000,
 		async: false,
-		dataType: 'json',
         success: function (data) {
 	        	
         },

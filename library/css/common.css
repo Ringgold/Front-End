@@ -181,4 +181,11 @@ input {
   width: 40px;
   height: 40px;
 }
-
+#myCanvas{
+  width: 100%;
+  text-align:center;
+}
+#matchTable{
+  pattern-top:10px;
+  border-style: hidden;
+}

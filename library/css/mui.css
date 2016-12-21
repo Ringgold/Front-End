@@ -295,7 +295,7 @@ a
 {
     text-decoration: none;
 
-    color: #007aff;
+    color: #fdcb1d;
 }
 a:active
 {
@@ -493,7 +493,7 @@ a:active
 
 .mui-bg-primary
 {
-    background-color: #007aff;
+    background-color: #fdcb1d;
 }
 
 .mui-bg-positive
@@ -1238,8 +1238,8 @@ input[type='submit'],
 .mui-btn-primary, .mui-btn-blue
 {
     color: #fff;
-    border: 1px solid #007aff;
-    background-color: #007aff;
+    border: 1px solid #fdcb1d;
+    background-color: #fdcb1d;
 }
 input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 .mui-btn-primary:enabled:active,
@@ -1266,8 +1266,8 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 .mui-btn-warning, .mui-btn-yellow
 {
     color: #fff;
-    border: 1px solid #EFBD1B;
-    background-color: #EFBD1B;
+    border: 1px solid #F1B239;
+    background-color: #F1B239;
 }
 .mui-btn-warning:enabled:active, .mui-btn-warning.mui-active:enabled, .mui-btn-yellow:enabled:active, .mui-btn-yellow.mui-active:enabled
 {
@@ -1321,7 +1321,7 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 }
 .mui-btn-outlined.mui-btn-primary, .mui-btn-outlined.mui-btn-blue
 {
-    color: #007aff;
+    color: #fdcb1d;
 }
 .mui-btn-outlined.mui-btn-positive, .mui-btn-outlined.mui-btn-success, .mui-btn-outlined.mui-btn-green
 {
@@ -1349,7 +1349,7 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
     padding-top: 6px;
     padding-bottom: 6px;
 
-    color: #007aff;
+    color: #fdcb1d;
     border: 0;
     background-color: transparent;
 }
@@ -1591,7 +1591,7 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 }
 .mui-bar-tab .mui-tab-item.mui-active
 {
-    color: #007aff;
+    color: #fdcb1d;
 }
 .mui-bar-tab .mui-tab-item .mui-icon
 {
@@ -1656,7 +1656,7 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 
     padding: 0;
 
-    color: #007aff;
+    color: #fdcb1d;
     border: 0;
 }
 .mui-bar .mui-btn-link:active, .mui-bar .mui-btn-link.mui-active
@@ -1795,11 +1795,11 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 .mui-badge-primary, .mui-badge-blue
 {
     color: #fff;
-    background-color: #007aff;
+    background-color: #fdcb1d;
 }
 .mui-badge-primary.mui-badge-inverted, .mui-badge-blue.mui-badge-inverted
 {
-    color: #007aff;
+    color: #fdcb1d;
     background-color: transparent;
 }
 
@@ -2005,7 +2005,7 @@ input[type='submit']:enabled:active, input[type='submit'].mui-active:enabled,
 
     content: '';
 
-    color: #007aff;
+    color: #fdcb1d;
 }
 .mui-table-view-radio .mui-table-view-cell.mui-selected .mui-navigate-right:after
 {
@@ -2950,7 +2950,7 @@ select:focus
 }
 .mui-input-row .mui-input-clear ~ .mui-icon-clear.mui-active, .mui-input-row .mui-input-speech ~ .mui-icon-speech.mui-active, .mui-input-row .mui-input-password ~ .mui-icon-eye.mui-active
 {
-    color: #007aff;
+    color: #fdcb1d;
 }
 .mui-input-row .mui-input-speech ~ .mui-icon-speech
 {
@@ -3041,7 +3041,7 @@ select:focus
 }
 .mui-radio input[type='radio']:checked:before, .mui-checkbox input[type='checkbox']:checked:before
 {
-    color: #007aff;
+    color: #fdcb1d;
 }
 
 .mui-radio.mui-disabled label, .mui-radio label.mui-disabled, .mui-checkbox.mui-disabled label, .mui-checkbox label.mui-disabled
@@ -3156,7 +3156,7 @@ select:focus
 
     border-color: #0062cc;
     border-radius: 50%;
-    background-color: #007aff;
+    background-color: #fdcb1d;
     background-clip: padding-box;
 
     -webkit-appearance: none !important;
@@ -3275,7 +3275,7 @@ select:focus
 
     table-layout: fixed;
 
-    border: 1px solid #007aff;
+    border: 1px solid #fdcb1d;
     border-radius: 3px;
     background-color: transparent;
 
@@ -3330,9 +3330,9 @@ select:focus
     white-space: nowrap;
     text-overflow: ellipsis;
 
-    color: #007aff;
-    border-color: #007aff;
-    border-left: 1px solid #007aff;
+    color: #fdcb1d;
+    border-color: #fdcb1d;
+    border-left: 1px solid #fdcb1d;
 }
 .mui-segmented-control .mui-control-item:first-child
 {
@@ -3341,7 +3341,7 @@ select:focus
 .mui-segmented-control .mui-control-item.mui-active
 {
     color: #fff;
-    background-color: #007aff;
+    background-color: #fdcb1d;
 }
 .mui-segmented-control.mui-segmented-control-inverted
 {
@@ -3365,13 +3365,13 @@ select:focus
 }
 .mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active
 {
-    color: #007aff;
-    border-bottom: 2px solid #007aff;
+    color: #fdcb1d;
+    border-bottom: 2px solid #fdcb1d;
     background: none;
 }
 .mui-segmented-control.mui-segmented-control-inverted ~ .mui-slider-progress-bar
 {
-    background-color: #007aff;
+    background-color: #fdcb1d;
 }
 
 .mui-segmented-control-positive
@@ -3532,7 +3532,7 @@ select:focus
 
     text-align: center;
 
-    color: #007aff;
+    color: #fdcb1d;
     border-radius: 4px;
 }
 .mui-popover.mui-popover-action .mui-table-view .mui-table-view-cell:after
@@ -3832,7 +3832,7 @@ select:focus
     white-space: nowrap;
     text-overflow: ellipsis;
 
-    color: #007aff;
+    color: #fdcb1d;
     background: rgba(255, 255, 255, .95);
 
     -webkit-box-flex: 1;
@@ -3943,7 +3943,7 @@ select:focus
     -webkit-transform: translate3d(-100%, 0, 0);
             transform: translate3d(-100%, 0, 0);
 
-    background: #007aff;
+    background: #fdcb1d;
 }
 .mui-progressbar.mui-progressbar-infinite:before
 {
@@ -3962,7 +3962,7 @@ select:focus
     -webkit-animation: mui-progressbar-infinite 1s linear infinite;
             animation: mui-progressbar-infinite 1s linear infinite;
 
-    background: #007aff;
+    background: #fdcb1d;
 }
 
 body > .mui-progressbar
@@ -4102,7 +4102,7 @@ body > .mui-progressbar
 
     text-decoration: none;
 
-    color: #007aff;
+    color: #fdcb1d;
     border: 1px solid #ddd;
     background-color: #fff;
 }
@@ -4135,8 +4135,8 @@ body > .mui-progressbar
     cursor: default;
 
     color: #fff;
-    border-color: #007aff;
-    background-color: #007aff;
+    border-color: #fdcb1d;
+    background-color: #fdcb1d;
 }
 .mui-pagination > li.mui-disabled > span,
 .mui-pagination > li.mui-disabled > span:active,
@@ -4205,8 +4205,8 @@ body > .mui-progressbar
     text-decoration: none;
 
     color: #fff;
-    border-color: #007aff;
-    background-color: #007aff;
+    border-color: #fdcb1d;
+    background-color: #fdcb1d;
 }
 .mui-pager .mui-next > a,
 .mui-pager .mui-next > span
@@ -4542,8 +4542,8 @@ body > .mui-progressbar
 
 .mui-switch-blue.mui-active
 {
-    border: 2px solid #007aff;
-    background-color: #007aff;
+    border: 2px solid #fdcb1d;
+    background-color: #fdcb1d;
 }
 
 .mui-content.mui-fade
@@ -4864,7 +4864,7 @@ body > .mui-progressbar
 }
 .mui-icon.mui-active
 {
-    color: #007aff;
+    color: #fdcb1d;
 }
 .mui-icon.mui-right:before
 {

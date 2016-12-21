@@ -1,25 +1,11 @@
-function personalMainInit() { //为了随时reload小界面
-//	var personalMain = window.JST.personalMain();
-	
-//  $('#p1').on('touchend', function () {
-//      $('#personalMain').reload();
-//      mui('.mui-off-canvas-wrap').offCanvas('close');
-//  });
-//
-//  $('#p2').on('touchend', function () {
-//		$('#personalMain').reload();
-//      mui('.mui-off-canvas-wrap').offCanvas('close');
-//  });
-//  
-//  $('#p2').on('touchend', function () {
-//		$('#personalMain').reload();
-//      mui('.mui-off-canvas-wrap').offCanvas('close');
-//  });
-    
+function teamMainInit(){
+	drawChartT(13, 11, 4);
+	drawChart2T(11, 12, 2, 32, 15, 4, 10);
+	drawChart3T(100, 56);
 }
 
-function drawChart(win, lose, tie) {
-    var myChart = echarts.init(document.getElementById('main'));
+function drawChartT(win, lose, tie) {
+    var myChart = echarts.init(document.getElementById('mainT'));
 
     //This value should be equal to the total number of matches played
     var totalNumber = win + lose + tie;
@@ -125,8 +111,8 @@ function drawChart(win, lose, tie) {
     myChart.setOption(option);
 }
 
-function drawChart2(jan, feb, mar, apr, may, jun, jul){
-    var myChart = echarts.init(document.getElementById('chart2'));
+function drawChart2T(jan, feb, mar, apr, may, jun, jul){
+    var myChart = echarts.init(document.getElementById('chart2T'));
     var option = {
         title : {
             show: true,
@@ -210,5 +196,107 @@ function drawChart2(jan, feb, mar, apr, may, jun, jul){
         ]
     };
     // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+}
+
+function drawChart3T(scored, lost){
+	var myChart = echarts.init(document.getElementById('chart3T'));
+
+	var option = {
+	    tooltip : {
+	        trigger: 'axis',
+	        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+	            type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+	        }
+	    },
+	    legend: {
+	        show: false,
+	        top: 'auto',
+	    },
+	    //Setup the Distance to each side of edge
+	    grid: {
+	    	top: '60%',
+	        left: '0%',
+	        right: '0%',
+	        bottom: '0%',
+	        containLabel: false //是否显示xy轴label的开关
+	    },
+	    xAxis : [
+	        {
+	            type : 'value',
+	            axisLine : {show: false},
+	            axisTick : {show: false},
+	            splitLine: {
+                    show: false
+                },
+	        }
+	    ],
+	    yAxis : [
+	        {
+	            type : 'category',
+	            axisLine : {show: false},
+	            axisTick : {show: false},
+	            splitLine: {
+                    show: false
+                },
+	            data : ['Goals']
+	        }
+	    ],
+	    series : [
+	        {
+	            name:'Scored Goals',
+	            type:'bar',
+	            stack: 'Total',
+	            label: {
+	                normal: {
+	                    show: true,
+	                    position: "top",
+	                    formatter: '{a}: {c}',
+	                    textStyle: {
+	                        fontStyle: 'normal', //Bold, bolder, lighter.....
+	                        fontFamily: 'arial',
+	                        fontSize : 17,
+	                    }
+	                }
+	            },
+	            data:[{
+	                value: scored,
+	                itemStyle: {
+	                    normal: {
+	                        color: '#fdcb1d',
+	                    }
+	                }
+	            }]
+	        },
+	        {
+	            name:'Lost Goals',
+	            type:'bar',
+	            stack: 'Total',
+	            label: {
+	                normal: {
+	                    show: true,
+	                    position: "top",
+	                    formatter: '{a}: {c}',
+	                    textStyle: {
+	                        fontStyle: 'normal', //Bold, bolder, lighter.....
+	                        fontFamily: 'arial',
+	                        fontSize : 17,
+	                    }
+	                }
+	            },
+	            data:[{
+	                value: -lost,
+	                itemStyle: {
+	                    normal: {
+	                        color: '#b5b5b6',
+	                    }
+	                }
+	            }]
+	        },
+	        
+	    ]
+	};
+	
+ // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 }

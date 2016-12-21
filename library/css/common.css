@@ -40,6 +40,12 @@ body,
 .color-back {
   background-color: #212121;
 }
+.grey-back {
+	background-color: #232323;
+}
+.black-back {
+	background-color: #191919;
+}
 /**/
 @font-face {
   font-family: "simple";
@@ -79,6 +85,34 @@ body,
     top: 4px;
 }
 /**/
+.my-yellow {
+	color: #f1b239;
+}
+.my-pentagon {
+  width: 99px;
+  height: 99px;
+  /*background-image: url(http://placekitten.com/g/200/300);*/
+  background-size: 105%;
+  -webkit-clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  margin: auto;
+/*  display: inline;*/
+/*  float: none;*/
+}
+
+.my-pentagon-inner {
+  width: 90px;
+  height: 90px;
+  /*background-image: url(http://placekitten.com/g/200/300);*/
+  background-size: 105%;
+  -webkit-clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+	margin: auto;
+/*  display: inline;*/
+/*  float: none;*/
+	position: relative;
+}
+
 .my-simple {
   color: white;
   font-family: arial, sans-serif !important;
@@ -120,6 +154,12 @@ body,
 }
 .my-no-border {
   border: none !important;
+}
+/*.my-record-padding {
+	padding: 18px 0px;
+}*/
+.my-record-padding2 {
+	padding: 3px 0px;
 }
 /**/
 .mui-btn-yellow {

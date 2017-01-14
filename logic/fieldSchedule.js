@@ -108,11 +108,11 @@ function setData_TypeBar(type) {
 	} else {
 		for(var i=0; i<field_info[index].length; i++) {
 			if(index == 0){
-				var obj = {value: i.toString(), text: '3v3 Field #'+(i+1)};	
+				var obj = {value: i.toString(), text: '3v3 '+(i+1)};	
 			} else if(index == 1){
-				var obj = {value: i.toString(), text: '7v7 Field #'+(i+1)};
+				var obj = {value: i.toString(), text: '7v7 '+(i+1)};
 			} else if(index == 2){
-				var obj = {value: i.toString(), text: '11v11 Field #'+(i+1)};
+				var obj = {value: i.toString(), text: '11v11 '+(i+1)};
 			}
 			temp.push(obj);
 		}

@@ -107,7 +107,13 @@ function setData_TypeBar(type) {
 		temp.push(obj);
 	} else {
 		for(var i=0; i<field_info[index].length; i++) {
-			var obj = {value: i.toString(), text: 'Three '+(i+1)};
+			if(index == 0){
+				var obj = {value: i.toString(), text: '3v3 Field #'+(i+1)};	
+			} else if(index == 1){
+				var obj = {value: i.toString(), text: '7v7 Field #'+(i+1)};
+			} else if(index == 2){
+				var obj = {value: i.toString(), text: '11v11 Field #'+(i+1)};
+			}
 			temp.push(obj);
 		}
 	}
@@ -430,7 +436,11 @@ function setdate(index) {
     var dow = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     var mon = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
     for (i = 0; i < 7; i++) { //10 will be the number of date boxes in the page
-        months[i] = d.getMonth() + 1;
+        var mm = d.getMonth() + 1;
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        months[i] = mm;
         mon_display[i] = mon[d.getMonth()];
         dd = d.getDate();
         if (dd < 10) {

@@ -1,5 +1,5 @@
 var orderlist = [];
-
+var displayedCost = 0; //The variable to record the total cost for the order
 function goBack() {
     var webview = plus.webview.currentWebview();
     webview.hide("pop-out");
@@ -30,7 +30,7 @@ function reformat(orderList){
 	var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 	var mon = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 	var Orders = [];
-	
+	displayedCost = 0;//Clear Previous Record
 	for (var i=0; i<orderList.length; i++){
 		var order = {};
 		var timeStart = orderList[i].START_TIME.split("-");	// 0:year 1:month 2:day 3:hour 4:minute
@@ -44,37 +44,40 @@ function reformat(orderList){
 		order.endTime = timeEndVisual;
 		order.date = dateVisual;
 		order.cost = costVisual;
+		displayedCost = displayedCost + costVisual;//Calculate the Total Cost
 		
 		var d = new Date(Date.UTC(timeStart[0],timeStart[1]-1,timeStart[2]));
 //		console.log(d.getFullYear());
 		order.weekday = weekday[(d.getDay()+1)%7];
 		Orders.push(order);
 	}
-	
+	document.getElementById("totalCost").innerHTML = displayedCost + " $";
+	plus.webview.getWebviewById('paypage').evalJS("updateCost('"+ displayedCost +"');");
 	return Orders;
 }
 
 
-
+//Submit the order and send it to the backend server to book the field
 function submit() {
 	var Url = "http://159.203.4.199:8080/field/field_booking/create_booking";
-	for (var i=0; i<orderlist.length; i++){
-		var order = JSON.stringify(orderlist[i]);
-//		console.log(order);
-		mui.ajax(Url, {
-			type: "post",
-			timeout: 10000,
-			async: false,
-			data: order,
-	        success: function (data) {
-		        alert(data);
-		        if(data == "SUCCESS"){
-		        		plus.webview.show("fieldList", "pop-in");
-		        }
-	        },
-	        error: function (xhr, type) {
-	            alert(type);
-	        }
-		});
-	}
+//	for (var i=0; i<orderlist.length; i++){
+//		var order = JSON.stringify(orderlist[i]);
+////		console.log(order);
+//		mui.ajax(Url, {
+//			type: "post",
+//			timeout: 10000,
+//			async: false,
+//			data: order,
+//	        success: function (data) {
+//		        alert(data);
+//		        if(data == "SUCCESS"){
+						plus.webview.getWebviewById('paypal').evalJS("updatePaypalCost('"+ displayedCost +"');");
+		        		plus.webview.show("paypal", "pop-in");
+//		        }
+//	        },
+//	        error: function (xhr, type) {
+//	            alert(type);
+//	        }
+//		});
+//	}
 }

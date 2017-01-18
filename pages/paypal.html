@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <body>
-Soccer Frontier
+Cost: 
+<div id="Cost"></div> 
 <div id="paypal-button"></div> 
 
 <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
 
 <script>
+	var totalCost =1 + ''; //Total Cost For the Bill
+	function updatePaypalCost(cost){
+		totalCost = cost+'';
+		document.getElementById("Cost").innerHTML = totalCost + " $";
+	}
     paypal.Button.render({
     
         env: 'production', // Optional: specify 'sandbox' environment
@@ -22,7 +28,7 @@ Soccer Frontier
             return paypal.rest.payment.create(env, client, {
                 transactions: [
                     {
-                        amount: { total: '1.00', currency: 'USD' }
+                        amount: { total: '300', currency: 'USD' }
                     }
                 ]
             });

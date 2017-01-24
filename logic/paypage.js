@@ -23,7 +23,7 @@ function test(){
 function getPaymentMethod(){
 	plus.webview.show("paypal", "pop-in");
 //  if (document.getElementById('1').checked) {
-//  	payMethod=document.getElementById('1').value;
+//  		payMethod=document.getElementById('1').value;
 //	} else if (document.getElementById('2').checked){
 //		payMethod=document.getElementById('2').value;
 //		alert("Paypal Selected");

@@ -3,9 +3,10 @@
 <body>
 Cost: 
 <div id="Cost"></div> 
-<div id="paypal-button"></div> 
+<div id="paypal-button"></div>
+<!--<form id="pp" method="post" action="http://166.78.8.98/cgi-bin/aries.cgi?sandbox=1&direct=1&returnurl=http://166.78.8.98/cgi-bin/return.htm&cancelurl=http://166.78.8.98/cgi-bin/cancel.htm"></form>-->
 
-<script src="https://www.paypalobjects.com/api/checkout.js" data-version-4></script>
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
 <script>
 	var totalCost =1 + ''; //Total Cost For the Bill
@@ -28,7 +29,7 @@ Cost:
             return paypal.rest.payment.create(env, client, {
                 transactions: [
                     {
-                        amount: { total: '300', currency: 'USD' }
+                        amount: { total: '3', currency: 'USD' }
                     }
                 ]
             });
@@ -43,7 +44,15 @@ Cost:
             });
         }
     }, '#paypal-button');
-</script>
 
+//	window.paypalCheckoutReady = function() {
+//    paypal.checkout.setup("S4X5XW328WAYY", {
+//      environment: 'sandbox',
+//      container: 'pp'
+//    });
+//  }
+	
+</script>
+<!--<script src="https://www.paypalobjects.com/api/checkout.js" async></script>-->
 </body>
 </html>

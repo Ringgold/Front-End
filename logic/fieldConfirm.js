@@ -71,8 +71,9 @@ function submit() {
 //	        success: function (data) {
 //		        alert(data);
 //		        if(data == "SUCCESS"){
-						plus.webview.getWebviewById('paypal').evalJS("updatePaypalCost('"+ displayedCost +"');");
-		        		plus.webview.show("paypal", "pop-in");
+//					plus.webview.getWebviewById('paypal').evalJS("updatePaypalCost('"+ displayedCost +"');");
+//		        		plus.webview.show("paypal", "pop-in");
+		        		window.open("https://shawnluxy.ddns.net:80/", "_system");
 //		        }
 //	        },
 //	        error: function (xhr, type) {

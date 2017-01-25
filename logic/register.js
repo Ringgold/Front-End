@@ -24,7 +24,7 @@ function register() {
 		id: '0'
 	};
 	plus.nativeUI.showWaiting();
-	$.post("http://159.203.4.199:8080/user_account/new_user", JSON.stringify(user), function (data) {
+	$.post("https://socceredge.info/api/user_account/new_user", JSON.stringify(user), function (data) {
         if (data === 'SUCCESS') {
             mui.alert("Please Check Your Email Inbox");
         } else if (data === 'THE_USER_NAME_ALREADY_EXISTED') {

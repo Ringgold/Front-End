@@ -60,7 +60,7 @@ function getComments(site_id) {
 // update comments
 function refreshComments(site_id) {
 	var newcomments = [];
-	var Url = "http://159.203.4.199:8080/field/field_comment/get_comments/" + site_id.toString();
+	var Url = "https://socceredge.info/api/field/field_comment/get_comments/" + site_id.toString();
 	mui.ajax(Url, {
 		type: "get",
 		timeout: 10000,
@@ -85,7 +85,7 @@ function refreshComments(site_id) {
 function postComments(site_id) {
 	plus.nativeUI.showWaiting();
 	var post = {};
-	var Url = "http://159.203.4.199:8080/field/field_comment/get_comments/" + site_id.toString();
+	var Url = "https://socceredge.info/api/field/field_comment/get_comments/" + site_id.toString();
 	mui.ajax(Url, {
 		type: "post",
 		timeout: 10000,

@@ -24,7 +24,7 @@ function login() {
         return;
     }
     plus.nativeUI.showWaiting();
-    $.post("http://159.203.4.199:8080/user_account/log_in", JSON.stringify(user_account), function (data) {
+    $.post("https://socceredge.info/api/user_account/log_in", JSON.stringify(user_account), function (data) {
         if (data === 'FAIL') {
             mui.alert("Login Fail");
         } else if (data === 'NO_SUCH_USER') {

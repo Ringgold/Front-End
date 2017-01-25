@@ -6,33 +6,24 @@ function goBack(){
 
 function init() {
     $('#goBack').on('touchend', goBack);
+    $('#goConfirm').on('touchend', getPaymentMethod);
 }
 
 function updateCost(cost){
 	document.getElementById("Cost").innerHTML = cost + " $";
 }
 
-function confirm(){
-	$('#goConfirm').on('touchend', test);
-}
-
-function test(){
-	console.log("fddfdffdf");
-}
-
 function getPaymentMethod(){
-	plus.webview.show("paypal", "pop-in");
-//  if (document.getElementById('1').checked) {
-//  		payMethod=document.getElementById('1').value;
-//	} else if (document.getElementById('2').checked){
-//		payMethod=document.getElementById('2').value;
-//		alert("Paypal Selected");
-//		
-//	} else if (document.getElementById('3').checked){
-//		payMethod=document.getElementById('3').value;
-//	}else if (document.getElementById('4').checked){
-//		payMethod=document.getElementById('4').value;
-//	}
+    if (document.getElementById('1').checked) {
+	} else if (document.getElementById('2').checked){
+		plus.webview.show("paypal", "pop-in");
+		console.log("Paypal Selected");
+		
+	} else if (document.getElementById('3').checked){
+		
+	} else if (document.getElementById('4').checked){
+		
+	}
 }
 
 

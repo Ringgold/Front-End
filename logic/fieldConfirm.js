@@ -59,7 +59,7 @@ function reformat(orderList){
 
 //Submit the order and send it to the backend server to book the field
 function submit() {
-	var Url = "http://159.203.4.199:8080/field/field_booking/create_booking";
+	var Url = "https://socceredge.info/api/field/field_booking/create_booking";
 //	for (var i=0; i<orderlist.length; i++){
 //		var order = JSON.stringify(orderlist[i]);
 ////		console.log(order);
@@ -72,8 +72,8 @@ function submit() {
 //		        alert(data);
 //		        if(data == "SUCCESS"){
 //					plus.webview.getWebviewById('paypal').evalJS("updatePaypalCost('"+ displayedCost +"');");
-//		        		plus.webview.show("paypal", "pop-in");
-		        		window.open("https://shawnluxy.ddns.net:80/", "_system");
+		        		plus.webview.show("paypage", "pop-in");
+//		        		window.open("https://shawnluxy.ddns.net:80/", "_system");
 //		        }
 //	        },
 //	        error: function (xhr, type) {

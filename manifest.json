@@ -99,7 +99,7 @@
         },
         "NativeObj":{
         	"description": "原生对象"
-        }
+        },"Payment":{}
 	},
 	"plus": {
 		"splashscreen": {

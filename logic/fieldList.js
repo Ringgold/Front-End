@@ -383,7 +383,7 @@ function buildSearchBar() {//建立搜索框
 //gets fieldlist information from the server and then sets the
 //global var fieldInfo
 function getFieldSite() {
-    mui.ajax("http://159.203.4.199:8080/field/field_site/all_site", {
+    mui.ajax("https://socceredge.info/api/field/field_site/all_site", {
         type: "get",
         timeout: 10000,
         success: function (data) {

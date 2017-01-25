@@ -187,7 +187,7 @@ function initTable(site_id) {
 	// initialize field info
 	field_info = [[],[],[]];
 	field_type = [0,0,0];
-	var Url = "http://159.203.4.199:8080/field/field/get_fields_by_site_id/" + site_id.toString();
+	var Url = "https://socceredge.info/api/field/field/get_fields_by_site_id/" + site_id.toString();
 	mui.ajax(Url, {
 		type: "get",
 		timeout: 10000,
@@ -207,7 +207,7 @@ function initTable(site_id) {
 	});
 	for (var j=0;j<3;j++) {
 		for (var k=0;k<field_info[j].length;k++) {
-			var priceUrl = "http://159.203.4.199:8080/field/price/get_prices_by_field_id/" + field_info[j][k].ID.toString();
+			var priceUrl = "https://socceredge.info/api/field/price/get_prices_by_field_id/" + field_info[j][k].ID.toString();
 			mui.ajax(priceUrl, {
 				type: "get",
 				timeout: 10000,
@@ -253,7 +253,7 @@ function getTime() {
 	plus.nativeUI.showWaiting();
 	for(var h=0; h<field_info.length; h++) {
 		for(var l=0; l<field_info[h].length; l++) {
-			var Url = "http://159.203.4.199:8080/field/field/get_bookings_by_field_id/" + field_info[h][l].ID.toString();
+			var Url = "https://socceredge.info/api/field/field/get_bookings_by_field_id/" + field_info[h][l].ID.toString();
 			var hasparent = field_info[h][l].hasOwnProperty("PARENT_ID");
 			mui.ajax(Url, {
 				type: "get",

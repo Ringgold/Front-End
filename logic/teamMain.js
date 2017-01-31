@@ -241,7 +241,7 @@ function drawChart3T(scored, lost){
 	    ],
 	    series : [
 	        {
-	            name:'Scored Goals',
+	            name:'Goals Scored',
 	            type:'bar',
 	            stack: 'Total',
 	            label: {
@@ -266,7 +266,7 @@ function drawChart3T(scored, lost){
 	            }]
 	        },
 	        {
-	            name:'Lost Goals',
+	            name:'Goals Against',
 	            type:'bar',
 	            stack: 'Total',
 	            label: {

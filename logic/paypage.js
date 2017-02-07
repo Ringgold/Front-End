@@ -16,8 +16,8 @@ function updateCost(cost){
 function getPaymentMethod(){
     if (document.getElementById('1').checked) {
 	} else if (document.getElementById('2').checked){
+		plus.webview.getWebviewById('paypal').evalJS("setupPage();");
 		plus.webview.show("paypal", "pop-in");
-		console.log("Paypal Selected");
 		
 	} else if (document.getElementById('3').checked){
 		

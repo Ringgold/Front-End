@@ -10,43 +10,39 @@ function goRegister() {
 }
 
 function login() {
-//	var paylink = getApproval();
-//	pay_window = window.open(paylink, "_self");
-	plus.webview.getWebviewById('paypal').evalJS("setupPage();");
-	
-//  $('input').blur();
-//  var user_account = {};
-//  user_account.USER_ID = '0';
-//  user_account.USER_NAME = $('#user_name').val();
-//  user_account.USER_PASSWORD = $('#user_password').val();
-//  if (!validateEmail(user_account.USER_NAME)) {
-//      mui.alert("Please Enter A Correct Email Address");
-//      return;
-//  }
-//  if (!validatePassword(user_account.USER_PASSWORD)) {
-//      mui.alert("Please Enter a Password of Length 8-20 letters");
-//      return;
-//  }
-//  plus.nativeUI.showWaiting();
-//  $.post("https://socceredge.info/api/user_account/log_in", JSON.stringify(user_account), function (data) {
-//      if (data === 'FAIL') {
-//          mui.alert("Login Fail");
-//      } else if (data === 'NO_SUCH_USER') {
-//          mui.alert("User Not Existing");
-//      } else if (data === 'WRONG_PASSWORD') {
-//          mui.alert("Wrong Password");
-//      } else {
-//      	UserID = data;
-//    		console.log(UserID);
-//      	localStorage.setItem("User_ID", UserID)
-//          //mui.alert("Login Success!");
-            plus.webview.show("paypal", "pop-in");
-//      }
-//      plus.nativeUI.closeWaiting();
-//  }).error(function () {
-//      mui.alert("Please Check Your Network Connection");
-//      plus.nativeUI.closeWaiting();
-//  });
+    $('input').blur();
+    var user_account = {};
+    user_account.USER_ID = '0';
+    user_account.USER_NAME = $('#user_name').val();
+    user_account.USER_PASSWORD = $('#user_password').val();
+    if (!validateEmail(user_account.USER_NAME)) {
+        mui.alert("Please Enter A Correct Email Address");
+        return;
+    }
+    if (!validatePassword(user_account.USER_PASSWORD)) {
+        mui.alert("Please Enter a Password of Length 8-20 letters");
+        return;
+    }
+    plus.nativeUI.showWaiting();
+    $.post("https://socceredge.info/api/user_account/log_in", JSON.stringify(user_account), function (data) {
+        if (data === 'FAIL') {
+            mui.alert("Login Fail");
+        } else if (data === 'NO_SUCH_USER') {
+            mui.alert("User Not Existing");
+        } else if (data === 'WRONG_PASSWORD') {
+            mui.alert("Wrong Password");
+        } else {
+        	UserID = data;
+      		console.log(UserID);
+        	localStorage.setItem("User_ID", UserID)
+            //mui.alert("Login Success!");
+            plus.webview.show("fieldList", "pop-in");
+        }
+        plus.nativeUI.closeWaiting();
+    }).error(function () {
+        mui.alert("Please Check Your Network Connection");
+        plus.nativeUI.closeWaiting();
+    });
 }
 
 function validateEmail(email) {
@@ -63,24 +59,3 @@ function validatePassword(password) {
     }
     return true;
 }
-
-function getApproval() {
-	var plink = "/";
-	Url = 'https://socceredge.info/api/paypal/payment/getPayUrlTest';
-	mui.ajax(Url, {
-		type: "get",
-		timeout: 10000,
-		async: false,
-        success: function (data) {
-        		plink = data;
-        },
-        	error: function (xhr, type) {
-            alert(type);
-        }
-	});
-	return plink;
-}
-
-//'https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-46S3330366640521L'
-//'https://socceredge.info/api/paypal/payment/process?paymentId=PAY-6N041944YJ271613LLCMP4PY&token=EC-46S3330366640521L&PayerID=V978U5MHGWADL'
-//'https://socceredge.info/api/paypal/payment/cancel?token=EC-46S3330366640521L'

@@ -30,7 +30,7 @@ function get_com_obj(data) {
 function getComments(site_id) {
 	plus.nativeUI.showWaiting();
 	var comments = [];
-	var Url = "http://159.203.4.199:8080/field/field_comment/get_comments/" + site_id.toString();
+	var Url = "https://socceredge.info/api/field/field_comment/get_comments/" + site_id.toString();
 	if(localStorage.getItem(site_id) == null) {	
 		mui.ajax(Url, {
 			type: "get",

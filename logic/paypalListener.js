@@ -16,7 +16,7 @@ function setupPage() {
 
 function getLink() {
 	var plink = "";
-	Url = 'https://socceredge.info/api/paypal/payment/getPayUrlTest';
+	Url = 'https://socceredge.info/api/paypal/payment/getPayUrlTest/1';
 	mui.ajax(Url, {
 		type: "get",
 		timeout: 10000,

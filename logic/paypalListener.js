@@ -1,4 +1,4 @@
-
+var bookingID = '';
 function init() {
     $('#goBack').on("touchend", goBack);
 }
@@ -14,9 +14,14 @@ function setupPage() {
 	subpage.loadURL(paylink);
 }
 
+function setBookingID(data){
+	bookingID = data;
+	console.log('Booking ID updated as: ' + bookingID);
+}
+
 function getLink() {
 	var plink = "";
-	Url = 'https://socceredge.info/api/paypal/payment/getPayUrlTest/1';
+	Url = 'https://socceredge.info/api/paypal/payment/getPayUrl/' + bookingID;
 	mui.ajax(Url, {
 		type: "get",
 		timeout: 10000,

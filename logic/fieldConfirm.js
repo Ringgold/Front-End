@@ -60,25 +60,30 @@ function reformat(orderList){
 //Submit the order and send it to the backend server to book the field
 function submit() {
 	var Url = "https://socceredge.info/api/field/field_booking/create_booking";
-//	for (var i=0; i<orderlist.length; i++){
-//		var order = JSON.stringify(orderlist[i]);
-////		console.log(order);
-//		mui.ajax(Url, {
-//			type: "post",
-//			timeout: 10000,
-//			async: false,
-//			data: order,
-//	        success: function (data) {
-//		        alert(data);
-//		        if(data == "SUCCESS"){
-//					plus.webview.getWebviewById('paypal').evalJS("updatePaypalCost('"+ displayedCost +"');");
-		        		plus.webview.show("paypage", "pop-in");
-//		        		window.open("https://shawnluxy.ddns.net:80/", "_system");
-//		        }
-//	        },
-//	        error: function (xhr, type) {
-//	            alert(type);
-//	        }
-//		});
-//	}
+	for (var i=0; i<orderlist.length; i++){
+		var order = JSON.stringify(orderlist[i]);
+//		console.log(order);
+		mui.ajax(Url, {
+			type: "post",
+			timeout: 10000,
+			async: false,
+			data: order,
+	        success: function (data) {
+	        	//Notice: Maybe there is also a different response like NETWORKERROR?
+		        if(data != "FAIL"){
+		        	alert(data);
+		        	console.log(data);//Display the booking ID for this order
+		        	plus.webview.getWebviewById('personalMain').evalJS("addBooking('"+ orderlist[i] +"');");//update the bookings in personal Page  
+		        	plus.webview.getWebviewById('paypal').evalJS("setBookingID('"+ data +"');");        	
+					plus.webview.getWebviewById('paypal').evalJS("updatePaypalCost('"+ displayedCost +"');");
+					plus.webview.show("paypage", "pop-in");
+		        } else {
+		        	alert(data);//Fail Alert
+		        }
+	        },
+	        error: function (xhr, type) {
+	            alert(type);
+	        }
+		});
+	}
 }

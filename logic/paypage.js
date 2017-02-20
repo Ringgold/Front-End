@@ -10,7 +10,7 @@ function init() {
 }
 
 function updateCost(cost){
-	document.getElementById("Cost").innerHTML = cost + " $";
+	document.getElementById("Cost").innerHTML ="$ " + cost;
 }
 
 function getPaymentMethod(){

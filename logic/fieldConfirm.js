@@ -75,7 +75,7 @@ function submit() {
 		        	console.log(data);//Display the booking ID for this order
 		        	plus.webview.getWebviewById('personalMain').evalJS("addBooking('"+ orderlist[i] +"');");//update the bookings in personal Page  
 		        	plus.webview.getWebviewById('paypal').evalJS("setBookingID('"+ data +"');");        	
-					plus.webview.getWebviewById('paypal').evalJS("updatePaypalCost('"+ displayedCost +"');");
+					//plus.webview.getWebviewById('paypal').evalJS("updatePaypalCost('"+ displayedCost +"');");
 					plus.webview.show("paypage", "pop-in");
 		        } else {
 		        	alert(data);//Fail Alert

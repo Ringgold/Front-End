@@ -1,4 +1,5 @@
-var bookingID = '';
+var sendInfo = [];
+
 function init() {
     $('#goBack').on("touchend", goBack);
 }
@@ -15,21 +16,26 @@ function setupPage() {
 }
 
 function setBookingID(data){
-	bookingID = data;
-	console.log('Booking ID updated as: ' + bookingID);
+	sendInfo.push(
+		{payment_id: "", booking_id: data}
+		);
+	console.log('Booking ID updated as: ' + data);
 }
 
 function getLink() {
 	var plink = "";
-	Url = 'https://socceredge.info/api/paypal/payment/getPayUrl/' + bookingID;
+	Url = 'https://socceredge.info/api/paypal/payment/getPayUrl/';
 	mui.ajax(Url, {
-		type: "get",
+		type: "post",
 		timeout: 10000,
 		async: false,
+		data: JSON.stringify(sendInfo),
         success: function (data) {
-        		plink = data;},
-        	error: function (xhr, type) {
-            alert(type);}
+        	plink = data;
+        },
+        error: function (xhr, type) {
+        	alert(type);
+        }
 	});
 	console.log(plink);
 	return plink;

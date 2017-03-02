@@ -1,4 +1,3 @@
-var bookings = [];
 
 function personalMainInit() { //为了随时reload小界面
 //	var personalMain = window.JST.personalMain();
@@ -17,11 +16,6 @@ function personalMainInit() { //为了随时reload小界面
 //		$('#personalMain').reload();
 //      mui('.mui-off-canvas-wrap').offCanvas('close');
 //  });
-    
-}
-
-function addBooking(data){
-	bookings.push(data);
 }
 
 function drawChart(win, lose, tie) {

@@ -71,9 +71,8 @@ function submit() {
 	        success: function (data) {
 	        	//Notice: Maybe there is also a different response like NETWORKERROR?
 		        if(data != "FAIL"){
-		        	alert(data);
 		        	console.log(data);//Display the booking ID for this order
-		        	plus.webview.getWebviewById('personalMain').evalJS("addBooking('"+ orderlist[i] +"');");//update the bookings in personal Page  
+		        	//plus.webview.getWebviewById('personalMain').evalJS("addBooking('"+ orderlist[i] +"');");//update the bookings in personal Page  
 		        	plus.webview.getWebviewById('paypal').evalJS("setBookingID('"+ data +"');");        	
 					//plus.webview.getWebviewById('paypal').evalJS("updatePaypalCost('"+ displayedCost +"');");
 					plus.webview.show("paypage", "pop-in");

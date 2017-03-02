@@ -34,7 +34,8 @@ function login() {
         } else {
         	UserID = data;
       		console.log(UserID);
-        	localStorage.setItem("User_ID", UserID)
+      		//Setup User ID in different pages
+        	localStorage.setItem("User_ID", UserID);
             //mui.alert("Login Success!");
             plus.webview.show("fieldList", "pop-in");
         }

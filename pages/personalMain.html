@@ -11,8 +11,11 @@
 		<script src="../library/js/underscore-min.js"></script>
 		<script src="../library/js/echarts.min.js"></script>
 		<script src="../dist/templates.js"></script>
+		<script src="../logic/index.js"></script>
 		<script src="../logic/fieldList.js"></script>
+		<script src="../logic/paypalListener.js"></script>
 		<script src="../logic/personalMain.js"></script>
+		
 
 		<link href="../library/css/mui.css" rel="stylesheet" />
 		<link href="../library/css/w3.css" rel="stylesheet" />
@@ -204,73 +207,43 @@
 			<!--订单-->
 			<div id="item3" class="mui-control-content my-simple">
 				<!--这里应该用一个for loop给template-->
-
-				<!--订单1-->
-				<div class="my-card2">
-					<div class="my-card-content">
-						<div class="w3-row">
-							<div class="w3-col s4 w3-center">
-								<img src="../resource/personalMain/field_ordered.png" width="72%">
-							</div>
-							<div class="w3-col s5 w3-center">
-								<label style="font-size: 14px;" class="mui-pull-left">McGill University</label>
-								<br>
-								<label class="w3-tiny mui-pull-left">2016-8-12</label>
-								<br>
-								<label class="w3-tiny mui-pull-left">From 11:30 To 14:30</label>
-								<br>
-								<label class="w3-tiny mui-pull-left">$</label>
-								<label class="w3-tiny mui-pull-left">130</label>
-							</div>
-							<div class="w3-col s3 w3-center">
-								<label style="font-size: 13px;" class="mui-pull-right">Details</label>
-								<br>
-								<br>
-								<br>
-								<label style="font-size: 14px; color: #fdcb1d;" class="mui-pull-right">Rate it!</label>
-							</div>
-						</div>
-					</div>
-					<hr style="border-top:1px solid #595757; margin-top: 8px; margin-bottom: 0px;" />
-				</div>
-
-				<!--订单2-->
-				<div class="my-card2">
-					<div class="my-card-content">
-						<div class="w3-row">
-							<div class="w3-col s4 w3-center">
-								<img src="../resource/personalMain/field_ordered.png" width="72%">
-							</div>
-							<div class="w3-col s5 w3-center">
-								<label style="font-size: 14px;" class="mui-pull-left">UQAM</label>
-								<br>
-								<label style="font-size: 11px;" class="mui-pull-left">2016-8-20</label>
-								<br>
-								<label style="font-size: 11px;" class="mui-pull-left">From 8:30 To 9:30</label>
-								<br>
-								<label style="font-size: 13px;" class="mui-pull-left">$</label>
-								<label style="font-size: 13px;" class="mui-pull-left">250</label>
-							</div>
-							<div class="w3-col s3 w3-center">
-								<label style="font-size: 13px;" class="mui-pull-right">Details</label>
-								<br>
-								<br>
-								<br>
-								<label style="font-size: 14px; color: #fdcb1d;" class="mui-pull-right">Rate it!</label>
+					<!--订单 Ex-->
+					<div class="my-card2">
+						<div class="my-card-content">
+							<div class="w3-row">
+								<div class="w3-col s4 w3-center">
+									<img src="../resource/personalMain/field_ordered.png" width="72%">
+								</div>
+								<div class="w3-col s5 w3-center">
+									<label style="font-size: 14px;" class="mui-pull-left">UQAM</label>
+									<br>
+									<label style="font-size: 11px;" class="mui-pull-left">2016-8-20</label>
+									<br>
+									<label style="font-size: 11px;" class="mui-pull-left">From 8:30 To 9:30</label>
+									<br>
+									<label style="font-size: 13px;" class="mui-pull-left">$</label>
+									<label style="font-size: 13px;" class="mui-pull-left">250</label>
+								</div>
+								<div class="w3-col s3 w3-center">
+									<label style="font-size: 13px;" class="mui-pull-right">Details</label>
+									<br>
+									<br>
+									<br>
+									<label style="font-size: 14px; color: #fdcb1d;" class="mui-pull-right">Rate it!</label>
+								</div>
 							</div>
 						</div>
+						<hr style="border-top:1px solid #595757; margin-top: 8px; margin-bottom: 0px;" />
 					</div>
-					<hr style="border-top:1px solid #595757; margin-top: 8px; margin-bottom: 0px;" />
-				</div>
 			</div>
 		</div>
 	</div>
 </div>
-		<script>
-			personalMainInit();
-			drawChart(13, 11, 4);
-			drawChart2(11, 12, 2, 32, 15, 4, 10);
-		</script>
-	</body>
+	<script>
+		personalMainInit();
+		drawChart(13, 11, 4);
+		drawChart2(11, 12, 2, 32, 15, 4, 10);
+	</script>
+</body>
 
 </html>

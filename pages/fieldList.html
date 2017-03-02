@@ -96,23 +96,36 @@
                 </div>
             </div>
         </div>
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
         <div id="personalMain" style="display: none">
-
+			
         </div>
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
         <div id="teamMain" style="display: none">
-
+			
         </div>
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
     </div>
 </div>
 <script>
-    mui.init({  
+    mui.init(
+    {
 		pullRefresh: {  
-			container: '#pullrefresh',  
+			container: '#pullrefresh',
 			down: {
-				callback: pulldownRefresh  
+				callback: pulldownRefresh
 			},  
-		}  
-	});
+		}
+	}
+//	{  
+//		pullRefresh: {  
+//			container: '#pullrefreshbookings',  
+//			down: {
+//				callback: pulldownRefreshBookings 
+//			},  
+//		}  
+//	}
+    );
     fieldListInit();
     mui.ready(function () {
         buildTopBar();

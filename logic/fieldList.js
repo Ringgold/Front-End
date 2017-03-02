@@ -1,5 +1,75 @@
 var fieldInfo = [];
+
+//User Field Booking Info
+var bookings = [];//Sync
+var bookingsTemp = [];//Async
+
 var currentRegionPicker, currentTypePicker, currentSortPicker, fieldInfoTmp, currentTimePicker,changeTimeList;
+
+//Personal Page functions
+
+//Get Personal Booking Status
+function getBookings(){
+	var UserID = localStorage.getItem("User_ID");
+	var Url = "https://socceredge.info/api/field/field_booking/getBookingByUserId/" + UserID;
+	console.log(Url);
+	mui.ajax(Url, {
+		type: "get",
+		timeout: 10000,
+		async: false,
+        success: function (data) {
+	        if(data != "FAIL"){
+	        	console.log("Personal Booking Acquired " + data);     		        	
+	        	var orders = JSON.parse(data);
+	        	var ordersTemp = [];
+
+				//Save the Orders
+	            for (var i = 0; i < orders.length; i++) {
+	                var order = {};
+	                order.id = orders[i].ID;
+	                order.field = orders[i].FIELD_ID;
+	                order.start = orders[i].START_TIME;
+	                order.end = orders[i].END_TIME;
+	                order.user = orders[i].USER_ID;
+	                order.cost = orders[i].TOTAL_COST;
+	                order.status = orders[i].BOOKING_STATUS;
+	                ordersTemp.push(order);
+	            }
+	            
+	            //TODO
+	            //fieldID -> fieldName
+	            //start and end data&time -> data and start/end
+	            
+	            bookings = ordersTemp;
+	            bookingsTemp = ordersTemp;
+//	            reloadBookings(bookings);
+	        } else {
+	        	alert(data);//Fail Alert
+	        }
+        },
+        error: function (xhr, type) {
+            alert(type);
+        }
+	});
+}
+
+//function reloadBookings(bookings){
+//	var list = window.JST.personalMain({
+//      orders: bookings
+//  });
+//  var container = $('#personalMain');
+//  container.empty();
+//  container.append(list);
+//}
+
+//function pulldownRefreshBookings() {
+//	setTimeout(function(){
+//		getBookings();
+//		mui("#pullrefreshbookings").pullRefresh().endPulldownToRefresh();
+//	},1000);
+//}
+
+//End of Personal Main Page Functions
 
 function goDetail(e) {
     plus.nativeUI.showWaiting();//加载loading界面
@@ -42,8 +112,13 @@ function pulldownRefresh() {
 }
 
 function fieldListInit() { //创建整个页面, 只需要调用一次, 更新场地直接调用reloadFieldList
-	var personalMain = window.JST.personalMain();
-	var teamMain = window.JST.teamMain();
+	getBookings();
+	var personalMain = window.JST.personalMain({
+		orders: bookings
+	});
+	var teamMain = window.JST.teamMain({
+		
+	});
 
     $('#person').on('touchend', function () {
         $('#personalMain').show();
@@ -71,8 +146,8 @@ function fieldListInit() { //创建整个页面, 只需要调用一次, 更新�
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
     
-    $('#personalMain').append($(window.JST.personalMain()));
-    $('#teamMain').append($(window.JST.teamMain()));
+    $('#personalMain').append($(personalMain));
+    $('#teamMain').append(teamMain);
 
     $('.sidebar_menu').on('touchend', function () {
         mui('.mui-off-canvas-wrap').offCanvas('show');

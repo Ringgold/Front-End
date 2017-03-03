@@ -12,9 +12,8 @@ function personalMainInit() { //为了随时reload小界面
 //      mui('.mui-off-canvas-wrap').offCanvas('close');
 //  });
 //  
-//  $('#p2').on('touchend', function () {
-//		$('#personalMain').reload();
-//      mui('.mui-off-canvas-wrap').offCanvas('close');
+//  $('#p3').on('touchend', function () {
+//		
 //  });
 }
 

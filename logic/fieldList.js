@@ -19,10 +19,9 @@ function getBookings(){
 		async: false,
         success: function (data) {
 	        if(data != "FAIL"){
-	        	console.log("Personal Booking Acquired " + data);     		        	
-	        	var orders = JSON.parse(data);
-	        	var ordersTemp = [];
-
+		        	console.log("Personal Booking Acquired " + data);     		        	
+		        	var orders = JSON.parse(data);
+		        	var ordersTemp = [];
 				//Save the Orders
 	            for (var i = 0; i < orders.length; i++) {
 	                var order = {};
@@ -35,16 +34,15 @@ function getBookings(){
 	                order.status = orders[i].BOOKING_STATUS;
 	                ordersTemp.push(order);
 	            }
-	            
 	            //TODO
 	            //fieldID -> fieldName
 	            //start and end data&time -> data and start/end
 	            
 	            bookings = ordersTemp;
 	            bookingsTemp = ordersTemp;
-//	            reloadBookings(bookings);
+//	         	reloadBookings(bookings);
 	        } else {
-	        	alert(data);//Fail Alert
+	        		alert(data);//Fail Alert
 	        }
         },
         error: function (xhr, type) {
@@ -53,21 +51,37 @@ function getBookings(){
 	});
 }
 
-//function reloadBookings(bookings){
-//	var list = window.JST.personalMain({
-//      orders: bookings
-//  });
-//  var container = $('#personalMain');
-//  container.empty();
-//  container.append(list);
-//}
+function reloadBookings(bookings){
+	var list = window.JST.personalMain({
+        orders: bookings
+    });
+    var container = $('#personalMain');
+    container.empty();
+    container.append($(list));
+}
 
-//function pulldownRefreshBookings() {
-//	setTimeout(function(){
-//		getBookings();
-//		mui("#pullrefreshbookings").pullRefresh().endPulldownToRefresh();
-//	},1000);
-//}
+function pullDownRefreshBookings() {
+	setTimeout(function(){
+		console.log("fuck");
+		getBookings();
+		changeStatus();
+		mui("#pulldownrefreshbookings").pullRefresh().endPulldownToRefresh();
+	},1000);
+}
+
+function changeStatus() {
+	// change order status from number to content
+    var status = $(".orderstatus");
+	for(var i=0; i<status.length; i++){
+		if($(status[i]).text() == "0") {
+			$(status[i]).text("Not Paid");
+			$(status[i]).css({'color':'red'});
+		} else if($(status[i]).text() == "1") {
+			$(status[i]).text("Paid");
+			$(status[i]).css({'color':'green'});
+		}
+	}
+}
 
 //End of Personal Main Page Functions
 
@@ -126,6 +140,7 @@ function fieldListInit() { //创建整个页面, 只需要调用一次, 更新�
         $('#teamMain').hide();
         drawChart(13, 11, 4);
         drawChart2(11,12,2,32,15,4,10);
+        changeStatus();
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
     
@@ -147,7 +162,7 @@ function fieldListInit() { //创建整个页面, 只需要调用一次, 更新�
     });
     
     $('#personalMain').append($(personalMain));
-    $('#teamMain').append(teamMain);
+    $('#teamMain').append($(teamMain));
 
     $('.sidebar_menu').on('touchend', function () {
         mui('.mui-off-canvas-wrap').offCanvas('show');

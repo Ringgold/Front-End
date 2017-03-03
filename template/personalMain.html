@@ -177,43 +177,51 @@
 
 		<!--订单-->
 		<div id="item3" class="mui-control-content my-simple">
-			<!--这里应该用一个for loop给template-->			
-			<!--<div id="pullrefreshbookings" class="mui-content mui-scroll-wrapper">
-			  	<div class="mui-scroll">-->
-		  			<%_.each(orders, function (order) {%>
-					    <!--订单 Ex-->
-					    <div class="my-card2">
-					        <div class="my-card-content">
-					            <div class="w3-row">
-					                <div class="w3-col s4 w3-center">
-					                    <img src="../resource/personalMain/field_ordered.png" width="72%">
-					                </div>
-					                <div class="w3-col s5 w3-center">
-					                    <label style="font-size: 10px;" class="mui-pull-left"><%=order.id%></label>
-					                    <br>
-					                    <!--<label style="font-size: 11px;" class="mui-pull-left">2016-8-20</label>
-					                    <br>-->
-					                    <label style="font-size: 11px;" class="mui-pull-left">From <%=order.start%></label>
-					                    <br>
-					                    <label style="font-size: 11px;" class="mui-pull-left">To <%=order.end%></label>
-					                    <br>
-					                    <label style="font-size: 13px;" class="mui-pull-left"><%=order.status%> $</label>
-					                    <label style="font-size: 13px;" class="mui-pull-left"><%=order.cost%></label>
-					                </div>
-					                <div class="w3-col s3 w3-center">
-					                    <label style="font-size: 13px;" class="mui-pull-right">Details</label>
-					                    <br>
-					                    <br>
-					                    <br>
-					                    <label style="font-size: 14px; color: #fdcb1d;" class="mui-pull-right">Rate it!</label>
-					                </div>
-					            </div>
-					        </div>
-					        <hr style="border-top:1px solid #595757; margin-top: 8px; margin-bottom: 0px;" />
-					    </div>
-					<%});%> 
-	            <!--</div>
-			</div>-->
+			<div id="pulldownrefreshbookings" class="mui-content">
+			<!--这里应该用一个for loop给template-->
+	  			<%_.each(orders, function (order) {%>
+				    <!--订单 Ex-->
+				    <div class="my-card2">
+				        <div class="my-card-content">
+				            <div class="w3-row">
+				                <div class="w3-col s4 w3-center">
+				                    <img src="../resource/personalMain/field_ordered.png" width="72%">
+				                </div>
+				                <div class="w3-col s5 w3-center">
+				                    <label style="font-size: 10px;" class="mui-pull-left"><%=order.id%></label>
+				                    <br>
+				                    <label style="font-size: 11px;" class="mui-pull-left">From <%=order.start%></label>
+				                    <br>
+				                    <label style="font-size: 11px;" class="mui-pull-left">To <%=order.end%></label>
+				                    <br>
+				                    <label style="font-size: 13px;" class="mui-pull-left orderstatus"><%=order.status%></label>
+				                    <label style="font-size: 13px;" class="mui-pull-left">&nbsp;$<%=order.cost%></label>
+				                </div>
+				                <div class="w3-col s3 w3-center">
+				                    <label style="font-size: 13px;" class="mui-pull-right">Details</label>
+				                    <br>
+				                    <br>
+				                    <br>
+				                    <label style="font-size: 14px; color: #fdcb1d;" class="mui-pull-right">Rate it!</label>
+				                </div>
+				            </div>
+				        </div>
+				        <hr style="border-top:1px solid #595757; margin-top: 8px; margin-bottom: 0px;" />
+				    </div>
+				<%});%>
+			</div>
 		</div>
 	</div>
 </div>
+
+<%
+	mui.init({  
+		pullRefresh: {  
+			container: '#pulldownrefreshbookings',  
+			down: {
+				callback: pullDownRefreshBookings 
+			},  
+		}  
+	});
+%>
+

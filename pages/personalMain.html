@@ -21,9 +21,6 @@
 		<link href="../library/css/w3.css" rel="stylesheet" />
 		<link href="../library/css/common.css" rel="stylesheet" />
 
-		<script type="text/javascript" charset="utf-8">
-			mui.init();
-		</script>
 	</head>
 
 	<body>
@@ -43,11 +40,11 @@
 			</p>
 			<div class="mui-segmented-control mui-segmented-control-inverted my-transparent-simple" style="font-size: 16px">
 				<a id="p1" class="mui-control-item mui-active" href="#item1">
-					</span>Data</a>
+					Data</a>
 				<a id="p2" class="mui-control-item" href="#item2">
-					</span>Matches</a>
+					Matches</a>
 				<a id="p3" class="mui-control-item" href="#item3">
-					</span>Orders</a>
+					Orders</a>
 			</div>
 		</div>
 	</div>
@@ -136,7 +133,6 @@
 				</div>
 			</div>
 
-			
 			<!--球赛-->
 			<div id="item2" class="mui-control-content my-simple">
 				<!--这里应该用一个for loop给template-->
@@ -207,6 +203,7 @@
 			<!--订单-->
 			<div id="item3" class="mui-control-content my-simple">
 				<!--这里应该用一个for loop给template-->
+				<div id="pulldownrefreshbookings" class="mui-content">
 					<!--订单 Ex-->
 					<div class="my-card2">
 						<div class="my-card-content">
@@ -235,15 +232,24 @@
 						</div>
 						<hr style="border-top:1px solid #595757; margin-top: 8px; margin-bottom: 0px;" />
 					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-	<script>
-		personalMainInit();
-		drawChart(13, 11, 4);
-		drawChart2(11, 12, 2, 32, 15, 4, 10);
-	</script>
+<script>
+//	mui.init({  
+//		pullRefresh: {  
+//			container: '#pulldownrefreshbookings',  
+//			down: {
+//				callback: pullDownRefreshBookings 
+//			},  
+//		}  
+//	});
+	personalMainInit();
+	drawChart(13, 11, 4);
+	drawChart2(11, 12, 2, 32, 15, 4, 10);
+</script>
 </body>
 
 </html>

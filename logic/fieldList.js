@@ -148,6 +148,7 @@ function fieldListInit() { //创建整个页面, 只需要调用一次, 更新�
         $('#teamMain').show();
         $('#personalMain').hide();
         $('#fieldList').hide();   
+        uploadInit();
         drawChartT(13, 11, 4);
         drawChart2T(11,12,2,32,15,4,10);
 		drawChart3T(100, 56);

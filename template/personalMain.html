@@ -177,7 +177,7 @@
 
 		<!--订单-->
 		<div id="item3" class="mui-control-content my-simple">
-			<div id="pulldownrefreshbookings" class="mui-content">
+
 			<!--这里应该用一个for loop给template-->
 	  			<%_.each(orders, function (order) {%>
 				    <!--订单 Ex-->
@@ -209,19 +209,7 @@
 				        <hr style="border-top:1px solid #595757; margin-top: 8px; margin-bottom: 0px;" />
 				    </div>
 				<%});%>
-			</div>
+
 		</div>
 	</div>
 </div>
-
-<%
-	mui.init({  
-		pullRefresh: {  
-			container: '#pulldownrefreshbookings',  
-			down: {
-				callback: pullDownRefreshBookings 
-			},  
-		}  
-	});
-%>
-

@@ -1,20 +1,113 @@
+//User Field Booking Info
+var bookings = [];//Sync
+var bookingsTemp = [];//Async
 
-function personalMainInit() { //为了随时reload小界面
-//	var personalMain = window.JST.personalMain();
-	
-//  $('#p1').on('touchend', function () {
-//      $('#personalMain').reload();
-//      mui('.mui-off-canvas-wrap').offCanvas('close');
-//  });
-//
-//  $('#p2').on('touchend', function () {
-//		$('#personalMain').reload();
-//      mui('.mui-off-canvas-wrap').offCanvas('close');
-//  });
-//  
-//  $('#p3').on('touchend', function () {
-//		
-//  });
+function personalMainInit() {
+	$('#person').on('touchend', function () {
+    		plus.webview.getWebviewById('personalMain').evalJS("showOrders();");
+    		plus.webview.show("personalMain", "pop-in");
+        mui('.mui-off-canvas-wrap').offCanvas('close');
+    });
+    $('#team').on('touchend', function () {
+    		
+        mui('.mui-off-canvas-wrap').offCanvas('close');
+    });
+	$('#list').on('touchend', function () {
+        plus.webview.show("fieldList", "pop-in");
+        mui('.mui-off-canvas-wrap').offCanvas('close');
+    });
+    
+    $('#menu').on('touchend', function () {
+        mui('.mui-off-canvas-wrap').offCanvas('show');
+    });
+    mui('.mui-scroll-wrapper').scroll({
+        deceleration: 0.0006,
+        indicators: false
+    });
+    
+    drawChart(13, 11, 4);
+	drawChart2(11, 12, 2, 32, 15, 4, 10);
+}
+
+function showOrders() {
+	getBookings();
+	var personalMain = window.JST.personalMain({
+		orders: bookings
+	});
+	$('#Orders').append($(personalMain));
+	changeStatus();
+}
+
+function getBookings(){
+	var UserID = localStorage.getItem("User_ID");
+	var Url = "https://socceredge.info/api/field/field_booking/getBookingByUserId/" + UserID;
+	console.log(Url);
+	mui.ajax(Url, {
+		type: "get",
+		timeout: 10000,
+		async: false,
+        success: function (data) {
+	        if(data != "FAIL"){
+		        	console.log("Personal Booking Acquired " + data);     		        	
+		        	var orders = JSON.parse(data);
+		        	var ordersTemp = [];
+				//Save the Orders
+	            for (var i = 0; i < orders.length; i++) {
+	                var order = {};
+	                order.id = orders[i].ID;
+	                order.field = orders[i].FIELD_ID;
+	                order.start = orders[i].START_TIME;
+	                order.end = orders[i].END_TIME;
+	                order.user = orders[i].USER_ID;
+	                order.cost = orders[i].TOTAL_COST;
+	                order.status = orders[i].BOOKING_STATUS;
+	                ordersTemp.push(order);
+	            }
+	            //TODO
+	            //fieldID -> fieldName
+	            //start and end data&time -> data and start/end
+	            bookings = ordersTemp;
+	            bookingsTemp = ordersTemp;
+//	         	reloadBookings(bookings);
+	        } else {
+	        		alert(data);//Fail Alert
+	        }
+        },
+        error: function (xhr, type) {
+            alert(type);
+        }
+	});
+}
+
+function reloadBookings(bookings){
+	var list = window.JST.personalMain({
+        orders: bookings
+    });
+    var container = $('#personalMain');
+    container.empty();
+    container.append($(list));
+}
+
+function pullDownRefreshBookings() {
+	setTimeout(function(){
+		getBookings();
+		changeStatus();
+		mui("#pulldownrefreshbookings").pullRefresh().endPulldownToRefresh();
+	},1000);
+}
+
+function changeStatus() {
+	// change order status from number to content
+    var status = $(".orderstatus");
+	for(var i=0; i<status.length; i++){
+		if($(status[i]).text() == "0") {
+			$(status[i]).text("Not Paid");
+			$(status[i]).css({'color':'red'});
+		} else if($(status[i]).text() == "1") {
+			$(status[i]).text("Paid");
+			$(status[i]).css({'color':'green'});
+		}
+	}
 }
 
 function drawChart(win, lose, tie) {

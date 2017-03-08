@@ -1,215 +1,32 @@
-<header class="mui-bar mui-bar-nav my-simple color-back" style="background-image: url(../resource/common/background-dark-up-part.png); background-size:100%">
-				<a id="menu" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-				<a id="setting" class="mui-btn mui-btn-link mui-pull-right w3-text-white" style="width:15%">Setting</a>
-</header>
-<div class="mui-content mui-scroll-wrapper" style="padding-top:34px;">
-
-<div style="background-image: url(../resource/common/background-dark-down-part.png); background-size:100%">
-	<div class="mui-content-padded w3-center my-simple">
-		<img src="../resource/personalMain/picture.png" width="20%">
-		<p class="w3-text-white" style="font-size: 13px">
-			<label>Ringgold<br></label>
-			<label>Team: </label>
-			<label>Tusami</label>
-		</p>
-		<div class="mui-segmented-control mui-segmented-control-inverted my-transparent-simple" style="font-size: 16px">
-			<a id="p1" class="mui-control-item mui-active" href="#item1">
-				</span>Data</a>
-			<a id="p2" class="mui-control-item" href="#item2">
-				</span>Matches</a>
-			<a id="p3" class="mui-control-item" href="#item3">
-				</span>Orders</a>
-		</div>
-	</div>
-</div>
-
 <!--个人主页-->
-<div class="mui-scroll-wrapper" style="margin-top:204px;">
-	<div class="mui-scroll">
-		<div id="item1" class="mui-control-content mui-active my-simple">
-			<table style="margin-top:0px;" class="w3-center my-simple w3-small">
-				<tr>
-					<td class="td-border">
-						<label>26<br></label>
-						<label style="color:#b5b5b6">Age</label>
-					</td>
-					<td class="td-border">
-						<label>1.71cm<br></label>
-						<label style="color:#b5b5b6">Height</label>
-					</td>
-					<td class="td-border">
-						<label>60kg<br></label>
-						<label style="color:#b5b5b6">Weight</label>
-					</td>
-					<td class="td-border">
-						<label>Forward<br></label>
-						<label style="color:#b5b5b6">Position</label>
-					</td>
-				</tr>
-			</table>
+<!--订单-->
+<%_.each(orders, function (order) {%>
+    <div class="my-card2">
+        <div class="my-card-content">
+            <div class="w3-row">
+                <div class="w3-col s4 w3-center">
+                    <img src="../resource/personalMain/field_ordered.png" width="72%">
+                </div>
+                <div class="w3-col s5 w3-center">
+                    <label style="font-size: 10px;" class="mui-pull-left"><%=order.id%></label>
+                    <br>
+                    <label style="font-size: 11px;" class="mui-pull-left">From <%=order.start%></label>
+                    <br>
+                    <label style="font-size: 11px;" class="mui-pull-left">To <%=order.end%></label>
+                    <br>
+                    <label style="font-size: 13px;" class="mui-pull-left orderstatus"><%=order.status%></label>
+                    <label style="font-size: 13px;" class="mui-pull-left">&nbsp;$<%=order.cost%></label>
+                </div>
+                <div class="w3-col s3 w3-center">
+                    <label style="font-size: 13px;" class="mui-pull-right">Details</label>
+                    <br>
+                    <br>
+                    <br>
+                    <label style="font-size: 14px; color: #fdcb1d;" class="mui-pull-right">Rate it!</label>
+                </div>
+            </div>
+        </div>
+        <hr style="border-top:1px solid #595757; margin-top: 8px; margin-bottom: 0px;" />
+    </div>
+<%});%>
 
-			<!--进球与助攻-->
-			<div class="mui-content-padded my-simple">
-				<div class="w3-row">
-					<!--进球信息-->
-					<div class="w3-col s6 w3-center">
-						<div class="w3-row">
-							<div class="w3-col s6 w3-center">
-								<img src="../resource/personalMain/goals.png" width="65%">
-							</div>
-							<div class="w3-col s6 w3-center">
-								<label style="color: #fdcb1d; font-size: 23px;">48<br></label>
-								<label class="w3-text-grey">Goals</label>
-							</div>
-						</div>
-					</div>
-
-					<img src="../resource/personalMain/line.png" style="position: absolute;" width="0.42%">
-
-					<!--助攻信息-->
-					<div class="w3-col s6 w3-center">
-						<div class="w3-row">
-							<div class="w3-col s6 w3-center">
-								<img src="../resource/personalMain/assists.png" width="70%">
-							</div>
-							<div class="w3-col s6 w3-center">
-								<label style="color: #39d5f1; font-size: 23px;">20<br></label>
-								<label class="w3-text-grey">Assists</label>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="mui-content-padded">
-				<div id="main" style="height: 200px"></div>
-			</div>
-
-			<div class="mui-content-padded">
-				<div class="w3-row">
-					<div class="w3-col s4 w3-center">
-						<label class="w3-small" style="color: #fdcb1d">Winnning Rate<br></label>
-						<label class="w3-large" style="color: #fdcb1d">50%</label>
-					</div>
-					<div class="w3-col s4 w3-center">
-						<label class="w3-small" style="color: #b5b5b6">Lost Rate<br></label>
-						<label class="w3-large" style="color: #b5b5b6">40%</label>
-					</div>
-					<div class="w3-col s4 w3-center">
-						<label class="w3-small" style="color: #595757">Tie Rate<br></label>
-						<label class="w3-large" style="color: #595757">10%</label>
-					</div>
-				</div>
-			</div>
-
-			<div class="mui-content-padded">
-				<div id="chart2" style="height: 200px"></div>
-			</div>
-		</div>
-
-		
-		<!--球赛-->
-		<div id="item2" class="mui-control-content my-simple">
-			<!--这里应该用一个for loop给template-->
-
-			<!--球赛1-->
-			<div class="my-card">
-				<div class="mui-card-content">
-					<div class="mui-card-content-inner">
-						<div class="w3-row">
-							<div class="w3-col s12 w3-center">
-								<div class="w3-row">
-									<div class="w3-col s4 w3-center">
-										<img src="../resource/personalMain/team1.png" width="45%">
-										<br>
-										<label class="w3-tiny">CAC</label>
-									</div>
-									<div class="w3-col s4 w3-center">
-										<label style="font-size: 27px;">5</label>
-										<label style="font-size: 27px;">:</label>
-										<label style="font-size: 27px;">4<br></label>
-										<label class="w3-tiny">July 6</label>
-									</div>
-									<div class="w3-col s4 w3-center">
-										<img src="../resource/personalMain/team3.png" width="45%">
-										<br>
-										<label class="w3-tiny">CFC</label>
-									</div>
-									<a><span class="mui-icon mui-icon-arrowright" style="position: absolute; right: -11px; top: 35px"></span></a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!--球赛2-->
-			<div class="my-card">
-				<div class="mui-card-content">
-					<div class="mui-card-content-inner">
-						<div class="w3-row">
-							<div class="w3-col s12 w3-center">
-								<div class="w3-row">
-									<div class="w3-col s4 w3-center">
-										<img src="../resource/personalMain/team3.png" width="45%">
-										<br>
-										<label class="w3-tiny">CAC</label>
-									</div>
-									<div class="w3-col s4 w3-center">
-										<label style="font-size: 27px;">3</label>
-										<label style="font-size: 27px;">:</label>
-										<label style="font-size: 27px;">0<br></label>
-										<label class="w3-tiny">August 7</label>
-									</div>
-									<div class="w3-col s4 w3-center">
-										<img src="../resource/personalMain/team1.png" width="45%">
-										<br>
-										<label class="w3-tiny">CFC</label>
-									</div>
-									<a><span class="mui-icon mui-icon-arrowright" style="position: absolute; right: -11px; top: 35px"></span></a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!--订单-->
-		<div id="item3" class="mui-control-content my-simple">
-
-			<!--这里应该用一个for loop给template-->
-	  			<%_.each(orders, function (order) {%>
-				    <!--订单 Ex-->
-				    <div class="my-card2">
-				        <div class="my-card-content">
-				            <div class="w3-row">
-				                <div class="w3-col s4 w3-center">
-				                    <img src="../resource/personalMain/field_ordered.png" width="72%">
-				                </div>
-				                <div class="w3-col s5 w3-center">
-				                    <label style="font-size: 10px;" class="mui-pull-left"><%=order.id%></label>
-				                    <br>
-				                    <label style="font-size: 11px;" class="mui-pull-left">From <%=order.start%></label>
-				                    <br>
-				                    <label style="font-size: 11px;" class="mui-pull-left">To <%=order.end%></label>
-				                    <br>
-				                    <label style="font-size: 13px;" class="mui-pull-left orderstatus"><%=order.status%></label>
-				                    <label style="font-size: 13px;" class="mui-pull-left">&nbsp;$<%=order.cost%></label>
-				                </div>
-				                <div class="w3-col s3 w3-center">
-				                    <label style="font-size: 13px;" class="mui-pull-right">Details</label>
-				                    <br>
-				                    <br>
-				                    <br>
-				                    <label style="font-size: 14px; color: #fdcb1d;" class="mui-pull-right">Rate it!</label>
-				                </div>
-				            </div>
-				        </div>
-				        <hr style="border-top:1px solid #595757; margin-top: 8px; margin-bottom: 0px;" />
-				    </div>
-				<%});%>
-
-		</div>
-	</div>
-</div>

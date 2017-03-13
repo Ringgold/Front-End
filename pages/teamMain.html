@@ -1,334 +1,362 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title></title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
 
-		<script src="../library/js/mui.js"></script>
-		<script src="../library/js/jquery.js"></script>
-		<script src="../library/js/underscore-min.js"></script>
-		<script src="../library/js/echarts.min.js"></script>
-		<script src="../dist/templates.js"></script>
-		<script src="../logic/teamMain.js"></script>
+	<script src="../library/js/mui.js"></script>
+	<script src="../library/js/jquery.js"></script>
+	<script src="../library/js/underscore-min.js"></script>
+	<script src="../library/js/echarts.min.js"></script>
+	<script src="../dist/templates.js"></script>
+	<script src="../logic/fieldList.jss"></script>
+	<script src="../logic/teamMain.js"></script>
 
-		<link href="../library/css/mui.css" rel="stylesheet" />
-		<link href="../library/css/w3.css" rel="stylesheet" />
-		<link href="../library/css/common.css" rel="stylesheet" />
+	<link href="../library/css/mui.css" rel="stylesheet" />
+	<link href="../library/css/w3.css" rel="stylesheet" />
+	<link href="../library/css/common.css" rel="stylesheet" />
+</head>
 
-		<script type="text/javascript" charset="utf-8">
-			mui.init();
-		</script>
-	</head>
-
-	<body>
-	<header class="mui-bar mui-bar-nav my-simple black-back">
-		<a id="menu" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-		<h1 class="mui-title w3-text-white">Team Page</h1>
-<!--		<a id="setting" class="mui-btn mui-btn-link mui-pull-right w3-text-white" style="width:15%">Setting</a>-->
-	</header>
-	<div class="mui-content mui-scroll-wrapper black-back" style="padding-top:34px;">
-		
-	<div class="mui-segmented-control mui-segmented-control-inverted my-transparent-simple" style="font-size: 13px; color: #b5b5b6;">
-		<a id="p1" class="mui-control-item mui-active" href="#item4">
-			</span>Records</a>
-		<a id="p2" class="mui-control-item" href="#item5">
-			</span>Topics</a>
-		<a id="p3" class="mui-control-item" href="#item6">
-			</span>Matches</a>
-		<a id="p4" class="mui-control-item" href="#item7">
-			</span>Members</a>
-		<a id="p5" class="mui-control-item" href="#item8">
-			</span>Photos</a>
-	</div>
-	
-	<!--Team Pages-->
-	<div class="mui-scroll-wrapper" style="margin-top:77px;">
-		<div class="mui-scroll">
-			<!--Records-->
-			<div id="item4" class="mui-control-content mui-active">
-				<div style="background-image: url(../resource/common/background-dark-down-part.png); background-size:100%; padding: 20px 0px;">
-					<div class="mui-content-padded w3-center my-simple">
-						<div class="w3-row">
-							<div class="w3-col s4 w3-center">
-								<img src="../resource/teamMain/TeamLogo.png" width="70%">
-							</div>
-							<div class="w3-col s4 w3-center" style="font-size: 14px;">
-								<br>
-								<label style="font-size: 18px">Delimonge<br></label>
-								<label style="color: #888888">Role:</label>
-								<label style="color: #888888">Tourist</label>
-								<div style="margin: 5px 14px;">
-									<button class="mui-btn mui-btn-block mui-btn-yellow" style="padding: 0px 0px;">Join In</button>
+<body>
+<div class="mui-off-canvas-wrap mui-draggable mui-active">
+	<!-- 菜单容器 -->
+    <aside class="mui-off-canvas-left my-simple w3-black mui-active">
+        <div class="mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <div class="mui-content-padded">
+                    <label class="w3-large w3-text-white">Navigation</label>
+                </div>
+                <br>
+                <ul id="menu_content"
+                    class="mui-table-view mui-table-view-chevron mui-table-view-inverted my-transparent-simple">
+                    <li class="mui-table-view-cell">
+                        <a id="person" class="mui-navigate-right" open-type="common">
+                           	Personal Page
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a id="team" class="mui-navigate-right" open-type="common">
+							Team Page
+                        </a>
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <a id="list" class="mui-navigate-right" open-type="common">
+							Field Booking
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+	<div class="mui-inner-wrap">
+		<header class="mui-bar mui-bar-nav my-simple black-back">
+			<a id="menu" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+			<h1 class="mui-title w3-text-white">Team Page</h1>
+			<!--<a id="setting" class="mui-btn mui-btn-link mui-pull-right w3-text-white" style="width:15%">Setting</a>-->
+		</header>
+		<div class="mui-content mui-scroll-wrapper black-back" style="padding-top:34px;">
+			<div class="mui-segmented-control mui-segmented-control-inverted my-transparent-simple" style="font-size: 13px; color: #b5b5b6;">
+				<a id="p1" class="mui-control-item mui-active" href="#item4">
+					</span>Records</a>
+				<a id="p2" class="mui-control-item" href="#item5">
+					</span>Topics</a>
+				<a id="p3" class="mui-control-item" href="#item6">
+					</span>Matches</a>
+				<a id="p4" class="mui-control-item" href="#item7">
+					</span>Members</a>
+				<a id="p5" class="mui-control-item" href="#item8">
+					</span>Photos</a>
+			</div>
+			<!--Team Pages-->
+			<div id="Teampage" class="mui-scroll-wrapper" style="margin-top:77px;">
+				<div class="mui-scroll">
+					<!--Records-->
+					<div id="item4" class="mui-control-content mui-active">
+						<div style="background-image: url(../resource/common/background-dark-down-part.png); background-size:100%; padding: 20px 0px;">
+							<div class="mui-content-padded w3-center my-simple">
+								<div class="w3-row">
+									<div class="w3-col s4 w3-center">
+										<img src="../resource/teamMain/TeamLogo.png" width="70%">
+									</div>
+									<div class="w3-col s4 w3-center" style="font-size: 14px;">
+										<br>
+										<label style="font-size: 18px">Delimonge<br></label>
+										<label style="color: #888888">Role:</label>
+										<label style="color: #888888">Tourist</label>
+										<div style="margin: 5px 14px;">
+											<button class="mui-btn mui-btn-block mui-btn-yellow" style="padding: 0px 0px;">Join In</button>
+										</div>
+									</div>
+									<div class="w3-col s4 w3-center">
+										<br>
+										<div class="mui-icon mui-icon-upload" style="float: right; padding-top: 10px;">
+											
+		        						</div>
+									</div>
 								</div>
 							</div>
-							<div class="w3-col s4 w3-center">
-								<br>
-								<div class="mui-icon mui-icon-upload" style="float: right; padding-top: 10px;">
-									
-        						</div>
-							</div>
 						</div>
-					</div>
-				</div>
-				
-				<div class="grey-back">
-					<div class="w3-row" style="margin-left: 45px;">
-							<div class="w3-col s6 w3-center">
-								<div class="mui-content-padded">
-									<div id="mainT" style="height: 170px; margin-left: 0px;">
-										
+						
+						<div class="grey-back">
+							<div class="w3-row" style="margin-left: 45px;">
+									<div class="w3-col s6 w3-center">
+										<div class="mui-content-padded">
+											<div id="mainT" style="height: 170px; margin-left: 0px;">
+												
+											</div>
+										</div>
 									</div>
+									
+									<div class="w3-col s6 w3-center">
+										<div class="mui-content-padded">
+											<div class="my-record-padding2">
+												<label class="w3-small" style="color: #fdcb1d">Games Won<br></label>
+												<label class="w3-large" style="color: #fdcb1d">15</label>
+											</div>
+											<div class="my-record-padding2">
+												<label class="w3-small" style="color: #b5b5b6">Games Lost<br></label>
+												<label class="w3-large" style="color: #b5b5b6">12</label>
+											</div>
+											<div class="my-record-padding2">
+												<label class="w3-small" style="color: #595757">Games Tie<br></label>
+												<label class="w3-large" style="color: #595757">3</label>
+											</div>
+										</div>
+									</div>
+									<!--Another Layout Template-->
+									<!--<div class="w3-col s3 w3-center" style="font-size: x-large">
+										<div class="my-record-padding">
+											<label style="color: #fdcb1d;">Wins</label>
+										</div>
+										<div class="my-record-padding">
+											<label style="color: #b5b5b6;">Losts</label>
+										</div>
+										<div class="my-record-padding">
+											<label style="color: #595757;">Ties</label>
+										</div>
+									</div>
+									<div class="w3-col s3 w3-center" style="font-size: x-large">
+										<div class="my-record-padding">
+											<label style="color: #fdcb1d;">15</label>
+										</div>
+										<div class="my-record-padding">
+											<label style="color: #b5b5b6;">12</label>
+										</div>
+										<div class="my-record-padding">
+											<label style="color: #595757;">3</label>
+										</div>
+									</div>-->
+							</div>
+							
+							<!--Goal Chart-->
+							<div>
+								<div id="chart3T" style="height: 45px; padding: 7px 0px; margin-bottom: 6px;">
+												
 								</div>
 							</div>
 							
-							<div class="w3-col s6 w3-center">
-								<div class="mui-content-padded">
-									<div class="my-record-padding2">
-										<label class="w3-small" style="color: #fdcb1d">Games Won<br></label>
-										<label class="w3-large" style="color: #fdcb1d">15</label>
-									</div>
-									<div class="my-record-padding2">
-										<label class="w3-small" style="color: #b5b5b6">Games Lost<br></label>
-										<label class="w3-large" style="color: #b5b5b6">12</label>
-									</div>
-									<div class="my-record-padding2">
-										<label class="w3-small" style="color: #595757">Games Tie<br></label>
-										<label class="w3-large" style="color: #595757">3</label>
-									</div>
-								</div>
-							</div>
-							<!--Another Layout Template-->
-							<!--<div class="w3-col s3 w3-center" style="font-size: x-large">
-								<div class="my-record-padding">
-									<label style="color: #fdcb1d;">Wins</label>
-								</div>
-								<div class="my-record-padding">
-									<label style="color: #b5b5b6;">Losts</label>
-								</div>
-								<div class="my-record-padding">
-									<label style="color: #595757;">Ties</label>
-								</div>
-							</div>
-							<div class="w3-col s3 w3-center" style="font-size: x-large">
-								<div class="my-record-padding">
-									<label style="color: #fdcb1d;">15</label>
-								</div>
-								<div class="my-record-padding">
-									<label style="color: #b5b5b6;">12</label>
-								</div>
-								<div class="my-record-padding">
-									<label style="color: #595757;">3</label>
-								</div>
-							</div>-->
-					</div>
-					
-					<!--Goal Chart-->
-					<div>
-						<div id="chart3T" style="height: 45px; padding: 7px 0px; margin-bottom: 6px;">
-										
 						</div>
-					</div>
-					
-				</div>
-
-				<!--MVPs-->
-				<div class="grey-back" style="margin-bottom: -3px;">
-					<p class="my-simple" style="font-size: large; padding-left: 5%;">
-						Most Valuable Player(s)
-					</p>
-					<div class="mui-content-padded my-simple">
-						<div class="w3-row">
-							<!--Goals MVP-->
-							<div class="w3-col s6 w3-center">
-								<div class="my-pentagon" style="background-color:#fdcb1d;">
-									<div class="my-pentagon-inner" style="background-image: url(../resource/teamMain/MVP1.png); Top: 5px; ">
+		
+						<!--MVPs-->
+						<div class="grey-back" style="margin-bottom: -3px;">
+							<p class="my-simple" style="font-size: large; padding-left: 5%;">
+								Most Valuable Player(s)
+							</p>
+							<div class="mui-content-padded my-simple">
+								<div class="w3-row">
+									<!--Goals MVP-->
+									<div class="w3-col s6 w3-center">
+										<div class="my-pentagon" style="background-color:#fdcb1d;">
+											<div class="my-pentagon-inner" style="background-image: url(../resource/teamMain/MVP1.png); Top: 5px; ">
+											</div>
+										</div>
+										<label >Ringgold<br></label>
+										<label class="my-yellow" style="font-size: 18px;">Goals </label>
+										<label style="font-size: 18px;">35</label>
 									</div>
-								</div>
-								<label >Ringgold<br></label>
-								<label class="my-yellow" style="font-size: 18px;">Goals </label>
-								<label style="font-size: 18px;">35</label>
-							</div>
-	
-							<img src="../resource/personalMain/line.png" style="position: absolute;" width="0.82%">
-	
-							<!--Assist MVP-->
-							<div class="w3-col s6 w3-center">
-								<div class="my-pentagon" style="background-color:#fdcb1d;">
-									<div class="my-pentagon-inner" style="background-image: url(../resource/teamMain/MVP2.png); Top: 5px; ">
-									</div>
-								</div>
-								<label >Well<br></label>
-								<label class="my-yellow" style="font-size: 18px;">Team's Election</label>
-								<label style="font-size: 18px;"></label>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-
-				<div class="grey-back">
-					<div id="chart2T" style="height: 200px"></div>
-				</div>
-			</div>
-
 			
-			<!--Topics-->
-			<div id="item5" class="mui-control-content my-simple grey-back" style="margin-top: -2px; padding-top: 10px;">
-				<!--订单1-->
-				<div class="my-card2" style="padding-left: 15px; padding-bottom: 5px; margin-right: -5px;">
-					<div class="my-card-content">
-						<div class="w3-row">						
-							<div class="w3-col s8">
-								<label style="font-size: 16px; color: #E2E2E2;">Quite a nice experience, but it would be much better if the field is lighter.</label>
-								<br>
-								<br>
+									<img src="../resource/personalMain/line.png" style="position: absolute;" width="0.82%">
+			
+									<!--Assist MVP-->
+									<div class="w3-col s6 w3-center">
+										<div class="my-pentagon" style="background-color:#fdcb1d;">
+											<div class="my-pentagon-inner" style="background-image: url(../resource/teamMain/MVP2.png); Top: 5px; ">
+											</div>
+										</div>
+										<label >Well<br></label>
+										<label class="my-yellow" style="font-size: 18px;">Team's Election</label>
+										<label style="font-size: 18px;"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+		
+						<div class="grey-back">
+							<div id="chart2T" style="height: 200px"></div>
+						</div>
+					</div>
+		
+					
+					<!--Topics-->
+					<div id="item5" class="mui-control-content my-simple grey-back" style="margin-top: -2px; padding-top: 10px;">
+						<!--订单1-->
+						<div class="my-card2" style="padding-left: 15px; padding-bottom: 5px; margin-right: -5px;">
+							<div class="my-card-content">
 								<div class="w3-row">						
-									<div class="w3-col s1 w3-center">
-										<img src="../resource/teamMain/replay.png" width="110%">
+									<div class="w3-col s8">
+										<label style="font-size: 16px; color: #E2E2E2;">Quite a nice experience, but it would be much better if the field is lighter.</label>
+										<br>
+										<br>
+										<div class="w3-row">						
+											<div class="w3-col s1 w3-center">
+												<img src="../resource/teamMain/replay.png" width="110%">
+											</div>
+											<div class="w3-col s1 w3-center">
+												<label style="font-size: 15px; color: #E2E2E2;">11</label>
+											</div>
+											<div class="w3-col s1 w3-center">
+												<img src="../resource/teamMain/thumb.png" width="110%">
+											</div>
+											<div class="w3-col s1 w3-center">
+												<label style="font-size: 15px; color: #E2E2E2;">5</label>
+											</div>
+										</div>
 									</div>
-									<div class="w3-col s1 w3-center">
-										<label style="font-size: 15px; color: #E2E2E2;">11</label>
-									</div>
-									<div class="w3-col s1 w3-center">
-										<img src="../resource/teamMain/thumb.png" width="110%">
-									</div>
-									<div class="w3-col s1 w3-center">
-										<label style="font-size: 15px; color: #E2E2E2;">5</label>
+									<div class="w3-col s4 w3-center">
+										<img src="../resource/teamMain/Player1.png" width="72%">
+										<label style="font-size: 12px; color: #b7b7b7">Ringgold</label>
+										<br>
+										<label style="font-size: 12px; color: #b7b7b7">7 Mins Ago</label>
 									</div>
 								</div>
 							</div>
-							<div class="w3-col s4 w3-center">
-								<img src="../resource/teamMain/Player1.png" width="72%">
-								<label style="font-size: 12px; color: #b7b7b7">Ringgold</label>
-								<br>
-								<label style="font-size: 12px; color: #b7b7b7">7 Mins Ago</label>
-							</div>
 						</div>
-					</div>
-				</div>
-				<hr style="border-top:1px solid #595757; margin-top: 0px; margin-bottom: 0px;" />
-
-				<!--订单2-->
-				<div class="my-card2" style="padding-left: 15px; padding-bottom: 5px; margin-right: -5px;">
-					<div class="my-card-content">
-						<div class="w3-row">						
-							<div class="w3-col s8">
-								<label style="font-size: 16px; color: #E2E2E2;">In the last match, I think we should have tried harder!</label>
-								<br>
-								<br>
+						<hr style="border-top:1px solid #595757; margin-top: 0px; margin-bottom: 0px;" />
+		
+						<!--订单2-->
+						<div class="my-card2" style="padding-left: 15px; padding-bottom: 5px; margin-right: -5px;">
+							<div class="my-card-content">
 								<div class="w3-row">						
-									<div class="w3-col s1 w3-center">
-										<img src="../resource/teamMain/replay.png" width="110%">
+									<div class="w3-col s8">
+										<label style="font-size: 16px; color: #E2E2E2;">In the last match, I think we should have tried harder!</label>
+										<br>
+										<br>
+										<div class="w3-row">						
+											<div class="w3-col s1 w3-center">
+												<img src="../resource/teamMain/replay.png" width="110%">
+											</div>
+											<div class="w3-col s1 w3-center">
+												<label style="font-size: 15px; color: #E2E2E2;">2</label>
+											</div>
+											<div class="w3-col s1 w3-center">
+												<img src="../resource/teamMain/thumb.png" width="110%">
+											</div>
+											<div class="w3-col s1 w3-center">
+												<label style="font-size: 15px; color: #E2E2E2;">3</label>
+											</div>
+										</div>
 									</div>
-									<div class="w3-col s1 w3-center">
-										<label style="font-size: 15px; color: #E2E2E2;">2</label>
-									</div>
-									<div class="w3-col s1 w3-center">
-										<img src="../resource/teamMain/thumb.png" width="110%">
-									</div>
-									<div class="w3-col s1 w3-center">
-										<label style="font-size: 15px; color: #E2E2E2;">3</label>
+									<div class="w3-col s4 w3-center">
+										<img src="../resource/teamMain/Player2.png" width="72%">
+										<label style="font-size: 12px; color: #b7b7b7">Linarg</label>
+										<br>
+										<label style="font-size: 12px; color: #b7b7b7">30 Mins Ago</label>
 									</div>
 								</div>
 							</div>
-							<div class="w3-col s4 w3-center">
-								<img src="../resource/teamMain/Player2.png" width="72%">
-								<label style="font-size: 12px; color: #b7b7b7">Linarg</label>
-								<br>
-								<label style="font-size: 12px; color: #b7b7b7">30 Mins Ago</label>
-							</div>
 						</div>
+						<hr style="border-top:1px solid #595757; margin-top: 0px; margin-bottom: 0px;" />
 					</div>
-				</div>
-				<hr style="border-top:1px solid #595757; margin-top: 0px; margin-bottom: 0px;" />
-			</div>
-	
-			<!--Matches-->
-			<div id="item6" class="mui-control-content my-simple">
-				<!--球赛1-->
-				<div class="my-card">
-					<div class="mui-card-content">
-						<div class="mui-card-content-inner">
-							<div class="w3-row">
-								<div class="w3-col s12 w3-center">
+			
+					<!--Matches-->
+					<div id="item6" class="mui-control-content my-simple">
+						<!--球赛1-->
+						<div class="my-card">
+							<div class="mui-card-content">
+								<div class="mui-card-content-inner">
 									<div class="w3-row">
-										<div class="w3-col s4 w3-center">
-											<img src="../resource/personalMain/team1.png" width="45%">
-											<br>
-											<label class="w3-tiny">CAC</label>
+										<div class="w3-col s12 w3-center">
+											<div class="w3-row">
+												<div class="w3-col s4 w3-center">
+													<img src="../resource/personalMain/team1.png" width="45%">
+													<br>
+													<label class="w3-tiny">CAC</label>
+												</div>
+												<div class="w3-col s4 w3-center">
+													<label style="font-size: 27px;">5</label>
+													<label style="font-size: 27px;">:</label>
+													<label style="font-size: 27px;">4<br></label>
+													<label class="w3-tiny">July 6</label>
+												</div>
+												<div class="w3-col s4 w3-center">
+													<img src="../resource/personalMain/team3.png" width="45%">
+													<br>
+													<label class="w3-tiny">CFC</label>
+												</div>
+												<a><span class="mui-icon mui-icon-arrowright" style="position: absolute; right: -11px; top: 35px"></span></a>
+											</div>
 										</div>
-										<div class="w3-col s4 w3-center">
-											<label style="font-size: 27px;">5</label>
-											<label style="font-size: 27px;">:</label>
-											<label style="font-size: 27px;">4<br></label>
-											<label class="w3-tiny">July 6</label>
-										</div>
-										<div class="w3-col s4 w3-center">
-											<img src="../resource/personalMain/team3.png" width="45%">
-											<br>
-											<label class="w3-tiny">CFC</label>
-										</div>
-										<a><span class="mui-icon mui-icon-arrowright" style="position: absolute; right: -11px; top: 35px"></span></a>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-
-				<!--球赛2-->
-				<div class="my-card">
-					<div class="mui-card-content">
-						<div class="mui-card-content-inner">
-							<div class="w3-row">
-								<div class="w3-col s12 w3-center">
+		
+						<!--球赛2-->
+						<div class="my-card">
+							<div class="mui-card-content">
+								<div class="mui-card-content-inner">
 									<div class="w3-row">
-										<div class="w3-col s4 w3-center">
-											<img src="../resource/personalMain/team3.png" width="45%">
-											<br>
-											<label class="w3-tiny">CAC</label>
+										<div class="w3-col s12 w3-center">
+											<div class="w3-row">
+												<div class="w3-col s4 w3-center">
+													<img src="../resource/personalMain/team3.png" width="45%">
+													<br>
+													<label class="w3-tiny">CAC</label>
+												</div>
+												<div class="w3-col s4 w3-center">
+													<label style="font-size: 27px;">3</label>
+													<label style="font-size: 27px;">:</label>
+													<label style="font-size: 27px;">0<br></label>
+													<label class="w3-tiny">August 7</label>
+												</div>
+												<div class="w3-col s4 w3-center">
+													<img src="../resource/personalMain/team1.png" width="45%">
+													<br>
+													<label class="w3-tiny">CFC</label>
+												</div>
+												<a><span class="mui-icon mui-icon-arrowright" style="position: absolute; right: -11px; top: 35px"></span></a>
+											</div>
 										</div>
-										<div class="w3-col s4 w3-center">
-											<label style="font-size: 27px;">3</label>
-											<label style="font-size: 27px;">:</label>
-											<label style="font-size: 27px;">0<br></label>
-											<label class="w3-tiny">August 7</label>
-										</div>
-										<div class="w3-col s4 w3-center">
-											<img src="../resource/personalMain/team1.png" width="45%">
-											<br>
-											<label class="w3-tiny">CFC</label>
-										</div>
-										<a><span class="mui-icon mui-icon-arrowright" style="position: absolute; right: -11px; top: 35px"></span></a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					<!--Members-->
+					<div id="item7" class="mui-control-content my-simple">
+						<input id="avatar_input" type="file" name="picture" accept="image/png, image/jpeg" class="mui-btn mui-btn-block mui-btn-yellow"/>
+					    <div class="mui-content-padded">
+					    <span id="Cost" style="color: #FDCB1D;float:right"></span>	
+					        <button id="goUpload" class="mui-btn mui-btn-block mui-btn-yellow">Upload Yourself</button>
+					        	
+					        <br>
+					    </div>
+					</div>
+					<!--Photos-->
+					<div id="item8" class="mui-control-content my-simple">
+					</div>
 				</div>
-			</div>
-			<!--Members-->
-			<div id="item7" class="mui-control-content my-simple">
-				<input id="avatar_input" type="file" name="picture" accept="image/png, image/jpeg" class="mui-btn mui-btn-block mui-btn-yellow"/>
-			    <div class="mui-content-padded">
-			    <span id="Cost" style="color: #FDCB1D;float:right"></span>	
-			        <button id="goUpload" class="mui-btn mui-btn-block mui-btn-yellow">Upload Yourself</button>
-			        	
-			        <br>
-			    </div>
-			</div>
-			<!--Photos-->
-			<div id="item8" class="mui-control-content my-simple">
 			</div>
 		</div>
 	</div>
 </div>
-		<script>
-			teamMainInit();
-			uploadInit();
-		</script>
-	</body>
+<script>
+	teamMainInit();
+	uploadInit();
+</script>
+</body>
 
 </html>

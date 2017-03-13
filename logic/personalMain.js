@@ -9,7 +9,8 @@ function personalMainInit() {
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
     $('#team').on('touchend', function () {
-    		
+    		plus.webview.getWebviewById('teamMain').evalJS("showTemplate();");
+    		plus.webview.show("teamMain", "pop-in");
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
 	$('#list').on('touchend', function () {

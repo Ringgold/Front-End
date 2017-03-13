@@ -6,85 +6,6 @@ var bookingsTemp = [];//Async
 
 var currentRegionPicker, currentTypePicker, currentSortPicker, fieldInfoTmp, currentTimePicker,changeTimeList;
 
-//Personal Page functions
-
-//Get Personal Booking Status
-//function getBookings(){
-//	var UserID = localStorage.getItem("User_ID");
-//	var Url = "https://socceredge.info/api/field/field_booking/getBookingByUserId/" + UserID;
-//	console.log(Url);
-//	mui.ajax(Url, {
-//		type: "get",
-//		timeout: 10000,
-//		async: false,
-//      success: function (data) {
-//	        if(data != "FAIL"){
-//		        	console.log("Personal Booking Acquired " + data);     		        	
-//		        	var orders = JSON.parse(data);
-//		        	var ordersTemp = [];
-//				//Save the Orders
-//	            for (var i = 0; i < orders.length; i++) {
-//	                var order = {};
-//	                order.id = orders[i].ID;
-//	                order.field = orders[i].FIELD_ID;
-//	                order.start = orders[i].START_TIME;
-//	                order.end = orders[i].END_TIME;
-//	                order.user = orders[i].USER_ID;
-//	                order.cost = orders[i].TOTAL_COST;
-//	                order.status = orders[i].BOOKING_STATUS;
-//	                ordersTemp.push(order);
-//	            }
-//	            //TODO
-//	            //fieldID -> fieldName
-//	            //start and end data&time -> data and start/end
-//	            
-//	            bookings = ordersTemp;
-//	            bookingsTemp = ordersTemp;
-////	         	reloadBookings(bookings);
-//	        } else {
-//	        		alert(data);//Fail Alert
-//	        }
-//      },
-//      error: function (xhr, type) {
-//          alert(type);
-//      }
-//	});
-//}
-//
-//function reloadBookings(bookings){
-//	var list = window.JST.personalMain({
-//      orders: bookings
-//  });
-//  var container = $('#personalMain');
-//  container.empty();
-//  container.append($(list));
-//}
-//
-//function pullDownRefreshBookings() {
-//	setTimeout(function(){
-//		console.log("fuck");
-//		getBookings();
-//		changeStatus();
-//		mui("#pulldownrefreshbookings").pullRefresh().endPulldownToRefresh();
-//	},1000);
-//}
-//
-//function changeStatus() {
-//	// change order status from number to content
-//  var status = $(".orderstatus");
-//	for(var i=0; i<status.length; i++){
-//		if($(status[i]).text() == "0") {
-//			$(status[i]).text("Not Paid");
-//			$(status[i]).css({'color':'red'});
-//		} else if($(status[i]).text() == "1") {
-//			$(status[i]).text("Paid");
-//			$(status[i]).css({'color':'green'});
-//		}
-//	}
-//}
-
-//End of Personal Main Page Functions
-
 function goDetail(e) {
     plus.nativeUI.showWaiting();//加载loading界面
     var currentField = e.target.id;//得到点到的球场的id
@@ -126,34 +47,15 @@ function pulldownRefresh() {
 }
 
 function fieldListInit() { //创建整个页面, 只需要调用一次, 更新场地直接调用reloadFieldList
-//	getBookings();
-//	var personalMain = window.JST.personalMain({
-//		orders: bookings
-//	});
-	var teamMain = window.JST.teamMain({
-		
-	});
-
     $('#person').on('touchend', function () {
     		plus.webview.getWebviewById('personalMain').evalJS("showOrders();");
     		plus.webview.show("personalMain", "pop-in");
-//      $('#personalMain').show();
-//      $('#fieldList').hide();
-//      $('#teamMain').hide();
-//      drawChart(13, 11, 4);
-//      drawChart2(11,12,2,32,15,4,10);
-//      changeStatus();
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
     
     $('#team').on('touchend', function () {
-        $('#teamMain').show();
-        $('#personalMain').hide();
-        $('#fieldList').hide();   
-        uploadInit();
-        drawChartT(13, 11, 4);
-        drawChart2T(11,12,2,32,15,4,10);
-		drawChart3T(100, 56);
+    		plus.webview.getWebviewById('teamMain').evalJS("showTemplate();");
+    		plus.webview.show("teamMain", "pop-in");
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
 
@@ -163,9 +65,6 @@ function fieldListInit() { //创建整个页面, 只需要调用一次, 更新�
         $('#teamMain').hide();
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
-    
-//  $('#Orders').append($(personalMain));
-    $('#teamMain').append($(teamMain));
 
     $('.sidebar_menu').on('touchend', function () {
         mui('.mui-off-canvas-wrap').offCanvas('show');

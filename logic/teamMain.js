@@ -1,9 +1,38 @@
 var blobEncoding = 'image/png';
 var dataURL = '';
 function teamMainInit(){
+	$('#person').on('touchend', function () {
+    		plus.webview.getWebviewById('personalMain').evalJS("showOrders();");
+    		plus.webview.show("personalMain", "pop-in");
+        mui('.mui-off-canvas-wrap').offCanvas('close');
+    });
+    $('#team').on('touchend', function () {
+    		plus.webview.getWebviewById('teamMain').evalJS("showTemplate();");
+    		plus.webview.show("teamMain", "pop-in");
+        mui('.mui-off-canvas-wrap').offCanvas('close');
+    });
+	$('#list').on('touchend', function () {
+        plus.webview.show("fieldList", "pop-in");
+        mui('.mui-off-canvas-wrap').offCanvas('close');
+    });
+    
+    $('#menu').on('touchend', function () {
+        mui('.mui-off-canvas-wrap').offCanvas('show');
+    });
+    mui('.mui-scroll-wrapper').scroll({
+        deceleration: 0.0006,
+        indicators: false
+    });
+    
 	drawChartT(13, 11, 4);
 	drawChart2T(11, 12, 2, 32, 15, 4, 10);
 	drawChart3T(100, 56);
+}
+
+function showTemplate() {
+//	var teamMain = window.JST.teamMain({
+//	});
+//	$('#Teampage').append($(teamMain));
 }
 
 function uploadInit(){

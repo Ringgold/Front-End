@@ -1,5 +1,7 @@
 var blobEncoding = 'image/png';
 var dataURL = '';
+var teamID = 'a01a11acf8b34af5a4e08985c05b2602';
+
 function teamMainInit(){
 	$('#person').on('touchend', function () {
     		plus.webview.getWebviewById('personalMain').evalJS("showOrders();");
@@ -24,6 +26,8 @@ function teamMainInit(){
         indicators: false
     });
     
+    $('#join').on('touchend', applyToThisTeam);
+    
 	drawChartT(13, 11, 4);
 	drawChart2T(11, 12, 2, 32, 15, 4, 10);
 	drawChart3T(100, 56);
@@ -33,6 +37,35 @@ function showTemplate() {
 //	var teamMain = window.JST.teamMain({
 //	});
 //	$('#Teampage').append($(teamMain));
+}
+
+
+function applyToThisTeam(){
+//	var userID = localStorage.getItem("User_ID");
+	var userID = 'a9d93c4f3ee04324ab28c185dce32cd3';
+	
+	var info =
+		{
+			//id = localStorage.getItem("User_ID"),
+			playerId : 'a9d93c4f3ee04324ab28c185dce32cd3',//Each Time Should be With a different ID
+			teamID : teamID,
+		};
+	
+	var temp = JSON.stringify(info);
+	
+	Url = 'https://socceredge.info/api/team/team/request_join/'+userID+'/'+teamID;
+	mui.ajax(Url, {
+		type: "Get",
+		timeout: 10000,
+		data: temp,
+		async: false,
+        success: function (data) {
+        	alert(data);
+        },
+        error: function (xhr, type) {
+        	alert(type);
+        }
+	});
 }
 
 function uploadInit(){
@@ -63,7 +96,7 @@ function uploadYourself(){
 	var info =
 		{
 			//id = localStorage.getItem("User_ID"),
-			id : '22222222222222222222222222222222',//Each Time Should be With a different ID
+			id : 'a9d93c4f3ee04324ab28c185dce32cd3',//Each Time Should be With a different ID
 			number : '11',
 			position : 'Left Back',
 			avatar : dataURL,

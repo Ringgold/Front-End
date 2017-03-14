@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title></title>
+
+
+    <script src="../library/js/mui.js"></script>
+    <script src="../library/js/jquery.js"></script>
+    
+
+    <link href="../library/css/mui.css" rel="stylesheet"/>
+    <link href="../library/css/w3.css" rel="stylesheet"/>
+    <link href="../library/css/common.css" rel="stylesheet"/>
+
+</head>
+
+<body>
+<div class="mui-off-canvas-wrap mui-draggable mui-active">
+    <!-- 主页面容器 -->
+    <div class="mui-inner-wrap">
+        <div>
+            <header class="mui-bar mui-bar-nav w3-black">
+                <a class="mui-icon mui-icon-bars mui-pull-left sidebar_menu"></a>
+                <h1 class="mui-title w3-text-white">Add Team Page</h1>
+            </header>
+            <div class="mui-content">
+            	<button id="addteam" class="mui-btn mui-btn-block mui-btn-yellow" style="padding: 0px 1px;">Add a team</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+	$('#addteam').on('touchend', addAT);
+	function addAT(){
+		
+		var info =
+		{
+			id: 'dfdf',
+			name : 'CAC',
+			logo : '1',
+			topic: 'Welcome to CAC!',
+			brief: 'We are a Chinese Football Club at McGill',
+			assistantPlayer: '44444444444444444444444444444444',
+			goalPlayer: '44444444444444444444444444444444'
+		};
+	
+		var team = JSON.stringify(info);
+//		console.log(team);
+		alert(team);
+		Url = 'https://socceredge.info/api/team/team/insert';
+		mui.ajax(Url, {
+			type: "post",
+			timeout: 10000,
+			data: team,
+			async: false,
+	        success: function (data) {
+	        	alert(data);
+	        },
+	        error: function (xhr, type) {
+	        	alert(type);
+	        }
+		});
+		
+	}
+</script>
+</body>
+</html>

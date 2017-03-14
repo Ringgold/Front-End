@@ -1,0 +1,30 @@
+<%_.each(pendings, function (pending) {%>
+<div class="my-card2 my-simple" id='b<%=pending.id%>'>
+    <div class="my-card-content">
+        <div class="w3-row">
+            <div class="w3-col s3 w3-center">
+                <img src="../resource/personalMain/picture.png" width="70%">
+            </div>
+            <div class="w3-col s5 w3-center">
+                <label style="font-size: 18px;" class="mui-pull-left"><%=pending.id%></label>
+                <br>
+                <br>
+                <label style="font-size: 17px; color: #b5b5b6" class="mui-pull-left">Position: <%=pending.id%></label>
+            </div>
+            <div class="w3-col s4 w3-center">
+            	<div class="accept">
+            		<div style="margin: 4px 14px;">
+						<button class="mui-btn mui-btn-block mui-btn-yellow" id='<%=pending.id%>' style="padding: 0px 1px;">Accept</button>
+					</div>
+            	</div>
+            	<div class="reject">
+            		<div style="margin: 4px 14px;">
+						<button class="mui-btn mui-btn-block mui-btn-yellow" id='<%=pending.id%>' style="padding: 0px 1px; background-color: red; border-color: red;">Reject</button>
+					</div>
+            	</div>
+            </div>
+        </div>
+    </div>
+    <hr style="border-top:1px solid #595757; margin-top:0px; margin-bottom: 0px;" />
+</div>
+<%});%>

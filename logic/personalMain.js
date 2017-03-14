@@ -18,6 +18,10 @@ function personalMainInit() {
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
     
+    $('#goTeam').on('touchend', function () {
+        plus.webview.show("captain", "pop-in");
+    });
+    
     $('#menu').on('touchend', function () {
         mui('.mui-off-canvas-wrap').offCanvas('show');
     });
@@ -69,7 +73,7 @@ function getBookings(){
 	            //start and end data&time -> data and start/end
 	            bookings = ordersTemp;
 	            bookingsTemp = ordersTemp;
-//	         	reloadBookings(bookings);
+	         	reloadBookings(bookings);
 	        } else {
 	        		alert(data);//Fail Alert
 	        }

@@ -1,0 +1,28 @@
+ <%_.each(teams, function (team) {%>
+<hr style="border-top:1px solid #4b4b4b; margin: 8px 0px;"/>
+<div class="mui-control-content mui-active rows" style="height: 100px;">
+	<div class="w3-col s3 w3-center" style="height: inherit;">
+		<img id="teamLogo" src="<%=team.logo%>" style="height: inherit; padding: 10%;"/>
+	</div>
+	<div class="w3-col s9" style="word-wrap: break-word; height: inherit; overflow: hidden;">
+		<div id="teamTitle" class="w3-large" style="font-weight: 600;">
+			<label><%=team.name%></label>
+		</div>
+		<div id="teamInfo" class="w3-col s8" style="padding-right: 2%;">
+			<label><%=team.brief%></label>
+		</div>
+		<div class="w3-col s4 w3-center" style="border-left: 1px solid #4b4b4b; padding-left: 2%;">
+			<div id="teamMatch" class="w3-row" style="line-height: 30px; height: 30px;">
+				<img src="../resource/personalPage/ball.png" class="w3-col s2" style="height: inherit; padding: 11% 1px;"/>
+				<label class="w3-col s5" style="font-size: 10px;">Match</label>
+				<label class="w3-col s4" style="">0</label>
+			</div>
+			<div id="teamMember" class="w3-row" style="line-height: 30px; height: 30px;">
+				<img src="../resource/personalPage/friends.png" class="w3-col s2" style="height:inherit; padding: 11% 1px;"/>
+				<label class="w3-col s5" style="font-size: 10px;">Memb</label>
+				<label class="w3-col s4" style="">0</label>
+			</div>
+		</div>
+	</div>
+</div>
+<%});%>

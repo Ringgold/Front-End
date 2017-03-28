@@ -210,3 +210,26 @@ __p += '\r\n<!--Team Pages-->\r\n	<div class="mui-scroll">\r\n		<!--Records-->\r
 }
 return __p
 }})();
+(function() {
+window["JST"] = window["JST"] || {};
+
+window["JST"]["Teams"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += ' ';
+_.each(teams, function (team) {;
+__p += '\r\n<hr style="border-top:1px solid #4b4b4b; margin: 8px 0px;"/>\r\n<div class="mui-control-content mui-active rows" style="height: 100px;">\r\n	<div class="w3-col s3 w3-center" style="height: inherit;">\r\n		<img id="teamLogo" src="' +
+((__t = (team.logo)) == null ? '' : __t) +
+'" style="height: inherit; padding: 10%;"/>\r\n	</div>\r\n	<div class="w3-col s9" style="word-wrap: break-word; height: inherit; overflow: hidden;">\r\n		<div id="teamTitle" class="w3-large" style="font-weight: 600;">\r\n			<label>' +
+((__t = (team.name)) == null ? '' : __t) +
+'</label>\r\n		</div>\r\n		<div id="teamInfo" class="w3-col s8" style="padding-right: 2%;">\r\n			<label>' +
+((__t = (team.brief)) == null ? '' : __t) +
+'</label>\r\n		</div>\r\n		<div class="w3-col s4 w3-center" style="border-left: 1px solid #4b4b4b; padding-left: 2%;">\r\n			<div id="teamMatch" class="w3-row" style="line-height: 30px; height: 30px;">\r\n				<img src="../resource/personalPage/ball.png" class="w3-col s2" style="height: inherit; padding: 11% 1px;"/>\r\n				<label class="w3-col s5" style="font-size: 10px;">Match</label>\r\n				<label class="w3-col s4" style="">0</label>\r\n			</div>\r\n			<div id="teamMember" class="w3-row" style="line-height: 30px; height: 30px;">\r\n				<img src="../resource/personalPage/friends.png" class="w3-col s2" style="height:inherit; padding: 11% 1px;"/>\r\n				<label class="w3-col s5" style="font-size: 10px;">Memb</label>\r\n				<label class="w3-col s4" style="">0</label>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n';
+});;
+
+
+}
+return __p
+}})();

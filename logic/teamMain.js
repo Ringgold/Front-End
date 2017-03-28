@@ -18,6 +18,12 @@ function teamMainInit(){
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
     
+    $('#showTeams').on('touchend', function () {
+//  		plus.webview.getWebviewById('showTeam').evalJS("showTemplate();");
+    	plus.webview.show("Teams", "pop-in");
+        mui('.mui-off-canvas-wrap').offCanvas('close');
+    });
+    
     $('#menu').on('touchend', function () {
         mui('.mui-off-canvas-wrap').offCanvas('show');
     });

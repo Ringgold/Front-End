@@ -58,11 +58,18 @@ function fieldListInit() { //创建整个页面, 只需要调用一次, 更新�
     		plus.webview.show("teamMain", "pop-in");
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
+    
+    $('#showTeams').on('touchend', function () {
+//  		plus.webview.getWebviewById('showTeam').evalJS("showTemplate();");
+    		plus.webview.show("Teams", "pop-in");
+        mui('.mui-off-canvas-wrap').offCanvas('close');
+    });
 
     $('#list').on('touchend', function () {
         $('#fieldList').show();
         $('#personalMain').hide();
         $('#teamMain').hide();
+        $('#Teams').hide();
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
 

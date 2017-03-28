@@ -7,6 +7,7 @@
 	
     <script src="../library/js/mui.js"></script>
     <script src="../library/js/jquery.js"></script>
+    <script src="../library/js/underscore-min.js"></script>
     <script src="../dist/templates.js"></script>
     <script src="../logic/teams.js"></script>
 
@@ -42,6 +43,11 @@
 								Field Booking
 	                        </a>
 	                    </li>
+	                    <li class="mui-table-view-cell">
+	                        <a id="showTeams" class="mui-navigate-right" open-type="common">
+								Teams
+	                        </a>
+	                    </li>
 	                </ul>
 	            </div>
 	        </div>
@@ -54,7 +60,7 @@
 	                <h1 class="mui-title w3-text-white">Teams</h1>
 	            </header>
 	            <div class="mui-content">
-	            		<button id="createteam" class="mui-btn mui-btn-block mui-btn-yellow" style="width: 60%; padding: 10px 10px; margin: 30px auto;">Create A Team</button>	            
+	            		<button id="goCreate" class="mui-btn mui-btn-block mui-btn-yellow" style="width: 60%; padding: 10px 10px; margin: 30px auto;">Create A Team</button>	            
 	            		<div class="my-simple" style="width: 90%; margin: auto; color: #969696;">
 	            			<img src="../resource/teams/dot.png" style="width: 2%; margin: 0;"/>
 	            			<a>Recommendations</a>
@@ -62,33 +68,8 @@
             			<!--<hr style="border-top:1px solid #4b4b4b; margin: 0 0 0 0;"/>-->
 	            		<div id="pullrefresh" class="mui-content mui-scroll-wrapper" style="margin-top: 174px">
 	                    <div class="mui-scroll">
-	                        <div id="teams" class="my-simple">
-	                        		<hr style="border-top:1px solid #4b4b4b; margin: 8px 0px;"/>
-			            			<div class="mui-control-content mui-active rows" style="height: 100px;">
-			            				<div class="w3-col s3 w3-center" style="height: inherit;">
-				            				<img id="teamLogo" src="../resource/teams/A-logo.png" style="height: inherit; padding: 10%;"/>
-			            				</div>
-			            				<div class="w3-col s9" style="word-wrap: break-word; height: inherit; overflow: hidden;">
-			            					<div id="teamTitle" class="w3-large" style="font-weight: 600;">
-			            						<label>ABC</label>
-			            					</div>
-			            					<div id="teamInfo" class="w3-col s8" style="padding-right: 2%;">
-			            						<label>ssseeesssssdfsdfwrfvefvedfsfvdfvwrgefwasdadfwedqwdaasfdq</label>
-			            					</div>
-			            					<div class="w3-col s4 w3-center" style="border-left: 1px solid #4b4b4b; padding-left: 2%;">
-				            					<div id="teamMatch" class="w3-row" style="line-height: 30px; height: 30px;">
-				            						<img src="../resource/personalPage/ball.png" class="w3-col s2" style="height: inherit; padding: 11% 1px;"/>
-				            						<label class="w3-col s5" style="font-size: 10px;">Match</label>
-				            						<label class="w3-col s4" style="">152</label>
-				            					</div>
-				            					<div id="teamMember" class="w3-row" style="line-height: 30px; height: 30px;">
-				            						<img src="../resource/personalPage/friends.png" class="w3-col s2" style="height:inherit; padding: 11% 1px;"/>
-				            						<label class="w3-col s5" style="font-size: 10px;">Memb</label>
-				            						<label class="w3-col s4" style="">152</label>
-				            					</div>
-				            				</div>
-			            				</div>
-			            			</div>
+	                        <div id="teamsDisplay" class="my-simple">
+	                        	
 				            </div>
 	                    </div>
 	               </div>

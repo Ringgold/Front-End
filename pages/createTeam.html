@@ -8,7 +8,7 @@
 
     <script src="../library/js/mui.js"></script>
     <script src="../library/js/jquery.js"></script>
-    <script src="../logic/paypage.js"></script>
+    <script src="../logic/createTeam.js"></script>
 
 
     <link href="../library/css/mui.css" rel="stylesheet"/>
@@ -22,42 +22,43 @@
 <body>
 <header class="mui-bar mui-bar-nav w3-black">
     <a id="goBack" class="mui-icon mui-icon-left-nav mui-pull-left"></a>
-    <h1 class="mui-title w3-text-white">Create Your Team</h1>
+    <h1 class="mui-title w3-text-white" id="upload">Create Your Team</h1>
 </header>
 <div class="mui-content my-transparent-simple">
 	<div class="mui-content-padded w3-center my-simple">
 		<br>
-		<img src="../resource/createTeam/pictureBack.png" width="25%">
+		<!--<img src="../resource/createTeam/pictureBack.png" width="25%">-->
 		<p style="font-size: 14px; color: white; font-weight: 600;">
+			<input id="avatar_input" type="file" name="picture" accept="image/png, image/jpeg" class="mui-btn mui-btn-block mui-btn-yellow"/>
 			<label>Choose a Logo<br></label>
 		</p>
         <form class="color-back" style="padding-right: 5%;">
 			<div class="mui-input-row">
 				<label ><img src="../resource/createTeam/ball.png" width="27%"> Name</label>
-				<input type="text" class="mui-input-clear" >
+				<input id="t-name" type="text" class="mui-input-clear" >
 			</div>
 			<hr style="border-top:1px solid #545454; margin-top:0px; margin-bottom: 0px; margin-left: 5%;" />
 			<div class="mui-input-row">
 				<label ><img src="../resource/createTeam/city.png" width="35%"> City</label>
-				<input type="text" class="mui-input-clear" >
+				<input id="t-city" type="text" class="mui-input-clear" >
 			</div>
 			<hr style="border-top:1px solid #393939; margin-top:0px; margin-bottom: 0px; margin-left: 5%;" />
 			<div class="mui-input-row">
 				<label ><img src="../resource/createTeam/city.png" width="35%"> Field</label>
-				<input type="text" class="mui-input-clear" >
+				<input id="t-field" type="text" class="mui-input-clear" >
 			</div>
 			<hr style="border-top:1px solid #545454; margin-top:0px; margin-bottom: 0px; margin-left: 5%;" />
 			<div class="mui-input-row">
 				<label ><img src="../resource/createTeam/captain.png" width="27%"> Captain</label>
-				<input type="text" class="mui-input-clear" >
+				<input id="t-captain" type="text" class="mui-input-clear" >
 			</div>
 			<hr style="border-top:1px solid #393939; margin-top:0px; margin-bottom: 0px; margin-left: 5%;" />
 			<div class="mui-input-row" style="margin-left: -3%;">
-				<label ><img src="../resource/createTeam/captain.png" width="27%"> Brief</label>
+				<label ><img src="../resource/createTeam/captain.png" width="27%"> Intro</label>
 			</div>
 		</form>
 		<div class="mui-input-row" style="margin: 10px 5px; background-color: #323232; border-radius: 8px;">
-			<textarea id="textarea" rows="5" style="border-bottom: 0px;"></textarea>
+			<textarea id="t-brief" rows="5" style="border-bottom: 0px;"></textarea>
 		</div>
     </div>
 		

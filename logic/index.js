@@ -6,7 +6,7 @@ function main() {
 }
 
 function goRegister() {
-	plus.webview.show("register", "slide-in-right");
+	plus.webview.show("register", "pop-in");
 }
 
 function login() {

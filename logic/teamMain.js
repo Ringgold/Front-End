@@ -74,57 +74,57 @@ function applyToThisTeam(){
 	});
 }
 
-function uploadInit(){
-	$('#goUpload').on('touchend', getImage);
-}
-
-//Translate imageURL into Blob type
-//function dataURLtoBlob(dataurl) {
-//  var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-//      bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-//  while(n--){
-//      u8arr[n] = bstr.charCodeAt(n);
-//  }
-//  return new Blob([u8arr], {type:mime});
+//function uploadInit(){
+//	$('#goUpload').on('touchend', getImage);
 //}
-
-function getImage(){
-	var file = $("#avatar_input")[0].files[0];
-	var blobImage = new Blob([file]);
-	console.log("Your blobImage.size is: "+blobImage.size);
-	var fileReader = new FileReader();
-	fileReader.onload = function(e) {dataURL = fileReader.result; uploadYourself()};
-	fileReader.readAsDataURL(blobImage);
-}
-
-function uploadYourself(){
-	
-	var info =
-		{
-			//id = localStorage.getItem("User_ID"),
-			id : 'a9d93c4f3ee04324ab28c185dce32cd3',//Each Time Should be With a different ID
-			number : '11',
-			position : 'Left Back',
-			avatar : dataURL,
-			name : 'Ringgold Lin'
-		};
-	
-	var temp = JSON.stringify(info);
-	
-	Url = 'https://socceredge.info/api/team/player/upload';
-	mui.ajax(Url, {
-		type: "post",
-		timeout: 10000,
-		data: temp,
-		async: false,
-        success: function (data) {
-        	alert(data);
-        },
-        error: function (xhr, type) {
-        	alert(type);
-        }
-	});
-}
+//
+////Translate imageURL into Blob type
+////function dataURLtoBlob(dataurl) {
+////  var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+////      bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+////  while(n--){
+////      u8arr[n] = bstr.charCodeAt(n);
+////  }
+////  return new Blob([u8arr], {type:mime});
+////}
+//
+//function getImage(){
+//	var file = $("#avatar_input")[0].files[0];
+//	var blobImage = new Blob([file]);
+//	console.log("Your blobImage.size is: "+blobImage.size);
+//	var fileReader = new FileReader();
+//	fileReader.onload = function(e) {dataURL = fileReader.result; uploadYourself()};
+//	fileReader.readAsDataURL(blobImage);
+//}
+//
+//function uploadYourself(){
+//	
+//	var info =
+//		{
+//			//id = localStorage.getItem("User_ID"),
+//			id : 'a9d93c4f3ee04324ab28c185dce32cd3',//Each Time Should be With a different ID
+//			number : '11',
+//			position : 'Left Back',
+//			avatar : dataURL,
+//			name : 'Ringgold Lin'
+//		};
+//	
+//	var temp = JSON.stringify(info);
+//	
+//	Url = 'https://socceredge.info/api/team/player/upload';
+//	mui.ajax(Url, {
+//		type: "post",
+//		timeout: 10000,
+//		data: temp,
+//		async: false,
+//      success: function (data) {
+//      	alert(data);
+//      },
+//      error: function (xhr, type) {
+//      	alert(type);
+//      }
+//	});
+//}
 
 function drawChartT(win, lose, tie) {
     var myChart = echarts.init(document.getElementById('mainT'));

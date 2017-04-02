@@ -71,8 +71,8 @@
 					</span>Matches</a>
 				<a id="p4" class="mui-control-item" href="#item7">
 					</span>Members</a>
-				<a id="p5" class="mui-control-item" href="#item8">
-					</span>Photos</a>
+				<!--<a id="p5" class="mui-control-item" href="#item8">
+					</span>Photos</a>-->
 			</div>
 			<!--Team Pages-->
 			<div id="Teampage" class="mui-scroll-wrapper" style="margin-top:77px;">
@@ -342,19 +342,84 @@
 					</div>
 					<!--Members-->
 					<div id="item7" class="mui-control-content my-simple">
+						<!--Table bar-->
+						<div class="w3-row" style="border-bottom: 1px solid #393939; padding: 0%;">
+							<div class="w3-col s3 w3-center">
+								<p>Player</p>
+							</div>
+							<div class="w3-col s4 w3-center">  
+								<p>Name</p>
+							</div>
+							<div class="w3-col s3 w3-center">  
+								<p>Position</p>
+							</div>
+							<div class="w3-col s2 w3-center">  
+								<p>Number</p>
+							</div>
+						</div>
 						
+						<div class="mui-content">
+							<div id="pullrefresh" class="mui-content mui-scroll-wrapper" style="margin-top: 10px; margin-bottom: 90%;">
+		                    <div class="mui-scroll">
+		                        <div id="teamPlayers" class="my-simple">
+		                        	<!--Actual Player List-->
+									<a>
+									<div class="w3-row" style="border-bottom: 1px solid #393939; padding-top: 2%;">
+										<div class="w3-col s3 w3-center">
+											<p><img src="../resource/personalMain/picture.png" width="50%"></p>
+										</div>
+										<div class="w3-col s4 w3-center" >
+											<p style="color: white; font-size: 15px; padding-top: 8%;">Ringgold</p>
+										</div>
+										<div class="w3-col s3 w3-center">
+											<p style="color: white; font-size: 15px; padding-top: 12%;">Left Back</p>
+										</div>
+										<div class="w3-col s2 w3-center">
+											<p style="color: white; font-size: 15px; padding-top: 16%;">11</p>
+										</div>
+									</div>
+									</a>
+		
+									<!--Actual Player List-->
+									<a>
+									<div class="w3-row" style="border-bottom: 1px solid #393939; padding-top: 2%;">
+										<div class="w3-col s3 w3-center">
+											<p><img src="../resource/personalMain/picture.png" width="50%"></p>
+										</div>
+										<div class="w3-col s4 w3-center" >
+											<p style="color: white; font-size: 15px; padding-top: 8%;">Charles</p>
+										</div>
+										<div class="w3-col s3 w3-center">
+											<p style="color: white; font-size: 15px; padding-top: 12%;">Loser</p>
+										</div>
+										<div class="w3-col s2 w3-center">
+											<p style="color: white; font-size: 15px; padding-top: 16%;">10</p>
+										</div>
+									</div>
+									</a>	                        	
+					            </div>
+		                    </div>
+		                </div>
 					</div>
 					<!--Photos-->
-					<div id="item8" class="mui-control-content my-simple">
-					</div>
+					<!--<div id="item8" class="mui-control-content my-simple">
+					</div>-->
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <script>
+	mui.init({
+			pullRefresh: {  
+				container: '#pullrefresh',
+				down: {
+					callback: pulldownRefresh
+				},  
+			}
+		});
 	teamMainInit();
-	uploadInit();
+//	uploadInit();
 </script>
 </body>
 

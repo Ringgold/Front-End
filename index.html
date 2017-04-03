@@ -17,11 +17,11 @@
     <script type="text/javascript" charset="utf-8">
       	mui.init({
   			preloadPages:[
-    			{
+    				{
       				url:"pages/register.html",
       				id:"register"
-    			},
-    			{
+    				},
+    				{
                     url: "pages/personalMain.html",
                     id: "personalMain"
                 },
@@ -29,7 +29,7 @@
                     url: "pages/teamMain.html",
                     id: "teamMain"
                 },
-    			{
+    				{
                     url: "pages/fieldList.html",
                     id: "fieldList"
                 },
@@ -53,14 +53,14 @@
                     url: "pages/paypage.html",
                     id: "paypage"
                 },
-//              {
-//                  url: "pages/paypal.html",
-//                  id: "paypal"
-//              },
-//              {
-//                  url: "pages/captain.html",
-//                  id: "captain"
-//              },
+                {
+                    url: "pages/paypal.html",
+                    id: "paypal"
+                },
+                {
+                    url: "pages/captain.html",
+                    id: "captain"
+                },
                 {
                     url: "pages/Teams.html",
                     id: "Teams"
@@ -69,7 +69,8 @@
                     url: "pages/createTeam.html",
                     id: "createTeam"
                 },
-  			]
+  			],
+  			preloadLimit:50
   		});
 		mui.plusReady(function() {
 		});

@@ -7,7 +7,7 @@ function init() {
 
 //Call the function in FieldList to update the personal bookings
 function checkOrder(){
-	plus.webview.getWebviewById('fieldList').evalJS("getBookings();");
+	plus.webview.getWebviewById('personalMain').evalJS("getBookings();");
 	plus.webview.show("personalMain", "pop-in");
 }
 

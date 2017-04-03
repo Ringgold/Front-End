@@ -28,9 +28,14 @@ function personalMainInit() {
         plus.webview.show("captain", "pop-in");
     });
     
+    $('#setting').on('touchend', function () {
+        plus.webview.show("personalSetting", "pop-in");
+    });
+    
     $('#menu').on('touchend', function () {
         mui('.mui-off-canvas-wrap').offCanvas('show');
     });
+    
     mui('.mui-scroll-wrapper').scroll({
         deceleration: 0.0006,
         indicators: false

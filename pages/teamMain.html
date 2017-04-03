@@ -11,7 +11,7 @@
 <!--	<script src="../library/js/underscore-min.js"></script>-->
 	<script src="../library/js/echarts.min.js"></script>
 <!--	<script src="../dist/templates.js"></script>-->
-	<script src="../logic/fieldList.js"></script>
+	<!--<script src="../logic/fieldList.js"></script>-->
 	<script src="../logic/teamMain.js"></script>
 
 	<link href="../library/css/mui.css" rel="stylesheet" />
@@ -278,61 +278,65 @@
 			
 					<!--Matches-->
 					<div id="item6" class="mui-control-content my-simple">
-						<!--球赛1-->
-						<div class="my-card">
-							<div class="mui-card-content">
-								<div class="mui-card-content-inner">
-									<div class="w3-row">
-										<div class="w3-col s12 w3-center">
+						<div class="mui-content">
+							<div class="mui-scroll">
+								<!--球赛1-->
+								<div class="my-card">
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
 											<div class="w3-row">
-												<div class="w3-col s4 w3-center">
-													<img src="../resource/personalMain/team1.png" width="45%">
-													<br>
-													<label class="w3-tiny">CAC</label>
+												<div class="w3-col s12 w3-center">
+													<div class="w3-row">
+														<div class="w3-col s4 w3-center">
+															<img src="../resource/personalMain/team1.png" width="45%">
+															<br>
+															<label class="w3-tiny">CAC</label>
+														</div>
+														<div class="w3-col s4 w3-center">
+															<label style="font-size: 27px;">5</label>
+															<label style="font-size: 27px;">:</label>
+															<label style="font-size: 27px;">4<br></label>
+															<label class="w3-tiny">July 6</label>
+														</div>
+														<div class="w3-col s4 w3-center">
+															<img src="../resource/personalMain/team3.png" width="45%">
+															<br>
+															<label class="w3-tiny">CFC</label>
+														</div>
+														<a><span class="mui-icon mui-icon-arrowright" style="position: absolute; right: -11px; top: 35px"></span></a>
+													</div>
 												</div>
-												<div class="w3-col s4 w3-center">
-													<label style="font-size: 27px;">5</label>
-													<label style="font-size: 27px;">:</label>
-													<label style="font-size: 27px;">4<br></label>
-													<label class="w3-tiny">July 6</label>
-												</div>
-												<div class="w3-col s4 w3-center">
-													<img src="../resource/personalMain/team3.png" width="45%">
-													<br>
-													<label class="w3-tiny">CFC</label>
-												</div>
-												<a><span class="mui-icon mui-icon-arrowright" style="position: absolute; right: -11px; top: 35px"></span></a>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-		
-						<!--球赛2-->
-						<div class="my-card">
-							<div class="mui-card-content">
-								<div class="mui-card-content-inner">
-									<div class="w3-row">
-										<div class="w3-col s12 w3-center">
+				
+								<!--球赛2-->
+								<div class="my-card">
+									<div class="mui-card-content">
+										<div class="mui-card-content-inner">
 											<div class="w3-row">
-												<div class="w3-col s4 w3-center">
-													<img src="../resource/personalMain/team3.png" width="45%">
-													<br>
-													<label class="w3-tiny">CAC</label>
+												<div class="w3-col s12 w3-center">
+													<div class="w3-row">
+														<div class="w3-col s4 w3-center">
+															<img src="../resource/personalMain/team3.png" width="45%">
+															<br>
+															<label class="w3-tiny">CAC</label>
+														</div>
+														<div class="w3-col s4 w3-center">
+															<label style="font-size: 27px;">3</label>
+															<label style="font-size: 27px;">:</label>
+															<label style="font-size: 27px;">0<br></label>
+															<label class="w3-tiny">August 7</label>
+														</div>
+														<div class="w3-col s4 w3-center">
+															<img src="../resource/personalMain/team1.png" width="45%">
+															<br>
+															<label class="w3-tiny">CFC</label>
+														</div>
+														<a><span class="mui-icon mui-icon-arrowright" style="position: absolute; right: -11px; top: 35px"></span></a>
+													</div>
 												</div>
-												<div class="w3-col s4 w3-center">
-													<label style="font-size: 27px;">3</label>
-													<label style="font-size: 27px;">:</label>
-													<label style="font-size: 27px;">0<br></label>
-													<label class="w3-tiny">August 7</label>
-												</div>
-												<div class="w3-col s4 w3-center">
-													<img src="../resource/personalMain/team1.png" width="45%">
-													<br>
-													<label class="w3-tiny">CFC</label>
-												</div>
-												<a><span class="mui-icon mui-icon-arrowright" style="position: absolute; right: -11px; top: 35px"></span></a>
 											</div>
 										</div>
 									</div>
@@ -341,27 +345,26 @@
 						</div>
 					</div>
 					<!--Members-->
-					<div id="item7" class="mui-control-content my-simple">
-						<!--Table bar-->
-						<div class="w3-row" style="border-bottom: 1px solid #393939; padding: 0%;">
-							<div class="w3-col s3 w3-center">
-								<p>Player</p>
-							</div>
-							<div class="w3-col s4 w3-center">  
-								<p>Name</p>
-							</div>
-							<div class="w3-col s3 w3-center">  
-								<p>Position</p>
-							</div>
-							<div class="w3-col s2 w3-center">  
-								<p>Number</p>
-							</div>
-						</div>
-						
-						<div class="mui-content">
-							<div id="pullrefresh" class="mui-content mui-scroll-wrapper" style="margin-top: 10px; margin-bottom: 90%;">
-		                    <div class="mui-scroll">
-		                        <div id="teamPlayers" class="my-simple">
+					<div id="item7" class="mui-control-content my-simple">				
+						<div id="pullrefreshPlayers" class="mui-content">
+							<div class="mui-scroll">
+								<div id="players">
+								
+									<!--Table bar-->
+									<div class="w3-row" style="border-bottom: 1px solid #393939; padding: 0%;">
+										<div class="w3-col s3 w3-center">
+											<p>Player</p>
+										</div>
+										<div class="w3-col s4 w3-center">  
+											<p>Name</p>
+										</div>
+										<div class="w3-col s3 w3-center">  
+											<p>Position</p>
+										</div>
+										<div class="w3-col s2 w3-center">  
+											<p>Number</p>
+										</div>
+									</div>
 		                        	<!--Actual Player List-->
 									<a>
 									<div class="w3-row" style="border-bottom: 1px solid #393939; padding-top: 2%;">
@@ -396,10 +399,12 @@
 											<p style="color: white; font-size: 15px; padding-top: 16%;">10</p>
 										</div>
 									</div>
-									</a>	                        	
-					            </div>
-		                    </div>
-		                </div>
+									</a>	
+									
+								</div>
+							</div>
+						</div>
+
 					</div>
 					<!--Photos-->
 					<!--<div id="item8" class="mui-control-content my-simple">
@@ -412,13 +417,14 @@
 <script>
 	mui.init({
 			pullRefresh: {  
-				container: '#pullrefresh',
+				container: '#pullrefreshPlayers',
 				down: {
-					callback: pulldownRefresh
+					callback: pulldownplayersRefresh
 				},  
 			}
 		});
 	teamMainInit();
+	mui('body').on('tap','a',function(){document.location.href=this.href;});
 //	uploadInit();
 </script>
 </body>

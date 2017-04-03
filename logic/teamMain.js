@@ -45,6 +45,15 @@ function showTemplate() {
 //	$('#Teampage').append($(teamMain));
 }
 
+function pulldownplayersRefresh() {
+	setTimeout(function(){
+		
+
+		mui("#pullrefreshPlayers").pullRefresh().endPulldownToRefresh();
+	},1000);
+}
+
+
 
 function applyToThisTeam(){
 //	var userID = localStorage.getItem("User_ID");

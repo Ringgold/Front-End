@@ -8,16 +8,6 @@ function init() {
     $('#create').on('touchend', getImage);
 }
 
-//Translate imageURL into Blob type
-//function dataURLtoBlob(dataurl) {
-//  var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-//      bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-//  while(n--){
-//      u8arr[n] = bstr.charCodeAt(n);
-//  }
-//  return new Blob([u8arr], {type:mime});
-//}
-
 function getImage(){
 	var file = $("#avatar_input")[0].files[0];
 	var blobImage = new Blob([file]);
@@ -42,14 +32,14 @@ function addAT(){
 		logo : dataURL,
 		topic: team_field,
 		brief: team_brief,
-		assistantPlayer: '44444444444444444444444444444444',
-		goalPlayer: '44444444444444444444444444444444'
+		assistantPlayer: '',
+		goalPlayer: ''
 	};
 
 	var team = JSON.stringify(info);
 //		console.log(team);
 	alert(team);
-	Url = 'https://socceredge.info/api/team/team/insert';
+	Url = 'https://socceredge.info/api/team/team/insert/' + localStorage.getItem('User_ID');
 	mui.ajax(Url, {
 		type: "post",
 		timeout: 10000,

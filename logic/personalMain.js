@@ -12,7 +12,7 @@ function personalMainInit() {
         plus.webview.show("fieldList", "pop-in");
         mui('.mui-off-canvas-wrap').offCanvas('close');
    	});
-    $('#showTeams').on('touchend', function () {
+    $('#team').on('touchend', function () {
 		plus.webview.show("Teams", "pop-in");
     		mui('.mui-off-canvas-wrap').offCanvas('close');
     });

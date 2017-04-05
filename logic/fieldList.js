@@ -48,12 +48,12 @@ function pulldownRefresh() {
 
 function fieldListInit() { //创建整个页面, 只需要调用一次, 更新场地直接调用reloadFieldList
     $('#person').on('touchend', function () {
-    		plus.webview.getWebviewById('personalMain').evalJS("showOrders();");
+    		plus.webview.getWebviewById('personalMain').evalJS("showTeams();");
     		plus.webview.show("personalMain", "pop-in");
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
     
-    $('#showTeams').on('touchend', function () {
+    $('#team').on('touchend', function () {
     		plus.webview.show("Teams", "pop-in");
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });

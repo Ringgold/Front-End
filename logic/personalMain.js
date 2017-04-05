@@ -47,6 +47,7 @@ function showTeams() {
     var container = $('#Teams');
     container.empty();
     container.append($(list));
+    goTeamDetail(myTeams);
 }
 
 function getPlayerTeams() {
@@ -59,19 +60,64 @@ function getPlayerTeams() {
 		async: false,
         success: function (data) {
 	        if(data != "EMPTY"){
-		    		data = JSON.parse(data);
-		    		for(var i=0; i<data.length; i++){
-		    			var team = data[i];
-		    			myTeams.push(team);
-		    		}
+		    		myTeams = JSON.parse(data);
 	        }
         },
         error: function (xhr, type) {
             alert(type);
         }
 	});
-//	console.log("= ="+myTeams[0].name);
 	return myTeams;
+}
+
+function goTeamDetail(myteams) {
+	var UserID = localStorage.getItem("User_ID");
+	var teams = $(".rows");
+	for(var i=0; i<teams.length; i++) {
+		teams[i].addEventListener("touchend",function(index){
+			return function (){
+				var detail = getTeamDetail(myteams[index], UserID);
+				console.log(detail);
+				plus.webview.getWebviewById('teamMain').evalJS("showTemplate('"+detail+"');");
+				plus.webview.show("teamMain", "pop-in");
+			};
+		}(i), true);
+	}
+}
+
+function getTeamDetail(team, playerID) {
+	var teamID = team.id;
+	var playerTeam = {};
+	mui.ajax("https://socceredge.info/api/team/player_team/get_player_team_by_id/" + playerID + "/" + teamID, {
+		type: "get",
+		timeout: 10000,
+		async: false,
+        success: function (data) {
+	        if(data != "EMPTY"){
+		    		playerTeam = JSON.parse(data);
+	        }
+        },
+        error: function (xhr, type) {
+            alert(type);
+        }
+	});
+	var members = [];
+	mui.ajax("https://socceredge.info/api/team/player/get_players_in_team/" + teamID, {
+		type: "get",
+		timeout: 10000,
+		async: false,
+        success: function (data) {
+	        if(data != "EMPTY"){
+		    		members = JSON.parse(data);
+	        }
+        },
+        error: function (xhr, type) {
+            alert(type);
+        }
+	});
+	var detail = $.extend({}, team, playerTeam);
+	detail.members = members;
+	return JSON.stringify(detail);
 }
 
 function drawChart(win, lose, tie) {

@@ -19,7 +19,6 @@ function teamMainInit(){
     });
     
     $('#showTeams').on('touchend', function () {
-//  		plus.webview.getWebviewById('showTeam').evalJS("showTemplate();");
     	plus.webview.show("Teams", "pop-in");
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
@@ -39,7 +38,8 @@ function teamMainInit(){
 	drawChart3T(100, 56);
 }
 
-function showTemplate() {
+function showTemplate(teamInfo) {
+	var team = JSON.parse(teamInfo);
 //	var teamMain = window.JST.teamMain({
 //	});
 //	$('#Teampage').append($(teamMain));

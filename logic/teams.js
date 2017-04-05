@@ -76,14 +76,14 @@ function getAllTeams() {
 	            var teams = JSON.parse(data);
 	            var teams_temp = [];
 	            for (var i = 0; i < teams.length; i++) {
-	                var team = {};
-	                team.name = teams[i].name;
-	                team.id = teams[i].id;
-	                team.logo = teams[i].logo;
-	                team.assist = teams[i].assistantPlayer;
-	                team.goalPlayer = teams[i].goalPlayer;
-	                team.topic = teams[i].topic;
-	                team.brief = teams[i].brief;
+	                var team = teams[i];
+//	                team.name = teams[i].name;
+//	                team.id = teams[i].id;
+//	                team.logo = teams[i].logo;
+//	                team.assist = teams[i].assistantPlayer;
+//	                team.goalPlayer = teams[i].goalPlayer;
+//	                team.topic = teams[i].topic;
+//	                team.brief = teams[i].brief;
 	                teams_temp.push(team);
 	            }
 	            allTeams = teams_temp;

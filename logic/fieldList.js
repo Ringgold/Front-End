@@ -53,14 +53,7 @@ function fieldListInit() { //创建整个页面, 只需要调用一次, 更新�
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
     
-    $('#team').on('touchend', function () {
-    		plus.webview.getWebviewById('teamMain').evalJS("showTemplate();");
-    		plus.webview.show("teamMain", "pop-in");
-        mui('.mui-off-canvas-wrap').offCanvas('close');
-    });
-    
     $('#showTeams').on('touchend', function () {
-//  		plus.webview.getWebviewById('showTeam').evalJS("showTemplate();");
     		plus.webview.show("Teams", "pop-in");
         mui('.mui-off-canvas-wrap').offCanvas('close');
     });
@@ -71,6 +64,12 @@ function fieldListInit() { //创建整个页面, 只需要调用一次, 更新�
         $('#teamMain').hide();
         $('#Teams').hide();
         mui('.mui-off-canvas-wrap').offCanvas('close');
+    });
+    
+    $('#order').on('touchend', function () {
+    		plus.webview.getWebviewById('Orders').evalJS("showOrders();");
+		plus.webview.show("Orders", "pop-in");
+    		mui('.mui-off-canvas-wrap').offCanvas('close');
     });
 
     $('.sidebar_menu').on('touchend', function () {

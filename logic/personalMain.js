@@ -4,35 +4,29 @@ var bookingsTemp = [];//Async
 
 function personalMainInit() {
 	$('#person').on('touchend', function () {
-    		plus.webview.getWebviewById('personalMain').evalJS("showOrders();");
+    		plus.webview.getWebviewById('personalMain').evalJS("showTeams();");
     		plus.webview.show("personalMain", "pop-in");
         mui('.mui-off-canvas-wrap').offCanvas('close');
-    });
-    $('#team').on('touchend', function () {
-    		plus.webview.getWebviewById('teamMain').evalJS("showTemplate();");
-    		plus.webview.show("teamMain", "pop-in");
-        mui('.mui-off-canvas-wrap').offCanvas('close');
-    });
+	});
 	$('#list').on('touchend', function () {
         plus.webview.show("fieldList", "pop-in");
         mui('.mui-off-canvas-wrap').offCanvas('close');
-    });
-    
+   	});
     $('#showTeams').on('touchend', function () {
-//  		plus.webview.getWebviewById('showTeam').evalJS("showTemplate();");
 		plus.webview.show("Teams", "pop-in");
-    	mui('.mui-off-canvas-wrap').offCanvas('close');
+    		mui('.mui-off-canvas-wrap').offCanvas('close');
     });
-    
-    $('#goTeam').on('touchend', function () {
-        plus.webview.show("captain", "pop-in");
+    $('#order').on('touchend', function () {
+    		plus.webview.getWebviewById('Orders').evalJS("showOrders();");
+		plus.webview.show("Orders", "pop-in");
+    		mui('.mui-off-canvas-wrap').offCanvas('close');
     });
     
     $('#setting').on('touchend', function () {
         plus.webview.show("personalSetting", "pop-in");
     });
     
-    $('#menu').on('touchend', function () {
+    $('.sidebar_menu').on('touchend', function () {
         mui('.mui-off-canvas-wrap').offCanvas('show');
     });
     
@@ -45,85 +39,39 @@ function personalMainInit() {
 	drawChart2(11, 12, 2, 32, 15, 4, 10);
 }
 
-function showOrders() {
-	getBookings();
-	var personalMain = window.JST.personalMain({
-		orders: bookings
+function showTeams() {
+	var myTeams = getPlayerTeams();
+    var list = window.JST.personalMain({
+    		teams: myTeams
 	});
-	$('#Orders').append($(personalMain));
-	changeStatus();
+    var container = $('#Teams');
+    container.empty();
+    container.append($(list));
 }
 
-function getBookings(){
+function getPlayerTeams() {
 	var UserID = localStorage.getItem("User_ID");
-	var Url = "https://socceredge.info/api/field/field_booking/getBookingByUserId/" + UserID;
-	console.log(Url);
+	var Url = "https://socceredge.info/api/team/team/get_teams_by_player_id/" + UserID;
+	var myTeams = [];
 	mui.ajax(Url, {
 		type: "get",
 		timeout: 10000,
 		async: false,
         success: function (data) {
-	        if(data != "FAIL"){
-		        	console.log("Personal Booking Acquired " + data);     		        	
-		        	var orders = JSON.parse(data);
-		        	var ordersTemp = [];
-				//Save the Orders
-	            for (var i = 0; i < orders.length; i++) {
-	                var order = {};
-	                order.id = orders[i].ID;
-	                order.field = orders[i].FIELD_ID;
-	                order.start = orders[i].START_TIME;
-	                order.end = orders[i].END_TIME;
-	                order.user = orders[i].USER_ID;
-	                order.cost = orders[i].TOTAL_COST;
-	                order.status = orders[i].BOOKING_STATUS;
-	                ordersTemp.push(order);
-	            }
-	            //TODO
-	            //fieldID -> fieldName
-	            //start and end data&time -> data and start/end
-	            bookings = ordersTemp;
-	            bookingsTemp = ordersTemp;
-	         	reloadBookings(bookings);
-	        } else {
-	        		alert(data);//Fail Alert
+	        if(data != "EMPTY"){
+		    		data = JSON.parse(data);
+		    		for(var i=0; i<data.length; i++){
+		    			var team = data[i];
+		    			myTeams.push(team);
+		    		}
 	        }
         },
         error: function (xhr, type) {
             alert(type);
         }
 	});
-}
-
-function reloadBookings(bookings){
-	var list = window.JST.personalMain({
-        orders: bookings
-    });
-    var container = $('#personalMain');
-    container.empty();
-    container.append($(list));
-}
-
-function pullDownRefreshBookings() {
-	setTimeout(function(){
-		getBookings();
-		changeStatus();
-		mui("#pulldownrefreshbookings").pullRefresh().endPulldownToRefresh();
-	},1000);
-}
-
-function changeStatus() {
-	// change order status from number to content
-    var status = $(".orderstatus");
-	for(var i=0; i<status.length; i++){
-		if($(status[i]).text() == "0") {
-			$(status[i]).text("Not Paid");
-			$(status[i]).css({'color':'red'});
-		} else if($(status[i]).text() == "1") {
-			$(status[i]).text("Paid");
-			$(status[i]).css({'color':'green'});
-		}
-	}
+//	console.log("= ="+myTeams[0].name);
+	return myTeams;
 }
 
 function drawChart(win, lose, tie) {

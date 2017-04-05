@@ -12,7 +12,8 @@
 	<script src="../dist/templates.js"></script>
 	<script src="../logic/index.js"></script>
 	<script src="../logic/fieldList.js"></script>
-	<script src="../logic/paypalListener.js"></script>
+	<script src="../logic/teams.js"></script>
+	<script src="../logic/orders.js"></script>
 	<script src="../logic/personalMain.js"></script>
 	
 	<link href="../library/css/mui.css" rel="stylesheet" />
@@ -39,11 +40,6 @@
                         </a>
                     </li>
                     <li class="mui-table-view-cell">
-                        <a id="team" class="mui-navigate-right" open-type="common">
-							Team Page
-                        </a>
-                    </li>
-                    <li class="mui-table-view-cell">
                         <a id="list" class="mui-navigate-right" open-type="common">
 							Field Booking
                         </a>
@@ -53,13 +49,18 @@
 							Teams
                         </a>
                     </li>
+                    <li class="mui-table-view-cell">
+                        <a id="order" class="mui-navigate-right" open-type="common">
+							Orders
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </aside>
 	<div class="mui-inner-wrap">
 		<header class="mui-bar mui-bar-nav my-simple color-back" style="background-image: url(../resource/common/background-dark-up-part.png); background-size:100%">
-			<a id="menu" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+			<a class="mui-icon mui-icon-bars mui-pull-left sidebar_menu"></a>
 			<a id="setting" class="mui-btn mui-btn-link mui-pull-right w3-text-white" style="width:15%">Setting</a>
 		</header>
 		<div class="mui-content mui-scroll-wrapper" style="padding-top:34px;">
@@ -76,9 +77,9 @@
 							Data</a>
 						<a id="p2" class="mui-control-item" href="#item2">
 							Matches</a>
+						<!--<a id="p3" class="mui-control-item" href="#item3">
+							Orders</a>-->
 						<a id="p3" class="mui-control-item" href="#item3">
-							Orders</a>
-						<a id="p4" class="mui-control-item" href="#item4">
 							My Team(s)</a>
 					</div>
 				</div>
@@ -236,7 +237,7 @@
 					</div>
 			
 					<!--订单-->
-					<div id="item3" class="mui-control-content my-simple">
+					<!--<div id="item3" class="mui-control-content my-simple">
 						<div id="pulldownrefreshbookings" class="mui-content">
 							<div class="mui-scroll">
 								<div id="Orders">
@@ -244,13 +245,12 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div>-->
 					<!--我的球队-->
-					<div id="item4" class="mui-control-content my-simple">
-						<div class="mui-content">
-							<div class="mui-scroll">
-								<div id="teams">
-									<div class="my-card2 my-simple">
+					<div id="item3" class="mui-control-content my-simple">
+						<!--<div class="mui-content">-->
+								<div id="Teams">
+									<!--<div class="my-card2 my-simple">
 									    <div class="my-card-content">
 									        <div class="w3-row">
 									            <div class="w3-col s4 w3-center">
@@ -269,7 +269,7 @@
 									        </div>
 									    </div>
 									    <hr style="border-top:1px solid #595757; margin-top:3px; margin-bottom: 0px;" />
-									</div>
+									</div>-->
 								</div>
 							</div>
 						</div>
@@ -280,14 +280,14 @@
 	</div>
 </div>
 <script>
-	mui.init({  
-		pullRefresh: {  
-			container: '#pulldownrefreshbookings',  
-			down: {
-				callback: pullDownRefreshBookings 
-			},  
-		}  
-	});
+//	mui.init({  
+//		pullRefresh: {  
+//			container: '#pulldownrefreshbookings',  
+//			down: {
+//				callback: pullDownRefreshBookings 
+//			},  
+//		}  
+//	});
 	personalMainInit();
 </script>
 </body>

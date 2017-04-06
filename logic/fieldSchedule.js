@@ -300,7 +300,6 @@ function getTime() {
 	Tables.push(table_3);
 	Tables.push(table_7);
 	Tables.push(table_11);
-//	plus.nativeUI.closeWaiting();
 	setTimeout(function(){plus.nativeUI.closeWaiting();},500);
 }
 

@@ -9,7 +9,6 @@ var playerPosition = "Default";
 
 function personalMainInit() {
 	$('#person').on('touchend', function () {
-    		plus.webview.getWebviewById('personalMain').evalJS("showTeams();");
     		plus.webview.show("personalMain", "pop-in");
         mui('.mui-off-canvas-wrap').offCanvas('close');
 	});
@@ -42,6 +41,12 @@ function personalMainInit() {
     mui('.mui-scroll-wrapper').scroll({
         deceleration: 0.0006,
         indicators: false
+    });
+    
+    $('#p3').on('touchend', function(){
+    		plus.nativeUI.showWaiting();
+    		plus.webview.getWebviewById('personalMain').evalJS("showTeams();");
+    		setTimeout(function(){plus.nativeUI.closeWaiting();},100);
     });
     
     drawChart(13, 11, 4);
@@ -103,16 +108,23 @@ function getPlayerTeams() {
 
 function goTeamDetail(myteams) {
 	var UserID = localStorage.getItem("User_ID");
+	var moved = false;
 	var teams = $(".rows");
 	for(var i=0; i<teams.length; i++) {
 		teams[i].addEventListener("touchend",function(index){
 			return function (){
+				if(moved){
+					moved = false;
+					return;
+				}
 				var detail = getTeamDetail(myteams[index], UserID);
-//				console.log(detail);
-				plus.webview.getWebviewById('teamMain').evalJS("showTemplate('"+detail+"');");
+				plus.webview.getWebviewById('teamMain').evalJS("showTemplate('"+detail.replace(/'/g, "\\'")+"');");
 				plus.webview.show("teamMain", "pop-in");
-			};
+			}
 		}(i), true);
+		teams[i].addEventListener("touchmove", function(){
+			moved = true;
+		}, false);
 	}
 }
 

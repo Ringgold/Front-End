@@ -13,7 +13,6 @@ function init() {
 	}
 	
 	$('#person').on('touchend', function () {
-    		plus.webview.getWebviewById('personalMain').evalJS("showTeams();");
     		plus.webview.show("personalMain", "pop-in");
         mui('.mui-off-canvas-wrap').offCanvas('close');
 	});

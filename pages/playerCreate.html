@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Create Your Player File</title>
+		<meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+
+	    <script src="../library/js/mui.js"></script>
+	    <script src="../library/js/jquery.js"></script>
+	    <script src="../logic/playerCreate.js"></script>
+	
+	
+	    <link href="../library/css/mui.css" rel="stylesheet"/>
+	    <link href="../library/css/w3.css" rel="stylesheet"/>
+	    <link href="../library/css/common.css" rel="stylesheet"/>
+	</head>
+	<header class="mui-bar mui-bar-nav w3-black">
+    <h1 class="mui-title w3-text-white" id="upload">Create Your File</h1>
+	</header>
+<div class="mui-content my-transparent-simple">
+	<div class="mui-content-padded w3-center my-simple">
+		<br>
+		<!--<img src="../resource/createTeam/pictureBack.png" width="25%">-->
+		<p style="font-size: 14px; color: white; font-weight: 600; padding-left: 5%; padding-right: 5%;">
+			<input id="avatar_input" type="file" name="picture" accept="image/png, image/jpeg" class="mui-btn mui-btn-block mui-btn-yellow"/>
+			<label>Upload Your Picture<br></label>
+		</p>
+        <form class="color-back" style="padding-right: 5%;">
+			<div class="mui-input-row">
+				<label ><img src="../resource/playerCreate/captain.png" width="28%" style="margin-left: -12% ;"> Name</label>
+				<input id="p-name" type="text" class="mui-input-clear" >
+			</div>
+			<hr style="border-top:1px solid #545454; margin-top:0px; margin-bottom: 0px; margin-left: 5%;" />
+			<div class="mui-input-row">
+				<label ><img src="../resource/playerCreate/field.png" width="22%"> Position</label>
+				<input id="p-position" type="text" class="mui-input-clear" >
+			</div>
+			<hr style="border-top:1px solid #393939; margin-top:0px; margin-bottom: 0px; margin-left: 5%;" />
+			<div class="mui-input-row">
+				<label ><img src="../resource/playerCreate/ball.png" width="28%"> Number</label>
+				<input id="p-number" type="text" class="mui-input-clear" >
+			</div>
+			<hr style="border-top:1px solid #545454; margin-top:0px; margin-bottom: 0px; margin-left: 5%;" />
+		</form>	
+   </div>
+   <div class="mui-content-padded my-simple" style="padding-left: 5%;">
+   		<p>Notice: "Number" is just a reference of your soccer position.</p>
+   </div>
+   
+</div>
+<footer class="mui-bar mui-bar-tab my-transparent-simple">
+    <div class="mui-content-padded" style="padding-left: 5%; padding-right: 5%;">
+        <button id="create" class="mui-btn mui-btn-block mui-btn-yellow">Create</button>
+        <br>
+    </div>
+</footer>
+</body>
+<script>
+	init();
+</script>
+</html>

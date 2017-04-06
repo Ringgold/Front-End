@@ -61,16 +61,16 @@
 	<div class="mui-inner-wrap">
 		<header class="mui-bar mui-bar-nav my-simple color-back" style="background-image: url(../resource/common/background-dark-up-part.png); background-size:100%">
 			<a class="mui-icon mui-icon-bars mui-pull-left sidebar_menu"></a>
-			<a id="setting" class="mui-btn mui-btn-link mui-pull-right w3-text-white" style="width:15%">Setting</a>
+			<!--<a id="setting" class="mui-btn mui-btn-link mui-pull-right w3-text-white" style="width:15%">Setting</a>-->
+			<a id="updateFile" class="mui-btn mui-btn-link mui-pull-right w3-text-white" style="width:15%">Update</a>
 		</header>
 		<div class="mui-content mui-scroll-wrapper" style="padding-top:34px;">
 			<div style="background-image: url(../resource/common/background-dark-down-part.png); background-size:100%">
 				<div class="mui-content-padded w3-center my-simple">
-					<img src="../resource/personalMain/picture.png" width="20%">
+					<img id="i-photo" src="../resource/personalMain/picture.png" width="25%">
 					<p class="w3-text-white" style="font-size: 13px">
-						<label>Ringgold<br></label>
-						<label>Team: </label>
-						<label>Tusami</label>
+						<label id="i-name" style="font-size: 18px;">Ringgold</label>
+						<br>
 					</p>
 					<div class="mui-segmented-control mui-segmented-control-inverted my-transparent-simple" style="font-size: 16px">
 						<a id="p1" class="mui-control-item mui-active" href="#item1">
@@ -86,25 +86,29 @@
 			</div>
 					
 			<!--个人主页-->
-			<div class="mui-scroll-wrapper" style="margin-top:204px;">
+			<div class="mui-scroll-wrapper" style="margin-top:212px;">
 				<div class="mui-scroll">
 					<div id="item1" class="mui-control-content mui-active my-simple">
 						<table style="margin-top:0px;" class="w3-center my-simple w3-small">
 							<tr>
 								<td class="td-border">
-									<label>26<br></label>
+									<label>26</label>
+									<br>
 									<label style="color:#b5b5b6">Age</label>
 								</td>
 								<td class="td-border">
-									<label>1.71cm<br></label>
+									<label>1.71cm</label>
+									<br>
 									<label style="color:#b5b5b6">Height</label>
 								</td>
 								<td class="td-border">
-									<label>60kg<br></label>
+									<label>60kg</label>
+									<br>
 									<label style="color:#b5b5b6">Weight</label>
 								</td>
 								<td class="td-border">
-									<label>Forward<br></label>
+									<label id="i-position">Forward</label>
+									<br>
 									<label style="color:#b5b5b6">Position</label>
 								</td>
 							</tr>
@@ -236,42 +240,11 @@
 						</div>
 					</div>
 			
-					<!--订单-->
-					<!--<div id="item3" class="mui-control-content my-simple">
-						<div id="pulldownrefreshbookings" class="mui-content">
-							<div class="mui-scroll">
-								<div id="Orders">
-									
-								</div>
-							</div>
-						</div>
-					</div>-->
 					<!--我的球队-->
 					<div id="item3" class="mui-control-content my-simple">
-						<!--<div class="mui-content">-->
-								<div id="Teams">
-									<!--<div class="my-card2 my-simple">
-									    <div class="my-card-content">
-									        <div class="w3-row">
-									            <div class="w3-col s4 w3-center">
-									                <img src="../resource/personalMain/China Style 2.png" class="img-circle" style="width: 45px; height: 45px;">
-									            </div>
-									            <div class="w3-col s4 w3-center">
-									                <label style="font-size: 20px; padding-top: 3px;" class="mui-pull-left">CAC</label>
-									            </div>
-									            <div class="w3-col s4 w3-center">
-									            	<div class="">
-									            		<div style="margin: 4px 14px;">
-															<button class="mui-btn mui-btn-block mui-btn-yellow" id='goTeam' style="padding: 0px 1px;">Manage</button>
-														</div>
-									            	</div>
-									            </div>
-									        </div>
-									    </div>
-									    <hr style="border-top:1px solid #595757; margin-top:3px; margin-bottom: 0px;" />
-									</div>-->
-								</div>
-							</div>
+
+						<div id="Teams">
+
 						</div>
 					</div>
 				</div>

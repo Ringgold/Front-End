@@ -1,37 +1,23 @@
-var blobEncoding = 'image/png';
-var dataURL = '';
-var teamID = 'a01a11acf8b34af5a4e08985c05b2602';
+var teamID = '';
+var brief;
+var logo;
+var name;
+var role;
+var topic;
+var assistplayer;
+var goalPlayer;
+var allPlayers = [];
+
+
+function goBack(){
+    var webview = plus.webview.currentWebview();
+    webview.hide("pop-out");
+}
 
 function teamMainInit(){
-	$('#person').on('touchend', function () {
-    		plus.webview.getWebviewById('personalMain').evalJS("showOrders();");
-    		plus.webview.show("personalMain", "pop-in");
-        mui('.mui-off-canvas-wrap').offCanvas('close');
-    });
-    $('#team').on('touchend', function () {
-    		plus.webview.getWebviewById('teamMain').evalJS("showTemplate();");
-    		plus.webview.show("teamMain", "pop-in");
-        mui('.mui-off-canvas-wrap').offCanvas('close');
-    });
-	$('#list').on('touchend', function () {
-        plus.webview.show("fieldList", "pop-in");
-        mui('.mui-off-canvas-wrap').offCanvas('close');
-    });
-    
-    $('#showTeams').on('touchend', function () {
-    	plus.webview.show("Teams", "pop-in");
-        mui('.mui-off-canvas-wrap').offCanvas('close');
-    });
-    
-    $('#menu').on('touchend', function () {
-        mui('.mui-off-canvas-wrap').offCanvas('show');
-    });
-    mui('.mui-scroll-wrapper').scroll({
-        deceleration: 0.0006,
-        indicators: false
-    });
-    
-    $('#join').on('touchend', applyToThisTeam);
+    $('#goback').on('touchend', goBack);
+    $('#goToCaptain').on('touchend', goToCaptainPage);
+//  $('#join').on('touchend', applyToThisTeam);
     
 	drawChartT(13, 11, 4);
 	drawChart2T(11, 12, 2, 32, 15, 4, 10);
@@ -40,89 +26,74 @@ function teamMainInit(){
 
 function showTemplate(teamInfo) {
 	var team = JSON.parse(teamInfo);
-//	var teamMain = window.JST.teamMain({
-//	});
-//	$('#Teampage').append($(teamMain));
+	name = team.name;
+	logo = team.logo;
+	role = team.role;
+	teamID = team.id;
+	localStorage.setItem("Captain_TeamID", teamID);
+	brief = team.brief;
+	
+	assistPlayer = team.assistPlayer;
+	goalPlayer = team.goalPlayer;
+	
+	allPlayers = team.members;
+	
+	$("#c-logo").attr("src",logo);
+    $("#c-name").text(name);
+    $("#c-brief").text(brief);
+    $("#c-role").text(role);
+    
+    reloadPlayers(allPlayers);
+}
+
+function getTeamList(){
+	mui.ajax("https://socceredge.info/api/team/player/get_players_in_team/" + teamID, {
+        type: "get",
+        timeout: 10000,
+        success: function (data) {
+            var teamList = JSON.parse(data);
+			allPlayers = teamList;
+            reloadPlayers(allPlayers);
+        },
+        error: function (xhr, type) {
+            alert(type);
+        }
+    });
+}
+
+function reloadPlayers(players){
+	var list = window.JST.teamMain({
+        allPlayers: players
+    });
+    var container = $('#players');
+    container.empty();
+    container.append($(list));
 }
 
 function pulldownplayersRefresh() {
 	setTimeout(function(){
-		
+		getTeamList();
 
 		mui("#pullrefreshPlayers").pullRefresh().endPulldownToRefresh();
 	},1000);
 }
 
-
-
-function applyToThisTeam(){
+//function applyToThisTeam(){
 //	var userID = localStorage.getItem("User_ID");
-	var userID = 'a9d93c4f3ee04324ab28c185dce32cd3';
-	
-	var info =
-		{
-			//id = localStorage.getItem("User_ID"),
-			playerId : 'a9d93c4f3ee04324ab28c185dce32cd3',//Each Time Should be With a different ID
-			teamID : teamID,
-		};
-	
-	var temp = JSON.stringify(info);
-	
-	Url = 'https://socceredge.info/api/team/team/request_join/'+userID+'/'+teamID;
-	mui.ajax(Url, {
-		type: "Get",
-		timeout: 10000,
-		data: temp,
-		async: false,
-        success: function (data) {
-        	alert(data);
-        },
-        error: function (xhr, type) {
-        	alert(type);
-        }
-	});
-}
-
-//function uploadInit(){
-//	$('#goUpload').on('touchend', getImage);
-//}
-//
-////Translate imageURL into Blob type
-////function dataURLtoBlob(dataurl) {
-////  var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-////      bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-////  while(n--){
-////      u8arr[n] = bstr.charCodeAt(n);
-////  }
-////  return new Blob([u8arr], {type:mime});
-////}
-//
-//function getImage(){
-//	var file = $("#avatar_input")[0].files[0];
-//	var blobImage = new Blob([file]);
-//	console.log("Your blobImage.size is: "+blobImage.size);
-//	var fileReader = new FileReader();
-//	fileReader.onload = function(e) {dataURL = fileReader.result; uploadYourself()};
-//	fileReader.readAsDataURL(blobImage);
-//}
-//
-//function uploadYourself(){
+////	var userID = 'a9d93c4f3ee04324ab28c185dce32cd3';
 //	
 //	var info =
 //		{
 //			//id = localStorage.getItem("User_ID"),
-//			id : 'a9d93c4f3ee04324ab28c185dce32cd3',//Each Time Should be With a different ID
-//			number : '11',
-//			position : 'Left Back',
-//			avatar : dataURL,
-//			name : 'Ringgold Lin'
+//			playerId : userID,//Each Time Should be With a different ID
+//			teamID : teamID,
 //		};
 //	
 //	var temp = JSON.stringify(info);
 //	
-//	Url = 'https://socceredge.info/api/team/player/upload';
+//	Url = 'https://socceredge.info/api/team/team/request_join/'+userID+'/'+teamID;
 //	mui.ajax(Url, {
-//		type: "post",
+//		type: "Get",
 //		timeout: 10000,
 //		data: temp,
 //		async: false,
@@ -134,6 +105,11 @@ function applyToThisTeam(){
 //      }
 //	});
 //}
+
+function goToCaptainPage(){
+	plus.webview.getWebviewById('captain').evalJS("updateTeamID();");
+	plus.webview.show("captain", "pop-in");
+}
 
 function drawChartT(win, lose, tie) {
     var myChart = echarts.init(document.getElementById('mainT'));

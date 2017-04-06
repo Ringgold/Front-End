@@ -69,7 +69,7 @@ function goTeamDetail(){
 function getAllTeams() {
     mui.ajax("https://socceredge.info/api/team/team/all_teams", {
         type: "get",
-        timeout: 10000,
+        timeout: 20000,
         success: function (data) {
 	        	if(data != "EMPTY"){
 	        		console.log("Get Teams Success!");

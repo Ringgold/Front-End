@@ -10,6 +10,7 @@ function goRegister() {
 }
 
 function login() {
+	nextPage = '';
     $('input').blur();
     var user_account = {};
     user_account.USER_ID = '0';
@@ -37,7 +38,7 @@ function login() {
       		//Setup User ID in different pages
         	localStorage.setItem("User_ID", UserID);
             //mui.alert("Login Success!");
-            plus.webview.show("fieldList", "pop-in");
+            getPlayerById(UserID);
         }
         plus.nativeUI.closeWaiting();
     }).error(function () {
@@ -59,4 +60,28 @@ function validatePassword(password) {
         return false;
     }
     return true;
+}
+
+function getPlayerById(playerID){
+	var UserID = localStorage.getItem("User_ID");
+	var Url = "https://socceredge.info/api/team/player/get_player_by_id/" + UserID;
+	var myTeams = [];
+	mui.ajax(Url, {
+		type: "get",
+		timeout: 10000,
+		async: false,
+        success: function (data) {
+	        if(data == "FAIL"){
+	        	//First Time Login need to create a player file
+		    	plus.webview.show("playerCreate", "pop-in");
+	        } else {
+	        	plus.webview.getWebviewById('personalMain').evalJS("showTeams();");
+	        	plus.webview.getWebviewById('personalMain').evalJS("changePlayerInfo('"+data+"');");
+	        	plus.webview.show("personalMain", "pop-in");
+	        }
+        },
+        error: function (xhr, type) {
+            alert(type);
+        }
+	});
 }

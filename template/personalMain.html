@@ -1,8 +1,11 @@
 <!--个人主页-->
 <!--我的球队-->
-<%_.each(teams, function (team) {%>
+<div class="mui-content-padded my-simple" style="padding-left: 5%;">
+   	<p style="font-size: 18px; font-weight: bold;">Your Team(s)</p>
+</div>
 <hr style="border-top:1px solid #4b4b4b; margin: 8px 0px;"/>
-<div class="mui-control-content mui-active rows" style="height: 100px;">
+<%_.each(teams, function (team) {%>
+<div class="mui-control-content mui-active rows" style="height: 100px; padding-top: 0px;">
 	<div class="w3-col s3 w3-center" style="height: inherit;">
 		<img id="teamLogo" src="<%=team.logo%>" style="height: inherit; padding: 10%;"/>
 	</div>
@@ -27,4 +30,5 @@
 		</div>
 	</div>
 </div>
+<hr style="border-top:1px solid #4b4b4b; margin: 8px 0px;"/>
 <%});%>

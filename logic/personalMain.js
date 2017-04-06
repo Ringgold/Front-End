@@ -2,6 +2,11 @@
 var bookings = [];//Sync
 var bookingsTemp = [];//Async
 
+var playerName = "Default";
+var playerPhoto = "Default";
+var playerPosition = "Default";
+
+
 function personalMainInit() {
 	$('#person').on('touchend', function () {
     		plus.webview.getWebviewById('personalMain').evalJS("showTeams();");
@@ -22,8 +27,12 @@ function personalMainInit() {
     		mui('.mui-off-canvas-wrap').offCanvas('close');
     });
     
-    $('#setting').on('touchend', function () {
-        plus.webview.show("personalSetting", "pop-in");
+//  $('#setting').on('touchend', function () {
+//      plus.webview.show("personalSetting", "pop-in");
+//  });
+
+    $('#updateFile').on('touchend', function () {
+        plus.webview.show("playerUpdate", "pop-in");
     });
     
     $('.sidebar_menu').on('touchend', function () {
@@ -48,6 +57,28 @@ function showTeams() {
     container.empty();
     container.append($(list));
     goTeamDetail(myTeams);
+}
+
+
+function updateInfo(info){
+	
+}
+
+function changePlayerInfo(playerInfo) {
+	// change order status from number to content
+    var photo = $("#i-photo");
+    var name = $("#i-name");
+    var position = $("#i-position");
+    
+    var playerTemp = JSON.parse(playerInfo);
+    
+    playerPhoto = playerTemp.avatar;
+    playerName = playerTemp.name;
+    playerPosition = playerTemp.position;
+    
+    $(photo).attr("src",playerPhoto);
+    $(name).text(playerName);
+    $(position).text(playerPosition);
 }
 
 function getPlayerTeams() {
@@ -77,7 +108,7 @@ function goTeamDetail(myteams) {
 		teams[i].addEventListener("touchend",function(index){
 			return function (){
 				var detail = getTeamDetail(myteams[index], UserID);
-				console.log(detail);
+//				console.log(detail);
 				plus.webview.getWebviewById('teamMain').evalJS("showTemplate('"+detail+"');");
 				plus.webview.show("teamMain", "pop-in");
 			};

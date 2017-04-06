@@ -22,7 +22,7 @@ function addAT(){
 	var team_name 	 = $("#t-name").val();
 	var team_city 	 = $("#t-city").val();
 	var team_field	 = $("#t-field").val();
-	var team_captain = $("#t-captain").val();
+//	var team_captain = $("#t-captain").val();
 	var team_brief	 = $("#t-brief").val();
 	
 	var info =
@@ -32,8 +32,6 @@ function addAT(){
 		logo : dataURL,
 		topic: team_field,
 		brief: team_brief,
-		assistantPlayer: '',
-		goalPlayer: ''
 	};
 
 	var team = JSON.stringify(info);

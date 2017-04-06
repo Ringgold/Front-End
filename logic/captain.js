@@ -1,4 +1,4 @@
-var teamID = 'a01a11acf8b34af5a4e08985c05b2602';
+var teamID = '';
 var noPending = true;
 var pendingList =[];//the place to hold all the pending players
 var playerInfo = {};
@@ -8,7 +8,7 @@ var addCondition;
 // call checkCaptain() before entering this page
 
 function captainInit() {  //加载场地信息的图片,名称和评分
-	getPendings();
+//	getPendings();
 	
 	$('#goBackToPersonal').on('touchend', function(event) {
         var webview = plus.webview.currentWebview();
@@ -20,6 +20,11 @@ function captainInit() {  //加载场地信息的图片,名称和评分
     $('.reject').on("touchend", function(event) {
         reject(event.target.id);
     });
+}
+
+function updateTeamID(){
+	teamID = localStorage.getItem("Captain_TeamID");
+	getPendings();
 }
 
 function accept(id){

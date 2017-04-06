@@ -20,43 +20,9 @@
 
 <body>
 <div class="mui-off-canvas-wrap mui-draggable mui-active">
-	<!-- 菜单容器 -->
-    <aside class="mui-off-canvas-left my-simple w3-black mui-active">
-        <div class="mui-scroll-wrapper">
-            <div class="mui-scroll">
-                <div class="mui-content-padded">
-                    <label class="w3-large w3-text-white">Navigation</label>
-                </div>
-                <br>
-                <ul id="menu_content"
-                    class="mui-table-view mui-table-view-chevron mui-table-view-inverted my-transparent-simple">
-                    <li class="mui-table-view-cell">
-                        <a id="person" class="mui-navigate-right" open-type="common">
-                           	Personal Page
-                        </a>
-                    </li>
-                    <li class="mui-table-view-cell">
-                        <a id="team" class="mui-navigate-right" open-type="common">
-							Team Page
-                        </a>
-                    </li>
-                    <li class="mui-table-view-cell">
-                        <a id="list" class="mui-navigate-right" open-type="common">
-							Field Booking
-                        </a>
-                    </li>
-                    <li class="mui-table-view-cell">
-                        <a id="showTeams" class="mui-navigate-right" open-type="common">
-							Teams
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </aside>
 	<div class="mui-inner-wrap">
 		<header class="mui-bar mui-bar-nav my-simple black-back">
-			<a id="menu" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+			<a id="goback" class="mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title w3-text-white">Team Page</h1>
 			<!--<a id="setting" class="mui-btn mui-btn-link mui-pull-right w3-text-white" style="width:15%">Setting</a>-->
 		</header>
@@ -82,76 +48,63 @@
 							<div class="mui-content-padded w3-center my-simple">
 								<div class="w3-row">
 									<div class="w3-col s4 w3-center">
-										<img src="../resource/teamMain/TeamLogo.png" width="70%">
+										<img id="c-logo" src="../resource/teamMain/TeamLogo.png" width="70%">
 									</div>
-									<div class="w3-col s4 w3-center" style="font-size: 14px;">
+									<div class="w3-col s6 w3-center" style="font-size: 14px;">
 										<br>
-										<label style="font-size: 18px">Delimonge<br></label>
+										<label id = "c-name" style="font-size: 18px">Delimonge</label>
+										<br>
 										<label style="color: #888888">Role:</label>
-										<label style="color: #888888">Tourist</label>
+										<label id = "c-role" style="color: #888888">Tourist</label>
 										<div style="margin: 5px 14px;">
-											<button id='join' class="mui-btn mui-btn-block mui-btn-yellow" style="padding: 0px 0px;">Join In</button>
+											<button id='goToCaptain' class="mui-btn mui-btn-block mui-btn-yellow" style="padding: 0px 0px;">Manage</button>
 										</div>
 									</div>
-									<div class="w3-col s4 w3-center">
+									<div class="w3-col s2 w3-center">
 										<br>
-										<div class="mui-icon mui-icon-upload" style="float: right; padding-top: 10px;">
+										<!--<div class="mui-icon mui-icon-upload" style="float: right; padding-top: 10px;">
 											
-		        						</div>
+		        						</div>-->
 									</div>
 								</div>
 							</div>
 						</div>
 						
+						<div class="grey-back my-simple">
+							<div class="mui-content-padded">
+								<p style="color: #b5b5b6; font-size: 19px; font-weight: 900;">Team Introduction:</p>
+								<p id = "c-brief" style="color: #b5b5b6; font-size: 17px; font-weight: 100;">
+									This is the Info Section
+								</p>
+							</div>
+						</div>
+						
 						<div class="grey-back">
 							<div class="w3-row" style="margin-left: 45px;">
-									<div class="w3-col s6 w3-center">
-										<div class="mui-content-padded">
-											<div id="mainT" style="height: 170px; margin-left: 0px;">
-												
-											</div>
+								<div class="w3-col s6 w3-center">
+									<div class="mui-content-padded">
+										<div id="mainT" style="height: 170px; margin-left: 0px;">
+											
 										</div>
 									</div>
-									
-									<div class="w3-col s6 w3-center">
-										<div class="mui-content-padded">
-											<div class="my-record-padding2">
-												<label class="w3-small" style="color: #fdcb1d">Games Won<br></label>
-												<label class="w3-large" style="color: #fdcb1d">15</label>
-											</div>
-											<div class="my-record-padding2">
-												<label class="w3-small" style="color: #b5b5b6">Games Lost<br></label>
-												<label class="w3-large" style="color: #b5b5b6">12</label>
-											</div>
-											<div class="my-record-padding2">
-												<label class="w3-small" style="color: #595757">Games Tie<br></label>
-												<label class="w3-large" style="color: #595757">3</label>
-											</div>
+								</div>
+								
+								<div class="w3-col s6 w3-center">
+									<div class="mui-content-padded">
+										<div class="my-record-padding2">
+											<label class="w3-small" style="color: #fdcb1d">Games Won<br></label>
+											<label class="w3-large" style="color: #fdcb1d">15</label>
+										</div>
+										<div class="my-record-padding2">
+											<label class="w3-small" style="color: #b5b5b6">Games Lost<br></label>
+											<label class="w3-large" style="color: #b5b5b6">12</label>
+										</div>
+										<div class="my-record-padding2">
+											<label class="w3-small" style="color: #595757">Games Tie<br></label>
+											<label class="w3-large" style="color: #595757">3</label>
 										</div>
 									</div>
-									<!--Another Layout Template-->
-									<!--<div class="w3-col s3 w3-center" style="font-size: x-large">
-										<div class="my-record-padding">
-											<label style="color: #fdcb1d;">Wins</label>
-										</div>
-										<div class="my-record-padding">
-											<label style="color: #b5b5b6;">Losts</label>
-										</div>
-										<div class="my-record-padding">
-											<label style="color: #595757;">Ties</label>
-										</div>
-									</div>
-									<div class="w3-col s3 w3-center" style="font-size: x-large">
-										<div class="my-record-padding">
-											<label style="color: #fdcb1d;">15</label>
-										</div>
-										<div class="my-record-padding">
-											<label style="color: #b5b5b6;">12</label>
-										</div>
-										<div class="my-record-padding">
-											<label style="color: #595757;">3</label>
-										</div>
-									</div>-->
+								</div>
 							</div>
 							
 							<!--Goal Chart-->
@@ -278,7 +231,7 @@
 					<!--Matches-->
 					<div id="item6" class="mui-control-content my-simple">
 						<div class="mui-content">
-							<div class="mui-scroll">
+							<!--<div class="mui-scroll">-->
 								<!--球赛1-->
 								<div class="my-card">
 									<div class="mui-card-content">
@@ -340,17 +293,17 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							<!--</div>-->
 						</div>
 					</div>
 					<!--Members-->
 					<div id="item7" class="mui-control-content my-simple">				
 						<div id="pullrefreshPlayers" class="mui-content">
-							<div class="mui-scroll">
+							<!--<div class="mui-scroll">-->
 								<div id="players">
 								
 									<!--Table bar-->
-									<div class="w3-row" style="border-bottom: 1px solid #393939; padding: 0%;">
+									<!--<div class="w3-row" style="border-bottom: 1px solid #393939; padding: 0%;">
 										<div class="w3-col s3 w3-center">
 											<p>Player</p>
 										</div>
@@ -363,9 +316,9 @@
 										<div class="w3-col s2 w3-center">  
 											<p>Number</p>
 										</div>
-									</div>
+									</div>-->
 		                        	<!--Actual Player List-->
-									<a>
+									<!--<a>
 									<div class="w3-row" style="border-bottom: 1px solid #393939; padding-top: 2%;">
 										<div class="w3-col s3 w3-center">
 											<p><img src="../resource/personalMain/picture.png" width="50%"></p>
@@ -380,10 +333,10 @@
 											<p style="color: white; font-size: 15px; padding-top: 16%;">11</p>
 										</div>
 									</div>
-									</a>
+									</a>-->
 		
 									<!--Actual Player List-->
-									<a>
+									<!--<a>
 									<div class="w3-row" style="border-bottom: 1px solid #393939; padding-top: 2%;">
 										<div class="w3-col s3 w3-center">
 											<p><img src="../resource/personalMain/picture.png" width="50%"></p>
@@ -398,16 +351,12 @@
 											<p style="color: white; font-size: 15px; padding-top: 16%;">10</p>
 										</div>
 									</div>
-									</a>	
+									</a>	-->
 									
 								</div>
-							</div>
+							<!--</div>-->
 						</div>
-
 					</div>
-					<!--Photos-->
-					<!--<div id="item8" class="mui-control-content my-simple">
-					</div>-->
 				</div>
 			</div>
 		</div>

@@ -53,26 +53,31 @@ function getBookings(){
 		async: false,
         success: function (data) {
 	        if(data != "FAIL"){
-		        	console.log("Personal Booking Acquired " + data);     		        	
+	        	if (data == "SUCCESS"){
+	        		
+	        	} else {
+	        		console.log("Personal Booking Acquired " + data);     		        	
 		        	var orders = JSON.parse(data);
 		        	var ordersTemp = [];
-				//Save the Orders
-	            for (var i = 0; i < orders.length; i++) {
-	                var order = {};
-	                order.id = orders[i].ID;
-	                order.field = orders[i].FIELD_ID;
-	                order.start = orders[i].START_TIME;
-	                order.end = orders[i].END_TIME;
-	                order.user = orders[i].USER_ID;
-	                order.cost = orders[i].TOTAL_COST;
-	                order.status = orders[i].BOOKING_STATUS;
-	                ordersTemp.push(order);
-	            }
-	            //TODO
-	            //fieldID -> fieldName
-	            //start and end data&time -> data and start/end
-	            bookings = ordersTemp;
-	            bookingsTemp = ordersTemp;
+					//Save the Orders
+		            for (var i = 0; i < orders.length; i++) {
+		                var order = {};
+		                order.id = orders[i].ID;
+		                order.field = orders[i].FIELD_ID;
+		                order.start = orders[i].START_TIME;
+		                order.end = orders[i].END_TIME;
+		                order.user = orders[i].USER_ID;
+		                order.cost = orders[i].TOTAL_COST;
+		                order.status = orders[i].BOOKING_STATUS;
+		                ordersTemp.push(order);
+		            }
+		            //TODO
+		            //fieldID -> fieldName
+		            //start and end data&time -> data and start/end
+		            bookings = ordersTemp;
+		            bookingsTemp = ordersTemp;
+	        	}
+	        	
 	        } else {
 	        		alert(data);//Fail Alert
 	        }

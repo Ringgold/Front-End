@@ -1,29 +1,6 @@
 (function() {
 window["JST"] = window["JST"] || {};
 
-window["JST"]["Teams"] = function(obj) {
-obj || (obj = {});
-var __t, __p = '', __j = Array.prototype.join;
-function print() { __p += __j.call(arguments, '') }
-with (obj) {
-__p += ' ';
-_.each(teams, function (team) {;
-__p += '\n<hr style="border-top:1px solid #4b4b4b; margin: 8px 0px;"/>\n<div class="mui-control-content mui-active rows" style="height: 100px;">\n	<div class="w3-col s3 w3-center" style="height: inherit;">\n		<img id="teamLogo" src="' +
-((__t = (team.logo)) == null ? '' : __t) +
-'" style="height: inherit; padding: 10%;"/>\n	</div>\n	<div class="w3-col s9" style="word-wrap: break-word; height: inherit; overflow: hidden;">\n		<div id="teamTitle" class="w3-large" style="font-weight: 600;">\n			<label>' +
-((__t = (team.name)) == null ? '' : __t) +
-'</label>\n		</div>\n		<div id="teamInfo" class="w3-col s8" style="padding-right: 2%;">\n			<label>' +
-((__t = (team.brief)) == null ? '' : __t) +
-'</label>\n		</div>\n		<div class="w3-col s4 w3-center" style="border-left: 1px solid #4b4b4b; padding-left: 2%;">\n			<div id="teamMatch" class="w3-row" style="line-height: 30px; height: 30px;">\n				<img src="../resource/personalPage/ball.png" class="w3-col s2" style="height: inherit; padding: 11% 1px;"/>\n				<label class="w3-col s5" style="font-size: 10px;">Match</label>\n				<label class="w3-col s4" style="">0</label>\n			</div>\n			<div id="teamMember" class="w3-row" style="line-height: 30px; height: 30px;">\n				<img src="../resource/personalPage/friends.png" class="w3-col s2" style="height:inherit; padding: 11% 1px;"/>\n				<label class="w3-col s5" style="font-size: 10px;">Memb</label>\n				<label class="w3-col s4" style="">0</label>\n			</div>\n		</div>\n	</div>\n</div>\n';
-});;
-
-
-}
-return __p
-}})();
-(function() {
-window["JST"] = window["JST"] || {};
-
 window["JST"]["captain"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __j = Array.prototype.join;
@@ -31,17 +8,19 @@ function print() { __p += __j.call(arguments, '') }
 with (obj) {
 
 _.each(pendings, function (pending) {;
-__p += '\n<div class="my-card2 my-simple" id=\'b' +
+__p += '\r\n<div class="my-card2 my-simple" id=\'b' +
 ((__t = (pending.id)) == null ? '' : __t) +
-'\'>\n    <div class="my-card-content">\n        <div class="w3-row">\n            <div class="w3-col s3 w3-center">\n                <img src="../resource/personalMain/picture.png" width="70%">\n            </div>\n            <div class="w3-col s5 w3-center">\n                <label style="font-size: 18px;" class="mui-pull-left">' +
+'\'>\r\n    <div class="my-card-content">\r\n        <div class="w3-row">\r\n            <div class="w3-col s3 w3-center">\r\n                <img src="' +
+((__t = (pending.avatar)) == null ? '' : __t) +
+'" width="70%">\r\n            </div>\r\n            <div class="w3-col s5 w3-center">\r\n                <label style="font-size: 18px;" class="mui-pull-left">' +
+((__t = (pending.name)) == null ? '' : __t) +
+'</label>\r\n                <br>\r\n                <br>\r\n                <label style="font-size: 17px; color: #b5b5b6" class="mui-pull-left">Position: ' +
+((__t = (pending.position)) == null ? '' : __t) +
+'</label>\r\n            </div>\r\n            <div class="w3-col s4 w3-center">\r\n            	<div class="accept">\r\n            		<div style="margin: 4px 14px;">\r\n						<button class="mui-btn mui-btn-block mui-btn-yellow" id=\'' +
 ((__t = (pending.id)) == null ? '' : __t) +
-'</label>\n                <br>\n                <br>\n                <label style="font-size: 17px; color: #b5b5b6" class="mui-pull-left">Position: ' +
+'\' style="padding: 0px 1px;">Accept</button>\r\n					</div>\r\n            	</div>\r\n            	<div class="reject">\r\n            		<div style="margin: 4px 14px;">\r\n						<button class="mui-btn mui-btn-block mui-btn-yellow" id=\'' +
 ((__t = (pending.id)) == null ? '' : __t) +
-'</label>\n            </div>\n            <div class="w3-col s4 w3-center">\n            	<div class="accept">\n            		<div style="margin: 4px 14px;">\n						<button class="mui-btn mui-btn-block mui-btn-yellow" id=\'' +
-((__t = (pending.id)) == null ? '' : __t) +
-'\' style="padding: 0px 1px;">Accept</button>\n					</div>\n            	</div>\n            	<div class="reject">\n            		<div style="margin: 4px 14px;">\n						<button class="mui-btn mui-btn-block mui-btn-yellow" id=\'' +
-((__t = (pending.id)) == null ? '' : __t) +
-'\' style="padding: 0px 1px; background-color: red; border-color: red;">Reject</button>\n					</div>\n            	</div>\n            </div>\n        </div>\n    </div>\n    <hr style="border-top:1px solid #595757; margin-top:0px; margin-bottom: 0px;" />\n</div>\n';
+'\' style="padding: 0px 1px; background-color: red; border-color: red;">Reject</button>\r\n					</div>\r\n            	</div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <hr style="border-top:1px solid #595757; margin-top:0px; margin-bottom: 0px;" />\r\n</div>\r\n';
 });;
 
 
@@ -56,27 +35,27 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<ul class="mui-table-view my-transparent-simple">\n	';
+__p += '<ul class="mui-table-view my-transparent-simple">\r\n	';
 _.each(users, function (user) {;
-__p += '\n	<li class="comment-remove-list-background mui-table-view-cell">\n		<div class="w3-row">\n			<div class="w3-col w3-center" style="width:60px;padding-top:10px">\n				<img class="w3-circle" src=' +
+__p += '\r\n	<li class="comment-remove-list-background mui-table-view-cell">\r\n		<div class="w3-row">\r\n			<div class="w3-col w3-center" style="width:60px;padding-top:10px">\r\n				<img class="w3-circle" src=' +
 __e(user.profile) +
-' style="width:80%" />\n				<br>\n				<div class="mui-text-center w3-small">\n					' +
+' style="width:80%" />\r\n				<br>\r\n				<div class="mui-text-center w3-small">\r\n					' +
 ((__t = (user.name)) == null ? '' : __t) +
-'\n				</div>\n			</div>\n			<div class="w3-rest" style="padding-left:15px">\n				<br>\n				';
+'\r\n				</div>\r\n			</div>\r\n			<div class="w3-rest" style="padding-left:15px">\r\n				<br>\r\n				';
 for (var i=0;i < user.star; i++) {;
-__p += '\n					<img src="../resource/comment-template/star.png" style="width:15px">\n				';
+__p += '\r\n					<img src="../resource/comment-template/star.png" style="width:15px">\r\n				';
 };
-__p += '\n				<br>\n				<br>\n				<p class="w3-small w3-text-white">' +
+__p += '\r\n				<br>\r\n				<br>\r\n				<p class="w3-small w3-text-white">' +
 ((__t = (user.description)) == null ? '' : __t) +
-'</p>\n				';
+'</p>\r\n				';
 _.each(user.images, function(image) {;
-__p += '\n					<img class="w3-round w3-padding-top" src=' +
+__p += '\r\n					<img class="w3-round w3-padding-top" src=' +
 __e(image) +
-' style="width:60px;height:45px" />\n				';
+' style="width:60px;height:45px" />\r\n				';
 });;
-__p += '\n			</div>\n		</div>\n		<hr style="margin-bottom: 0px">\n	</li>\n	';
+__p += '\r\n			</div>\r\n		</div>\r\n		<hr style="margin-bottom: 0px">\r\n	</li>\r\n	';
 });;
-__p += '\n</ul>';
+__p += '\r\n</ul>';
 
 }
 return __p
@@ -91,17 +70,17 @@ function print() { __p += __j.call(arguments, '') }
 with (obj) {
 __p += ' ';
 _.each(orders, function (order) {;
-__p += '\n <div class="mui-content-padded" style="background: rgba(0, 0, 0, 0.3)">\n    <br>\n    <div class="mui-content-padded my-transparent-simple w3-center">\n        <div class="w3-text-white my-border-bottom">\n            <span class="w3-large">' +
+__p += '\r\n <div class="mui-content-padded" style="background: rgba(0, 0, 0, 0.3)">\r\n    <br>\r\n    <div class="mui-content-padded my-transparent-simple w3-center">\r\n        <div class="w3-text-white my-border-bottom">\r\n            <span class="w3-large">' +
 ((__t = (order.date)) == null ? '' : __t) +
-'</span>\n            <span class="w3-large"><br>' +
+'</span>\r\n            <span class="w3-large"><br>' +
 ((__t = (order.weekday)) == null ? '' : __t) +
-'<br></span>\n            <span>' +
+'<br></span>\r\n            <span>' +
 ((__t = (order.startTime)) == null ? '' : __t) +
 ' -- ' +
 ((__t = (order.endTime)) == null ? '' : __t) +
-'<br><br></span>\n            <!--<span>Field Number 1 (3-Man Field)<br><br></span>-->\n        </div>\n        <div align=\'right\' class="w3-text-yellow w3-large">$' +
+'<br><br></span>\r\n            <!--<span>Field Number 1 (3-Man Field)<br><br></span>-->\r\n        </div>\r\n        <div align=\'right\' class="w3-text-yellow w3-large">$' +
 ((__t = (order.cost)) == null ? '' : __t) +
-'</div>\n    </div>\n</div>\n';
+'</div>\r\n    </div>\r\n</div>\r\n';
 });;
 
 
@@ -118,49 +97,49 @@ function print() { __p += __j.call(arguments, '') }
 with (obj) {
 
 _.each(fields, function (field) {;
-__p += '\n\n<div id="slider" class="mui-slider my-transparent-simple">\n	<div class="mui-slider-group">\n		';
+__p += '\r\n\r\n<div id="slider" class="mui-slider my-transparent-simple">\r\n	<div class="mui-slider-group">\r\n		';
 _.each(field.images, function(image){;
-__p += '\n		<div class="mui-slider-item">\n			<a href="#">\n				<img src=' +
+__p += '\r\n		<div class="mui-slider-item">\r\n			<a href="#">\r\n				<img src=' +
 ((__t = (image)) == null ? '' : __t) +
-' width="100%">\n			</a>\n		</div>\n		';
+' width="100%">\r\n			</a>\r\n		</div>\r\n		';
 });;
-__p += '\n	</div>\n	<div class="mui-slider-indicator">\n		';
+__p += '\r\n	</div>\r\n	<div class="mui-slider-indicator">\r\n		';
 _.each(field.images, function(image){;
-__p += '\n		<div class="mui-indicator"></div>\n		';
+__p += '\r\n		<div class="mui-indicator"></div>\r\n		';
 });;
-__p += '\n	</div>\n</div>\n<div class="os-main-content w3-text-white">\n	<h4 style="margin-top:20px">\n        <div class="mui-inline">\n            ' +
+__p += '\r\n	</div>\r\n</div>\r\n<div class="os-main-content w3-text-white">\r\n	<h4 style="margin-top:20px">\r\n        <div class="mui-inline">\r\n            ' +
 ((__t = (field.fieldName)) == null ? '' : __t) +
-'\n        </div>\n        <div class="mui-icon mui-icon-compose mui-inline">\n\n        </div>\n        <div class="mui-icon mui-icon-upload mui-inline" style="float: right;">\n\n        </div>\n    </h4>\n\n	<p>\n		<div class="mui-icon mui-icon-location mui-inline">\n\n		</div>\n		<label class="mui-inline">\n        ' +
+'\r\n        </div>\r\n        <div class="mui-icon mui-icon-compose mui-inline">\r\n\r\n        </div>\r\n        <div class="mui-icon mui-icon-upload mui-inline" style="float: right;">\r\n\r\n        </div>\r\n    </h4>\r\n\r\n	<p>\r\n		<div class="mui-icon mui-icon-location mui-inline">\r\n\r\n		</div>\r\n		<label class="mui-inline">\r\n        ' +
 ((__t = (field.address)) == null ? '' : __t) +
-'\n    </label>\n	</p>\n\n	<p>\n		<div class="mui-icon mui-icon-phone mui-inline">\n\n		</div>\n		<div class="os-detail-text mui-inline">\n			' +
+'\r\n    </label>\r\n	</p>\r\n\r\n	<p>\r\n		<div class="mui-icon mui-icon-phone mui-inline">\r\n\r\n		</div>\r\n		<div class="os-detail-text mui-inline">\r\n			' +
 ((__t = (field.phone)) == null ? '' : __t) +
-'\n		</div>\n	</p>\n\n	<hr>\n	<div>\n		Field Booking\n	</div>\n\n	<div id="goSchedule" class="os-time-slider-container">\n		';
+'\r\n		</div>\r\n	</p>\r\n\r\n	<hr>\r\n	<div>\r\n		Field Booking\r\n	</div>\r\n\r\n	<div id="goSchedule" class="os-time-slider-container">\r\n		';
 for(var i=0;i<field.days.length;i++){;
-__p += '\n			<div class="os-time-box" id="os-timebox">\n				' +
+__p += '\r\n			<div class="os-time-box" id="os-timebox">\r\n				' +
 ((__t = (field.daysofweek[i])) == null ? '' : __t) +
-'\n				<br>\n				' +
+'\r\n				<br>\r\n				' +
 ((__t = (field.months[i])) == null ? '' : __t) +
-'&nbsp;\n				' +
+'&nbsp;\r\n				' +
 ((__t = (field.days[i])) == null ? '' : __t) +
-'<br>\n			</div>\n		';
+'<br>\r\n			</div>\r\n		';
 };
-__p += '	\n	</div>\n\n	<hr>\n	<div class="">\n		Comments\n		<div id="goComment" style="display: inline;float: right;">\n			All Comments>\n		</div>\n	</div>\n	<div class="">\n		<div class="w3-col w3-center" style="width:60px;padding-top:10px;">\n			<img class="w3-circle" src=' +
+__p += '	\r\n	</div>\r\n\r\n	<hr>\r\n	<div class="">\r\n		Comments\r\n		<div id="goComment" style="display: inline;float: right;">\r\n			All Comments>\r\n		</div>\r\n	</div>\r\n	<div class="">\r\n		<div class="w3-col w3-center" style="width:60px;padding-top:10px;">\r\n			<img class="w3-circle" src=' +
 __e(field.userProfile) +
-' style="width:100%" />\n			<br>\n			<div class="mui-text-center">\n				' +
+' style="width:100%" />\r\n			<br>\r\n			<div class="mui-text-center">\r\n				' +
 ((__t = (field.userName)) == null ? '' : __t) +
-'\n			</div>\n\n		</div>\n		<div class="w3-rest" style="padding-left:5px">\n			';
+'\r\n			</div>\r\n\r\n		</div>\r\n		<div class="w3-rest" style="padding-left:5px">\r\n			';
 for (var i=0;i < field.userStar; i++) {;
-__p += '\n			<img src="../resource/comment-template/star.png" style="width:15px">\n			';
+__p += '\r\n			<img src="../resource/comment-template/star.png" style="width:15px">\r\n			';
 };
-__p += '\n			<br>\n			<p class="w3-small" style="color: white;">\n				' +
+__p += '\r\n			<br>\r\n			<p class="w3-small" style="color: white;">\r\n				' +
 ((__t = (field.userDescription)) == null ? '' : __t) +
-'\n			</p>\n			';
+'\r\n			</p>\r\n			';
 _.each(field.userImages, function(image) {;
-__p += '\n			<img class="w3-round w3-padding-top" src=' +
+__p += '\r\n			<img class="w3-round w3-padding-top" src=' +
 __e(image) +
-' style="width:60px;height:45px" />\n			';
+' style="width:60px;height:45px" />\r\n			';
 });;
-__p += '\n		</div>\n	</div>\n</div>\n';
+__p += '\r\n		</div>\r\n	</div>\r\n</div>\r\n';
 });;
 
 
@@ -175,21 +154,21 @@ obj || (obj = {});
 var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<div class="mui-content-padded my-transparent-simple">\n    ';
+__p += '<div class="mui-content-padded my-transparent-simple">\r\n    ';
 _.each(fields, function (field) {;
-__p += '\n    <div class="current-field">\n        <p>\n            <img src=' +
+__p += '\r\n    <div class="current-field">\r\n        <p>\r\n            <img src=' +
 __e(field.image) +
-' width="100%">\n        </p>\n        <div class="mui-content-padded">\n            <span class="rating" style="float: right">Rating: ' +
+' width="100%">\r\n        </p>\r\n        <div class="mui-content-padded">\r\n            <span class="rating" style="float: right">Rating: ' +
 ((__t = (field.rating)) == null ? '' : __t) +
-'/5</span>\n            <span class="name" id="' +
+'/5</span>\r\n            <span class="name" id="' +
 ((__t = (field.id)) == null ? '' : __t) +
 '" style="font-weight: bold; font-size: 16px;">' +
 ((__t = (field.name)) == null ? '' : __t) +
-'<br></span>\n            <span class="w3-small">' +
+'<br></span>\r\n            <span class="w3-small">' +
 ((__t = (field.address)) == null ? '' : __t) +
-'</span>\n        </div>\n    </div>\n    ';
+'</span>\r\n        </div>\r\n    </div>\r\n    ';
 });;
-__p += '\n</div>';
+__p += '\r\n</div>';
 
 }
 return __p
@@ -229,15 +208,15 @@ obj || (obj = {});
 var __t, __p = '', __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<!--个人主页-->\n<!--我的球队-->\n';
+__p += '<!--个人主页-->\n<!--我的球队-->\n<div class="mui-content-padded my-simple" style="padding-left: 5%;">\n   	<p style="font-size: 18px; font-weight: bold;">Your Team(s)</p>\n</div>\n<hr style="border-top:1px solid #4b4b4b; margin: 8px 0px;"/>\n';
 _.each(teams, function (team) {;
-__p += '\r\n<hr style="border-top:1px solid #4b4b4b; margin: 8px 0px;"/>\r\n<div class="mui-control-content mui-active rows" style="height: 100px;">\r\n	<div class="w3-col s3 w3-center" style="height: inherit;">\r\n		<img id="teamLogo" src="' +
+__p += '\r\n<div class="mui-control-content mui-active rows" style="height: 100px; padding-top: 0px;">\r\n	<div class="w3-col s3 w3-center" style="height: inherit;">\r\n		<img id="teamLogo" src="' +
 ((__t = (team.logo)) == null ? '' : __t) +
 '" style="height: inherit; padding: 10%;"/>\r\n	</div>\r\n	<div class="w3-col s9" style="word-wrap: break-word; height: inherit; overflow: hidden;">\r\n		<div id="teamTitle" class="w3-large" style="font-weight: 600;">\r\n			<label>' +
 ((__t = (team.name)) == null ? '' : __t) +
 '</label>\r\n		</div>\r\n		<div id="teamInfo" class="w3-col s8" style="padding-right: 2%;">\r\n			<label>' +
 ((__t = (team.brief)) == null ? '' : __t) +
-'</label>\r\n		</div>\r\n		<div class="w3-col s4 w3-center" style="border-left: 1px solid #4b4b4b; padding-left: 2%;">\r\n			<div id="teamMatch" class="w3-row" style="line-height: 30px; height: 30px;">\r\n				<img src="../resource/personalPage/ball.png" class="w3-col s2" style="height: inherit; padding: 11% 1px;"/>\r\n				<label class="w3-col s5" style="font-size: 10px;">Match</label>\r\n				<label class="w3-col s4" style="">0</label>\r\n			</div>\r\n			<div id="teamMember" class="w3-row" style="line-height: 30px; height: 30px;">\r\n				<img src="../resource/personalPage/friends.png" class="w3-col s2" style="height:inherit; padding: 11% 1px;"/>\r\n				<label class="w3-col s5" style="font-size: 10px;">Memb</label>\r\n				<label class="w3-col s4" style="">0</label>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n';
+'</label>\r\n		</div>\r\n		<div class="w3-col s4 w3-center" style="border-left: 1px solid #4b4b4b; padding-left: 2%;">\r\n			<div id="teamMatch" class="w3-row" style="line-height: 30px; height: 30px;">\r\n				<img src="../resource/personalPage/ball.png" class="w3-col s2" style="height: inherit; padding: 11% 1px;"/>\r\n				<label class="w3-col s5" style="font-size: 10px;">Match</label>\r\n				<label class="w3-col s4" style="">0</label>\r\n			</div>\r\n			<div id="teamMember" class="w3-row" style="line-height: 30px; height: 30px;">\r\n				<img src="../resource/personalPage/friends.png" class="w3-col s2" style="height:inherit; padding: 11% 1px;"/>\r\n				<label class="w3-col s5" style="font-size: 10px;">Memb</label>\r\n				<label class="w3-col s4" style="">0</label>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\n<hr style="border-top:1px solid #4b4b4b; margin: 8px 0px;"/>\r\n';
 });;
 __p += '\n';
 
@@ -249,9 +228,45 @@ window["JST"] = window["JST"] || {};
 
 window["JST"]["teamMain"] = function(obj) {
 obj || (obj = {});
-var __t, __p = '';
+var __t, __p = '', __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '\n<!--Team Pages-->\n	<div class="mui-scroll">\n		<!--Records-->\n		<div id="item4" class="mui-control-content mui-active">\n			<div style="background-image: url(../resource/common/background-dark-down-part.png); background-size:100%; padding: 20px 0px;">\n				<div class="mui-content-padded w3-center my-simple">\n					<div class="w3-row">\n						<div class="w3-col s4 w3-center">\n							<img src="../resource/teamMain/TeamLogo.png" width="70%">\n						</div>\n						<div class="w3-col s4 w3-center" style="font-size: 14px;">\n							<br>\n							<label style="font-size: 18px">Delimonge<br></label>\n							<label style="color: #888888">Role:</label>\n							<label style="color: #888888">Tourist</label>\n							<div style="margin: 5px 14px;">\n								<button class="mui-btn mui-btn-block mui-btn-yellow" style="padding: 0px 0px;">Join In</button>\n							</div>\n						</div>\n						<div class="w3-col s4 w3-center">\n							<br>\n							<div class="mui-icon mui-icon-upload" style="float: right; padding-top: 10px;">\n								\n    						</div>\n						</div>\n					</div>\n				</div>\n			</div>\n			\n			<div class="grey-back">\n				<div class="w3-row" style="margin-left: 45px;">\n						<div class="w3-col s6 w3-center">\n							<div class="mui-content-padded">\n								<div id="mainT" style="height: 170px; margin-left: 0px;">\n									\n								</div>\n							</div>\n						</div>\n						\n						<div class="w3-col s6 w3-center">\n							<div class="mui-content-padded">\n								<div class="my-record-padding2">\n									<label class="w3-small" style="color: #fdcb1d">Games Won<br></label>\n									<label class="w3-large" style="color: #fdcb1d">15</label>\n								</div>\n								<div class="my-record-padding2">\n									<label class="w3-small" style="color: #b5b5b6">Games Lost<br></label>\n									<label class="w3-large" style="color: #b5b5b6">12</label>\n								</div>\n								<div class="my-record-padding2">\n									<label class="w3-small" style="color: #595757">Games Tie<br></label>\n									<label class="w3-large" style="color: #595757">3</label>\n								</div>\n							</div>\n						</div>\n						<!--Another Layout Template-->\n						<!--<div class="w3-col s3 w3-center" style="font-size: x-large">\n							<div class="my-record-padding">\n								<label style="color: #fdcb1d;">Wins</label>\n							</div>\n							<div class="my-record-padding">\n								<label style="color: #b5b5b6;">Losts</label>\n							</div>\n							<div class="my-record-padding">\n								<label style="color: #595757;">Ties</label>\n							</div>\n						</div>\n						<div class="w3-col s3 w3-center" style="font-size: x-large">\n							<div class="my-record-padding">\n								<label style="color: #fdcb1d;">15</label>\n							</div>\n							<div class="my-record-padding">\n								<label style="color: #b5b5b6;">12</label>\n							</div>\n							<div class="my-record-padding">\n								<label style="color: #595757;">3</label>\n							</div>\n						</div>-->\n				</div>\n				\n				<!--Goal Chart-->\n				<div>\n					<div id="chart3T" style="height: 45px; padding: 7px 0px; margin-bottom: 6px;">\n									\n					</div>\n				</div>\n				\n			</div>\n\n			<!--MVPs-->\n			<div class="grey-back" style="margin-bottom: -3px;">\n				<p class="my-simple" style="font-size: large; padding-left: 5%;">\n					Most Valuable Player(s)\n				</p>\n				<div class="mui-content-padded my-simple">\n					<div class="w3-row">\n						<!--Goals MVP-->\n						<div class="w3-col s6 w3-center">\n							<div class="my-pentagon" style="background-color:#fdcb1d;">\n								<div class="my-pentagon-inner" style="background-image: url(../resource/teamMain/MVP1.png); Top: 5px; ">\n								</div>\n							</div>\n							<label >Ringgold<br></label>\n							<label class="my-yellow" style="font-size: 18px;">Goals </label>\n							<label style="font-size: 18px;">35</label>\n						</div>\n\n						<img src="../resource/personalMain/line.png" style="position: absolute;" width="0.82%">\n\n						<!--Assist MVP-->\n						<div class="w3-col s6 w3-center">\n							<div class="my-pentagon" style="background-color:#fdcb1d;">\n								<div class="my-pentagon-inner" style="background-image: url(../resource/teamMain/MVP2.png); Top: 5px; ">\n								</div>\n							</div>\n							<label >Well<br></label>\n							<label class="my-yellow" style="font-size: 18px;">Team\'s Election</label>\n							<label style="font-size: 18px;"></label>\n						</div>\n					</div>\n				</div>\n			</div>\n			\n\n			<div class="grey-back">\n				<div id="chart2T" style="height: 200px"></div>\n			</div>\n		</div>\n	\n		<!--Topics-->\n		<div id="item5" class="mui-control-content my-simple grey-back" style="margin-top: -2px; padding-top: 10px;">\n			<!--订单1-->\n			<div class="my-card2" style="padding-left: 15px; padding-bottom: 5px; margin-right: -5px;">\n				<div class="my-card-content">\n					<div class="w3-row">						\n						<div class="w3-col s8">\n							<label style="font-size: 16px; color: #E2E2E2;">Quite a nice experience, but it would be much better if the field is lighter.</label>\n							<br>\n							<br>\n							<div class="w3-row">						\n								<div class="w3-col s1 w3-center">\n									<img src="../resource/teamMain/replay.png" width="110%">\n								</div>\n								<div class="w3-col s1 w3-center">\n									<label style="font-size: 15px; color: #E2E2E2;">11</label>\n								</div>\n								<div class="w3-col s1 w3-center">\n									<img src="../resource/teamMain/thumb.png" width="110%">\n								</div>\n								<div class="w3-col s1 w3-center">\n									<label style="font-size: 15px; color: #E2E2E2;">5</label>\n								</div>\n							</div>\n						</div>\n						<div class="w3-col s4 w3-center">\n							<img src="../resource/teamMain/Player1.png" width="72%">\n							<label style="font-size: 12px; color: #b7b7b7">Ringgold</label>\n							<br>\n							<label style="font-size: 12px; color: #b7b7b7">7 Mins Ago</label>\n						</div>\n					</div>\n				</div>\n			</div>\n			<hr style="border-top:1px solid #595757; margin-top: 0px; margin-bottom: 0px;" />\n\n			<!--订单2-->\n			<div class="my-card2" style="padding-left: 15px; padding-bottom: 5px; margin-right: -5px;">\n				<div class="my-card-content">\n					<div class="w3-row">						\n						<div class="w3-col s8">\n							<label style="font-size: 16px; color: #E2E2E2;">In the last match, I think we should have tried harder!</label>\n							<br>\n							<br>\n							<div class="w3-row">						\n								<div class="w3-col s1 w3-center">\n									<img src="../resource/teamMain/replay.png" width="110%">\n								</div>\n								<div class="w3-col s1 w3-center">\n									<label style="font-size: 15px; color: #E2E2E2;">2</label>\n								</div>\n								<div class="w3-col s1 w3-center">\n									<img src="../resource/teamMain/thumb.png" width="110%">\n								</div>\n								<div class="w3-col s1 w3-center">\n									<label style="font-size: 15px; color: #E2E2E2;">3</label>\n								</div>\n							</div>\n						</div>\n						<div class="w3-col s4 w3-center">\n							<img src="../resource/teamMain/Player2.png" width="72%">\n							<label style="font-size: 12px; color: #b7b7b7">Linarg</label>\n							<br>\n							<label style="font-size: 12px; color: #b7b7b7">30 Mins Ago</label>\n						</div>\n					</div>\n				</div>\n			</div>\n			<hr style="border-top:1px solid #595757; margin-top: 0px; margin-bottom: 0px;" />\n		</div>\n\n		<!--Matches-->\n		<div id="item6" class="mui-control-content my-simple">\n			<!--球赛1-->\n			<div class="my-card">\n				<div class="mui-card-content">\n					<div class="mui-card-content-inner">\n						<div class="w3-row">\n							<div class="w3-col s12 w3-center">\n								<div class="w3-row">\n									<div class="w3-col s4 w3-center">\n										<img src="../resource/personalMain/team1.png" width="45%">\n										<br>\n										<label class="w3-tiny">CAC</label>\n									</div>\n									<div class="w3-col s4 w3-center">\n										<label style="font-size: 27px;">5</label>\n										<label style="font-size: 27px;">:</label>\n										<label style="font-size: 27px;">4<br></label>\n										<label class="w3-tiny">July 6</label>\n									</div>\n									<div class="w3-col s4 w3-center">\n										<img src="../resource/personalMain/team3.png" width="45%">\n										<br>\n										<label class="w3-tiny">CFC</label>\n									</div>\n									<a><span class="mui-icon mui-icon-arrowright" style="position: absolute; right: -11px; top: 35px"></span></a>\n								</div>\n							</div>\n						</div>\n					</div>\n				</div>\n			</div>\n\n			<!--球赛2-->\n			<div class="my-card">\n				<div class="mui-card-content">\n					<div class="mui-card-content-inner">\n						<div class="w3-row">\n							<div class="w3-col s12 w3-center">\n								<div class="w3-row">\n									<div class="w3-col s4 w3-center">\n										<img src="../resource/personalMain/team3.png" width="45%">\n										<br>\n										<label class="w3-tiny">CAC</label>\n									</div>\n									<div class="w3-col s4 w3-center">\n										<label style="font-size: 27px;">3</label>\n										<label style="font-size: 27px;">:</label>\n										<label style="font-size: 27px;">0<br></label>\n										<label class="w3-tiny">August 7</label>\n									</div>\n									<div class="w3-col s4 w3-center">\n										<img src="../resource/personalMain/team1.png" width="45%">\n										<br>\n										<label class="w3-tiny">CFC</label>\n									</div>\n									<a><span class="mui-icon mui-icon-arrowright" style="position: absolute; right: -11px; top: 35px"></span></a>\n								</div>\n							</div>\n						</div>\n					</div>\n				</div>\n			</div>\n		</div>\n		<!--Members-->\n		<div id="item7" class="mui-control-content my-simple">\n			<input id="avatar_input" type="file" name="picture" accept="image/png, image/jpeg" class="mui-btn mui-btn-block mui-btn-yellow"/>\n		    <div class="mui-content-padded">\n		    <span id="Cost" style="color: #FDCB1D;float:right"></span>	\n		        <button id="goUpload" class="mui-btn mui-btn-block mui-btn-yellow">Upload Yourself</button>\n		        	\n		        <br>\n		    </div>\n			\n		</div>\n		<!--Photos-->\n		<div id="item8" class="mui-control-content my-simple">\n		</div>\n	</div>\n	';
+__p += '<!--Table bar-->\r\n<div class="w3-row" style="border-bottom: 1px solid #393939; padding-top: 2%; ">\r\n	<div class="w3-col s3 w3-center">\r\n		<p>Player</p>\r\n	</div>\r\n	<div class="w3-col s4 w3-center">  \r\n		<p>Name</p>\r\n	</div>\r\n	<div class="w3-col s3 w3-center">  \r\n		<p>Position</p>\r\n	</div>\r\n	<div class="w3-col s2 w3-center">  \r\n		<p>Number</p>\r\n	</div>\r\n</div>\r\n\r\n<!--Actual Player List-->\r\n ';
+_.each(allPlayers, function (player) {;
+__p += '\r\n<a>\r\n	<div class="w3-row" style="border-bottom: 1px solid #393939; padding-top: 2%;">\r\n		<div class="w3-col s3 w3-center">\r\n			<p><img src="' +
+((__t = (player.avatar)) == null ? '' : __t) +
+'" width="50%"></p>\r\n		</div>\r\n		<div class="w3-col s4 w3-center" >\r\n			<p style="color: white; font-size: 15px; padding-top: 8%;">' +
+((__t = (player.name)) == null ? '' : __t) +
+'</p>\r\n		</div>\r\n		<div class="w3-col s3 w3-center">\r\n			<p style="color: white; font-size: 15px; padding-top: 12%;">' +
+((__t = (player.position)) == null ? '' : __t) +
+'</p>\r\n		</div>\r\n		<div class="w3-col s2 w3-center">\r\n			<p style="color: white; font-size: 15px; padding-top: 16%;">' +
+((__t = (player.number)) == null ? '' : __t) +
+'</p>\r\n		</div>\r\n	</div>\r\n</a>\r\n';
+});;
+
+
+}
+return __p
+}})();
+(function() {
+window["JST"] = window["JST"] || {};
+
+window["JST"]["Teams"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += ' ';
+_.each(teams, function (team) {;
+__p += '\r\n<hr style="border-top:1px solid #4b4b4b; margin: 8px 0px;"/>\r\n<div class="mui-control-content mui-active rows" style="height: 100px;">\r\n	<div class="w3-col s3 w3-center" style="height: inherit;">\r\n		<img id="teamLogo" src="' +
+((__t = (team.logo)) == null ? '' : __t) +
+'" style="height: inherit; padding: 10%;"/>\r\n	</div>\r\n	<div class="w3-col s9" style="word-wrap: break-word; height: inherit; overflow: hidden;">\r\n		<div id="teamTitle" class="w3-large" style="font-weight: 600;">\r\n			<label>' +
+((__t = (team.name)) == null ? '' : __t) +
+'</label>\r\n		</div>\r\n		<div id="teamInfo" class="w3-col s8" style="padding-right: 2%;">\r\n			<label>' +
+((__t = (team.brief)) == null ? '' : __t) +
+'</label>\r\n		</div>\r\n		<div class="w3-col s4 w3-center" style="border-left: 1px solid #4b4b4b; padding-left: 2%;">\r\n			<div id="teamMatch" class="w3-row" style="line-height: 30px; height: 30px;">\r\n				<img src="../resource/personalPage/ball.png" class="w3-col s2" style="height: inherit; padding: 11% 1px;"/>\r\n				<label class="w3-col s5" style="font-size: 10px;">Match</label>\r\n				<label class="w3-col s4" style="">0</label>\r\n			</div>\r\n			<div id="teamMember" class="w3-row" style="line-height: 30px; height: 30px;">\r\n				<img src="../resource/personalPage/friends.png" class="w3-col s2" style="height:inherit; padding: 11% 1px;"/>\r\n				<label class="w3-col s5" style="font-size: 10px;">Memb</label>\r\n				<label class="w3-col s4" style="">0</label>\r\n			</div>\r\n		</div>\r\n	</div>\r\n</div>\r\n';
+});;
+
 
 }
 return __p

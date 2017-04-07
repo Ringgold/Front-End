@@ -181,7 +181,7 @@ obj || (obj = {});
 var __t, __p = '', __j = Array.prototype.join;
 function print() { __p += __j.call(arguments, '') }
 with (obj) {
-__p += '<!--Table bar-->\r\n<div class="w3-row" style="border-bottom: 1px solid #393939; margin-top: -5%; ">\r\n	<div class="w3-col s4 w3-center">\r\n		<p>Picture</p>\r\n	</div>\r\n	<div class="w3-col s6 w3-center">  \r\n		<p>Order\'s Infomation</p>\r\n	</div>\r\n	<div class="w3-col s2 w3-center">  \r\n		<p>Links</p>\r\n	</div>\r\n</div>\r\n<!--订单-->\r\n';
+__p += '<!--订单-->\r\n';
 _.each(orders, function (order) {;
 __p += '\r\n    <div class="my-card2">\r\n        <div class="my-card-content">\r\n            <div class="w3-row">\r\n                <div class="w3-col s4 w3-center">\r\n                    <img src="../resource/personalMain/field_ordered.png" width="72%">\r\n                </div>\r\n                <div class="w3-col s5 w3-center">\r\n                    <label style="font-size: 10px;" class="mui-pull-left">' +
 ((__t = (order.id)) == null ? '' : __t) +

@@ -75,10 +75,10 @@ function getPlayerById(playerID){
 	        	//First Time Login need to create a player file
 		    	plus.webview.show("playerCreate", "pop-in");
 	        } else {
-	        	plus.webview.getWebviewById('personalMain').evalJS("showTeams();");
+	        	plus.nativeUI.showWaiting();
 	        	plus.webview.getWebviewById('personalMain').evalJS("changePlayerInfo('"+data+"');");
+	        	setTimeout(function(){plus.nativeUI.closeWaiting();},100);
 	        	plus.webview.show("personalMain", "pop-in");
-	        	setTimeout(function(){plus.nativeUI.closeWaiting();},1000);
 	        }
         },
         error: function (xhr, type) {

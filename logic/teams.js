@@ -1,17 +1,5 @@
 var allTeams;
-function init() {
-	getAllTeams(); //get the teams' list
-	rows = $(".rows");
-	for(var i=0; i<rows.length; i++) {
-		var h = $(rows[i]).width()/4;
-		$(rows[i]).css({'height':h+'px'});
-	}
-	info = $(".w3-row");
-	for(var i=0; i<info.length; i++) {
-		var h = ($(rows[0]).width()/4 - 27)/2;
-		$(info[i]).css({'line-height':h+'px', 'height':h+'px'});
-	}
-	
+function teamsiInit() {
 	$('#person').on('touchend', function () {
     		plus.webview.show("personalMain", "pop-in");
         mui('.mui-off-canvas-wrap').offCanvas('close');
@@ -40,8 +28,10 @@ function init() {
     });
     
     $('#goCreate').on('touchend', function(){
-    	plus.webview.show("createTeam", "pop-in");
+    		plus.webview.show("createTeam", "pop-in");
     })
+    
+    getAllTeams();
 }
 
 function pulldownRefresh() {
@@ -58,11 +48,7 @@ function reloadAllTeams(AllTeams) {  //加载场地信息的图片,名称和评�
     var container = $('#teamsDisplay');
     container.empty();
     container.append($(list));
-//  $('.rows').on("touchend", goTeamDetail);
-}
-
-function goTeamDetail(){
-	//TODO
+	goTeamDetail(AllTeams);
 }
 
 function getAllTeams() {
@@ -76,17 +62,9 @@ function getAllTeams() {
 	            var teams_temp = [];
 	            for (var i = 0; i < teams.length; i++) {
 	                var team = teams[i];
-//	                team.name = teams[i].name;
-//	                team.id = teams[i].id;
-//	                team.logo = teams[i].logo;
-//	                team.assist = teams[i].assistantPlayer;
-//	                team.goalPlayer = teams[i].goalPlayer;
-//	                team.topic = teams[i].topic;
-//	                team.brief = teams[i].brief;
 	                teams_temp.push(team);
 	            }
 	            allTeams = teams_temp;
-	            console.log(allTeams);
 	            reloadAllTeams(teams_temp);
 	        	}
         },
@@ -94,4 +72,15 @@ function getAllTeams() {
             alert(type);
         }
     });
+    
+    rows = $(".rows");
+	for(var i=0; i<rows.length; i++) {
+		var h = $(rows[i]).width()/4;
+		$(rows[i]).css({'height':h+'px'});
+	}
+	info = $(".w3-row");
+	for(var i=0; i<info.length; i++) {
+		var h = ($(rows[0]).width()/4 - 27)/2;
+		$(info[i]).css({'line-height':h+'px', 'height':h+'px'});
+	}
 }

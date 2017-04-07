@@ -16,8 +16,6 @@ function goBack(){
 
 function teamMainInit(){
     $('#goback').on('touchend', goBack);
-    $('#goToCaptain').on('touchend', goToCaptainPage);
-//  $('#join').on('touchend', applyToThisTeam);
     
 	drawChartT(13, 11, 4);
 	drawChart2T(11, 12, 2, 32, 15, 4, 10);
@@ -32,16 +30,27 @@ function showTemplate(teamInfo) {
 	teamID = team.id;
 	localStorage.setItem("Captain_TeamID", teamID);
 	brief = team.brief;
-	
 	assistPlayer = team.assistPlayer;
 	goalPlayer = team.goalPlayer;
-	
 	allPlayers = team.members;
 	
+	if(role==null){
+		role = "Tourist";}
 	$("#c-logo").attr("src",logo);
     $("#c-name").text(name);
     $("#c-brief").text(brief);
     $("#c-role").text(role);
+    
+	var teamButton = $("#teamButton").children()[0];
+    if(role!="captain"){
+    		$(teamButton).attr("id", "join");
+    		$(teamButton).text("Join");
+    		$('#join').on('touchend', applyToThisTeam);
+    } else {
+    		$(teamButton).attr("id", "goToCaptain");
+    		$(teamButton).text("Manage");
+    		$('#goToCaptain').on('touchend', goToCaptainPage);
+    }
     
     reloadPlayers(allPlayers);
 }
@@ -78,33 +87,29 @@ function pulldownplayersRefresh() {
 	},1000);
 }
 
-//function applyToThisTeam(){
-//	var userID = localStorage.getItem("User_ID");
-////	var userID = 'a9d93c4f3ee04324ab28c185dce32cd3';
-//	
-//	var info =
-//		{
-//			//id = localStorage.getItem("User_ID"),
-//			playerId : userID,//Each Time Should be With a different ID
-//			teamID : teamID,
-//		};
-//	
-//	var temp = JSON.stringify(info);
-//	
-//	Url = 'https://socceredge.info/api/team/team/request_join/'+userID+'/'+teamID;
-//	mui.ajax(Url, {
-//		type: "Get",
-//		timeout: 10000,
-//		data: temp,
-//		async: false,
-//      success: function (data) {
-//      	alert(data);
-//      },
-//      error: function (xhr, type) {
-//      	alert(type);
-//      }
-//	});
-//}
+function applyToThisTeam(){
+	var userID = localStorage.getItem("User_ID");
+	var info =
+		{
+			playerId : userID,//Each Time Should be With a different ID
+			teamID : teamID,
+		};
+	var temp = JSON.stringify(info);
+	
+	Url = 'https://socceredge.info/api/team/team/request_join/'+userID+'/'+teamID;
+	mui.ajax(Url, {
+		type: "get",
+		timeout: 10000,
+		data: temp,
+		async: false,
+        success: function (data) {
+        		alert(data);
+        },
+        error: function (xhr, type) {
+        		alert(type);
+        }
+	});
+}
 
 function goToCaptainPage(){
 	plus.webview.getWebviewById('captain').evalJS("updateTeamID();");

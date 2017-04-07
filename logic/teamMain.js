@@ -41,14 +41,18 @@ function showTemplate(teamInfo) {
     $("#c-brief").text(brief);
     $("#c-role").text(role);
     
-	var teamButton = $("#teamButton").children()[0];
+//	var teamButton = $("#teamButton").children()[0];
     if(role!="captain"){
-    		$(teamButton).attr("id", "join");
-    		$(teamButton).text("Join");
+//  		$(teamButton).attr("id", "join");
+//  		$(teamButton).text("Join");
+			$('#goToCaptain').hide();
+			$('#join').show();
     		$('#join').on('touchend', applyToThisTeam);
     } else {
-    		$(teamButton).attr("id", "goToCaptain");
-    		$(teamButton).text("Manage");
+//  		$(teamButton).attr("id", "goToCaptain");
+//  		$(teamButton).text("Manage");
+			$('#goToCaptain').show();
+			$('#join').hide();
     		$('#goToCaptain').on('touchend', goToCaptainPage);
     }
     
@@ -113,6 +117,7 @@ function applyToThisTeam(){
 
 function goToCaptainPage(){
 	plus.webview.getWebviewById('captain').evalJS("updateTeamID();");
+	plus.webview.getWebviewById('captain').evalJS("updateCaptainID();");
 	plus.webview.show("captain", "pop-in");
 }
 

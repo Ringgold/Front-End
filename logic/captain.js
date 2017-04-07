@@ -9,22 +9,26 @@ var addCondition;
 
 function captainInit() {  //加载场地信息的图片,名称和评分
 //	getPendings();
-	
+	console.log("In Captain Page");
 	$('#goBackToPersonal').on('touchend', function(event) {
         var webview = plus.webview.currentWebview();
     	webview.hide("pop-out");
     });
-    $('.accept').on("touchend", function(event) {
-        accept(event.target.id);
-    });
-    $('.reject').on("touchend", function(event) {
-        reject(event.target.id);
-    });
+//  $('.accept').on("touchend", function(event) {
+//      accept(event.target.id);
+//  });
+//  $('.reject').on("touchend", function(event) {
+//      reject(event.target.id);
+//  });
 }
 
 function updateTeamID(){
 	teamID = localStorage.getItem("Captain_TeamID");
 	getPendings();
+}
+
+function updateCaptainID(){
+	captainID = localStorage.getItem("User_ID");
 }
 
 function accept(id){
@@ -91,7 +95,8 @@ function getPendings(){
 }
 
 function acceptJoin(playerID){
-	var Url = "https://socceredge.info/api/team/player/accept_join/" + captainID + "/" + playerID + "/" + teamID;
+	var Url = "https://socceredge.info/api/team/team/accept_join/" + captainID + "/" + playerID + "/" + teamID;
+	console.log(Url);
 	mui.ajax(Url, {
 		type: "get",
 		timeout: 10000,
@@ -148,6 +153,7 @@ function getPlayerByID(playerID){
 	});
 }
 
+//Check if you are the captain, if not, pop out of this page
 function checkCaptain(){
 	var tempCaptainID = localStorage.getItem("User_ID");
 	var Url = "https://socceredge.info/api/team/player_team/get_player_team_by_id/" + tempCaptainID + "/" + teamID;
@@ -203,6 +209,13 @@ function reloadPendings(pendings){
     var container = $('#pendingList');
     container.empty();
     container.append($(list));
+    $('.accept').on("touchend", function(event) {
+    	
+        accept(event.target.id);
+    });
+    $('.reject').on("touchend", function(event) {
+        reject(event.target.id);
+    });
 }
 
 function pullDownRefreshPendings() {

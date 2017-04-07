@@ -78,6 +78,7 @@ function getPlayerById(playerID){
 	        	plus.webview.getWebviewById('personalMain').evalJS("showTeams();");
 	        	plus.webview.getWebviewById('personalMain').evalJS("changePlayerInfo('"+data+"');");
 	        	plus.webview.show("personalMain", "pop-in");
+	        	setTimeout(function(){plus.nativeUI.closeWaiting();},1000);
 	        }
         },
         error: function (xhr, type) {

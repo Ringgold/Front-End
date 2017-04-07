@@ -107,10 +107,15 @@ function applyToThisTeam(){
 		data: temp,
 		async: false,
         success: function (data) {
-        		alert(data);
+        	if (data == "SUCCESS"){
+        		alert("You have successfully applied to this team!");
+        	} else {
+        		alert("Apply Fail, you may have already appiled to this team.");
+        	}
+        		
         },
         error: function (xhr, type) {
-        		alert(type);
+//      		alert(type);
         }
 	});
 }

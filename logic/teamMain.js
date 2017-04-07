@@ -16,11 +16,14 @@ function goBack(){
 
 function teamMainInit(){
     $('#goback').on('touchend', goBack);
+    $('#join').on('touchend', applyToThisTeam);
+    $('#goToCaptain').on('touchend', goToCaptainPage);
     
     mui('.mui-scroll-wrapper').scroll({
         deceleration: 0.0006,
         indicators: false
     });
+    
     
 	drawChartT(13, 11, 4);
 	drawChart2T(11, 12, 2, 32, 15, 4, 10);
@@ -50,15 +53,17 @@ function showTemplate(teamInfo) {
     if(role!="captain"){
 //  		$(teamButton).attr("id", "join");
 //  		$(teamButton).text("Join");
+//			$('#goToCaptain').attr('disabled', true);
+//			$('#join').attr('disabled', false);
 			$('#goToCaptain').hide();
 			$('#join').show();
-    		$('#join').on('touchend', applyToThisTeam);
     } else {
 //  		$(teamButton).attr("id", "goToCaptain");
 //  		$(teamButton).text("Manage");
+//			$('#goToCaptain').attr('disabled', false);
+//			$('#join').attr('disabled', true);
 			$('#goToCaptain').show();
 			$('#join').hide();
-    		$('#goToCaptain').on('touchend', goToCaptainPage);
     }
     
     reloadPlayers(allPlayers);
@@ -114,13 +119,15 @@ function applyToThisTeam(){
         success: function (data) {
         	if (data == "SUCCESS"){
         		alert("You have successfully applied to this team!");
+        		return;
         	} else {
         		alert("Apply Fail, you may have already appiled to this team.");
+        		return;
         	}
         		
         },
         error: function (xhr, type) {
-//      		alert(type);
+        		alert(type);
         }
 	});
 }

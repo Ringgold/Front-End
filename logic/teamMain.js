@@ -17,6 +17,11 @@ function goBack(){
 function teamMainInit(){
     $('#goback').on('touchend', goBack);
     
+    mui('.mui-scroll-wrapper').scroll({
+        deceleration: 0.0006,
+        indicators: false
+    });
+    
 	drawChartT(13, 11, 4);
 	drawChart2T(11, 12, 2, 32, 15, 4, 10);
 	drawChart3T(100, 56);
